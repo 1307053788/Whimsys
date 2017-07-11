@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TCouponDetailedMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TCouponDetailed">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_coupon_id" jdbcType="INTEGER" property="jCouponId" />
+    <result column="j_membercard_id" jdbcType="INTEGER" property="jMembercardId" />
+    <result column="j_state" jdbcType="VARCHAR" property="jState" />
+    <result column="j_getdata" jdbcType="VARCHAR" property="jGetdata" />
+    <result column="j_outdata" jdbcType="VARCHAR" property="jOutdata" />
+    
+    <result column="j_dept_id" jdbcType="INTEGER" property="jDeptId" />
+    <result column="j_fulln" jdbcType="DECIMAL" property="jFulln" />
+    <result column="j_number" jdbcType="DECIMAL" property="jnumber" />
+    <result column="j_quota" jdbcType="DECIMAL" property="jQuota" />
+    <result column="j_adddata" jdbcType="VARCHAR" property="jAdddata" />
+    <result column="j_condata" jdbcType="VARCHAR" property="jCondata" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_coupon_id, j_membercard_id, j_state, j_getdata
+  </sql>
+  <!-- 查看优惠券 -->
+  <select id="getCoupon" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    
+    aa.j_id as jId,
+    aa.j_coupon_id as jCouponId,
+    aa.j_membercard_id as jMembercardId,
+    aa.j_getdata as jGetdata,
+    aa.j_outdata as jOutdata,
+    bb.j_dept_id as jDeptId,
+    bb.j_fulln as jFulln,
+    bb.j_number as jnumber,
+    bb.j_quota as jQuota,
+    bb.j_adddata as jAdddata,
+    bb.j_condata as jCondata,
+    (case when(convert(varchar(100),aa.j_outdata,23) > getdate())
+		  then j_state
+		  else '-1' 
+	 end
+	) as jState
+    from dbo.TCouponDetailed aa
+    left join dbo.TCoupon bb on aa.j_coupon_id = bb.j_id
+    where j_membercard_id = #{0}
+  </select>
+  
+  <!-- 下单查看优惠券金额 -->
+  <select id="getorderCoupon" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    aa.j_coupon_id as jCouponId,
+    aa.j_membercard_id as jMembercardId,
+    aa.j_getdata as jGetdata,
+    aa.j_outdata as jOutdata,
+    bb.j_dept_id as jDeptId,
+    bb.j_fulln as jFulln,
+    bb.j_number as jnumber,
+    bb.j_quota as jQuota,
+    bb.j_adddata as jAdddata,
+    bb.j_condata as jCondata,
+    (case when(convert(varchar(100),aa.j_outdata,23) > getdate())
+		  then j_state
+		  else '-1' 
+	 end
+	) as jState
+    from dbo.TCouponDetailed aa
+    left join dbo.TCoupon bb on aa.j_coupon_id = bb.j_id
+    where aa.j_id = #{0}
+  </select>
+  <!-- 查看优惠券数量 -->
+  <select id="CouponNumber" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    count(j_id) as jnumber
+    from dbo.TCouponDetailed
+    where j_membercard_id = #{0}
+    and convert(varchar(100),j_outdata,23) > getdate()-1
+    and j_state = '1'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TCouponDetailed
+    where j_id = #{jId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TCouponDetailed">
+    insert into dbo.TCouponDetailed (j_id, j_coupon_id, j_membercard_id, 
+      j_state, j_getdata)
+    values (#{jId,jdbcType=INTEGER}, #{jCouponId,jdbcType=INTEGER}, #{jMembercardId,jdbcType=INTEGER}, 
+      #{jState,jdbcType=VARCHAR}, #{jGetdata,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TCouponDetailed">
+    insert into dbo.TCouponDetailed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        j_id,
+      </if>
+      <if test="jCouponId != null">
+        j_coupon_id,
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id,
+      </if>
+      <if test="jState != null">
+        j_state,
+      </if>
+      <if test="jGetdata != null">
+        j_getdata,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        #{jId,jdbcType=INTEGER},
+      </if>
+      <if test="jCouponId != null">
+        #{jCouponId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jState != null">
+        #{jState,jdbcType=VARCHAR},
+      </if>
+      <if test="jGetdata != null">
+        #{jGetdata,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改优惠券状态 -->
+  <update id="upcoup" parameterType="com.whimsy.entity.TCouponDetailed">
+    update dbo.TCouponDetailed
+    <set>
+      <if test="jCouponId != null">
+        j_coupon_id = #{jCouponId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jState != null">
+        j_state = #{jState,jdbcType=VARCHAR},
+      </if>
+      <if test="jGetdata != null">
+        j_getdata = #{jGetdata,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TCouponDetailed">
+    update dbo.TCouponDetailed
+    set j_coupon_id = #{jCouponId,jdbcType=INTEGER},
+      j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      j_state = #{jState,jdbcType=VARCHAR},
+      j_getdata = #{jGetdata,jdbcType=VARCHAR}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.MsgForwardDao">
+	<resultMap id="BaseResultMap" type="com.whimsy.entity.MsgForwardKey">
+		<id column="USER_ID" jdbcType="DECIMAL" property="userId" />
+		<id column="MSG_ID" jdbcType="DECIMAL" property="msgId" />
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="com.whimsy.entity.MsgForwardKey">
+		delete from WHIMSY_MESSAGE_FORWARD
+		where USER_ID = #{userId,jdbcType=DECIMAL}
+		and MSG_ID = #{msgId,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="com.whimsy.entity.MsgForwardKey">
+		insert into WHIMSY_MESSAGE_FORWARD (USER_ID, MSG_ID)
+		values (#{userId,jdbcType=DECIMAL}, #{msgId,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="com.whimsy.entity.MsgForwardKey">
+		insert into WHIMSY_MESSAGE_FORWARD
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="msgId != null">
+				MSG_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=DECIMAL},
+			</if>
+			<if test="msgId != null">
+				#{msgId,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+</mapper>

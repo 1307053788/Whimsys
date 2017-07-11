@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.MessageDao">
+	<resultMap id="MsgResult" type="com.whimsy.entity.Message">
+		<id column="MSG_ID" jdbcType="DECIMAL" property="msgId" />
+		<result column="MSG_LINK" jdbcType="VARCHAR" property="msgLink" />
+		<result column="MSG_COLLECTION_NUMBER" jdbcType="DECIMAL"
+			property="msgCollectionNumber" />
+		<result column="MSG_COMMENT_NUMBER" jdbcType="DECIMAL"
+			property="msgCommentNumber" />
+		<result column="MSG_FORWARD_NUMBER" jdbcType="DECIMAL"
+			property="msgForwardNumber" />
+		<result column="MSG_TIME" jdbcType="DATE" property="msgTime" />
+		<association property="user" resultMap="UserResult" />
+		<association property="content" resultMap="ContentResult" />
+	</resultMap>
+	<resultMap id="UserResult" type="com.whimsy.entity.User">
+		<id column="USER_ID" jdbcType="DECIMAL" property="userId" />
+		<result column="USER_NICKNAME" jdbcType="VARCHAR" property="userNickname" />
+		<result column="USER_FACE" jdbcType="VARCHAR" property="userFace" />
+		<result column="USER_EMAIL" jdbcType="VARCHAR" property="userEmail" />
+		<result column="USER_COUNT" jdbcType="VARCHAR" property="userCount" />
+		<result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
+		<result column="USER_REALNAME" jdbcType="VARCHAR" property="userRealname" />
+		<result column="USER_SEX" jdbcType="VARCHAR" property="userSex" />
+		<result column="USER_AGE" jdbcType="DECIMAL" property="userAge" />
+		<result column="USER_QQ" jdbcType="DECIMAL" property="userQq" />
+		<result column="USER_UNIVERSITY" jdbcType="VARCHAR" property="userUniversity" />
+		<result column="USER_JOB" jdbcType="VARCHAR" property="userJob" />
+		<result column="USER_PHONE" jdbcType="DECIMAL" property="userPhone" />
+		<result column="USER_INTRODUCE" jdbcType="VARCHAR" property="userIntroduce" />
+		<result column="USER_LABEL" jdbcType="VARCHAR" property="userLabel" />
+		<result column="USER_TIME" jdbcType="DATE" property="userTime" />
+	</resultMap>
+	<resultMap id="ContentResult" type="com.whimsy.entity.Content">
+		<id column="CONTENT_ID" jdbcType="DECIMAL" property="contentId" />
+		<result column="CONTENT_CHARACTER" jdbcType="VARCHAR" property="contentCharacter" />
+		<result column="CONTENT_IMAGES" jdbcType="VARCHAR" property="contentImages" />
+	</resultMap>
+	<!-- 遍历消息 -->
+	<select id="Selected" resultMap="MsgResult">
+		select * from WHIMSY_MESSAGE
+		order by MSG_TIME desc
+	</select>
+	<!-- 删除信息 -->
+	<delete id="delMsg" parameterType="java.lang.Integer">
+		delete from WHIMSY_MESSAGE
+		where MSG_ID = #{msgId,jdbcType=DECIMAL}
+	</delete>
+	<!-- 添加信息 -->
+	<insert id="addMsg" parameterType="com.whimsy.entity.Message">
+		<selectKey resultType="Integer" keyProperty="msgId">
+			select
+			message_id_seq.currval as msgId from dual
+		</selectKey>
+		insert into WHIMSY_MESSAGE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="msgId != null">
+				MSG_ID,
+			</if>
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="contentId != null">
+				CONTENT_ID,
+			</if>
+			<if test="msgLink != null">
+				MSG_LINK,
+			</if>
+			<if test="msgCollectionNumber != null">
+				MSG_COLLECTION_NUMBER,
+			</if>
+			<if test="msgCommentNumber != null">
+				MSG_COMMENT_NUMBER,
+			</if>
+			<if test="msgForwardNumber != null">
+				MSG_FORWARD_NUMBER,
+			</if>
+			<if test="msgTime != null">
+				MSG_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="msgId != null">
+				#{msg_content_id_seq.currval,jdbcType=DECIMAL},
+			</if>
+			<if test="userId != null">
+				#{user.userId,jdbcType=DECIMAL},
+			</if>
+			<if test="contentId != null">
+				#{content.contentId,jdbcType=DECIMAL},
+			</if>
+			<if test="msgLink != null">
+				#{msgLink,jdbcType=VARCHAR},
+			</if>
+			<if test="msgCollectionNumber != null">
+				#{msgCollectionNumber,jdbcType=DECIMAL},
+			</if>
+			<if test="msgCommentNumber != null">
+				#{msgCommentNumber,jdbcType=DECIMAL},
+			</if>
+			<if test="msgForwardNumber != null">
+				#{msgForwardNumber,jdbcType=DECIMAL},
+			</if>
+			<if test="msgTime != null">
+				#{msgTime,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<!-- 根据条件查询信息 -->
+	<select id="SearchSelective" parameterType="java.lang.String"
+		resultMap="MsgResult">
+		select * from WHIMSY_MESSAGE
+		order by MSG_TIME desc where
+		MSG_CONTENT like
+		#{keyWord,jdbcType=DECIMAL}
+	</select>
+</mapper>

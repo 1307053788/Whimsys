@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TOrderMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TOrder">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_membercard_id" jdbcType="INTEGER" property="jMembercardId" />
+    <result column="j_dept_id" jdbcType="INTEGER" property="jDeptId" />
+    <result column="j_state" jdbcType="VARCHAR" property="jState" />
+    <result column="j_money" jdbcType="DECIMAL" property="jMoney" />
+    <result column="j_ordercode" jdbcType="VARCHAR" property="jOrdercode" />
+    <result column="j_iffreight" jdbcType="DECIMAL" property="jIffreight" />
+    <result column="j_ifcoupon" jdbcType="DECIMAL" property="jIfcoupon" />
+    <result column="j_ifscore" jdbcType="DECIMAL" property="jIfscore" />
+    <result column="j_ifmembercard" jdbcType="DECIMAL" property="jIfmembercard" />
+    <result column="j_payment" jdbcType="VARCHAR" property="jPayment" />
+    <result column="j_address" jdbcType="VARCHAR" property="jAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_membercard_id, j_dept_id, j_state, j_money, j_ordercode, j_iffreight, j_ifcoupon, 
+    j_ifscore, j_ifmembercard
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TOrder
+    where j_id = #{jId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TOrder
+    where j_id = #{jId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TOrder">
+    insert into dbo.TOrder (j_id, j_membercard_id, j_dept_id, 
+      j_state, j_money, j_ordercode, 
+      j_iffreight, j_ifcoupon, j_ifscore, 
+      j_ifmembercard)
+    values (#{jId,jdbcType=INTEGER}, #{jMembercardId,jdbcType=INTEGER}, #{jDeptId,jdbcType=INTEGER}, 
+      #{jState,jdbcType=VARCHAR}, #{jMoney,jdbcType=DECIMAL}, #{jOrdercode,jdbcType=VARCHAR}, 
+      #{jIffreight,jdbcType=DECIMAL}, #{jIfcoupon,jdbcType=DECIMAL}, #{jIfscore,jdbcType=DECIMAL}, 
+      #{jIfmembercard,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TOrder">
+    insert into dbo.TOrder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        j_id,
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id,
+      </if>
+      <if test="jDeptId != null">
+        j_dept_id,
+      </if>
+      <if test="jState != null">
+        j_state,
+      </if>
+      <if test="jMoney != null">
+        j_money,
+      </if>
+      <if test="jOrdercode != null">
+        j_ordercode,
+      </if>
+      <if test="jIffreight != null">
+        j_iffreight,
+      </if>
+      <if test="jIfcoupon != null">
+        j_ifcoupon,
+      </if>
+      <if test="jIfscore != null">
+        j_ifscore,
+      </if>
+      <if test="jIfmembercard != null">
+        j_ifmembercard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        #{jId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeptId != null">
+        #{jDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="jState != null">
+        #{jState,jdbcType=VARCHAR},
+      </if>
+      <if test="jMoney != null">
+        #{jMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jOrdercode != null">
+        #{jOrdercode,jdbcType=VARCHAR},
+      </if>
+      <if test="jIffreight != null">
+        #{jIffreight,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfcoupon != null">
+        #{jIfcoupon,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfscore != null">
+        #{jIfscore,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfmembercard != null">
+        #{jIfmembercard,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TOrder">
+    update dbo.TOrder
+    <set>
+      <if test="jMembercardId != null">
+        j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeptId != null">
+        j_dept_id = #{jDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="jState != null">
+        j_state = #{jState,jdbcType=VARCHAR},
+      </if>
+      <if test="jMoney != null">
+        j_money = #{jMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jOrdercode != null">
+        j_ordercode = #{jOrdercode,jdbcType=VARCHAR},
+      </if>
+      <if test="jIffreight != null">
+        j_iffreight = #{jIffreight,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfcoupon != null">
+        j_ifcoupon = #{jIfcoupon,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfscore != null">
+        j_ifscore = #{jIfscore,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfmembercard != null">
+        j_ifmembercard = #{jIfmembercard,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TOrder">
+    update dbo.TOrder
+    set j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      j_dept_id = #{jDeptId,jdbcType=INTEGER},
+      j_state = #{jState,jdbcType=VARCHAR},
+      j_money = #{jMoney,jdbcType=DECIMAL},
+      j_ordercode = #{jOrdercode,jdbcType=VARCHAR},
+      j_iffreight = #{jIffreight,jdbcType=DECIMAL},
+      j_ifcoupon = #{jIfcoupon,jdbcType=DECIMAL},
+      j_ifscore = #{jIfscore,jdbcType=DECIMAL},
+      j_ifmembercard = #{jIfmembercard,jdbcType=DECIMAL}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TIntegrationMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TIntegration">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_membercard_id" jdbcType="INTEGER" property="jMembercardId" />
+    <result column="j_type" jdbcType="VARCHAR" property="jType" />
+    <result column="j_code" jdbcType="VARCHAR" property="jCode" />
+    <result column="j_quota" jdbcType="DECIMAL" property="jQuota" />
+    <result column="j_upcoupon" jdbcType="DECIMAL" property="jUpcoupon" />
+    <result column="j_data" jdbcType="VARCHAR" property="jData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_membercard_id, j_type, j_code, j_quota, j_upcoupon, j_data
+  </sql>
+  <select id="selectIntegration" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from
+	(SELECT JID as jId
+	  ,JMemberCardID as jMembercardId
+      ,JSummary as jType
+      ,JBillCode as jCode 
+      ,JBillAmt as jQuota
+      ,(JCurrentInQty+JCurrentOutQty) as jUpcoupon
+      ,JBillDate as jData
+  	FROM dbo.VMemberCardIntegralIOList
+  	where JMemberCardID = #{0}
+  	and datediff(day,JBillDate,getdate())&lt;31
+	union all
+	SELECT j_id as jId
+      ,j_membercard_id as jMembercardId
+      ,j_type as jType
+      ,j_code as jCode 
+      ,j_quota as jQuota
+      ,j_upcoupon as jUpcoupon
+      ,j_data as jData
+    FROM dbo.TIntegration 
+    where j_membercard_id = #{0}
+    and datediff(day,j_data,getdate())&lt;31
+	) as A order by jData desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TIntegration
+    where j_id = #{jId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TIntegration">
+    insert into dbo.TIntegration (j_id, j_membercard_id, j_type, 
+      j_code, j_quota, j_upcoupon, 
+      j_data)
+    values (#{jId,jdbcType=INTEGER}, #{jMembercardId,jdbcType=INTEGER}, #{jType,jdbcType=VARCHAR}, 
+      #{jCode,jdbcType=VARCHAR}, #{jQuota,jdbcType=DECIMAL}, #{jUpcoupon,jdbcType=DECIMAL}, 
+      #{jData,jdbcType=VARCHAR})
+  </insert>
+  <!-- 积分明细 -->
+  <insert id="insertIn" parameterType="com.whimsy.entity.TIntegration">
+    insert into dbo.TIntegration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jMembercardId != null">
+        j_membercard_id,
+      </if>
+      <if test="jType != null">
+        j_type,
+      </if>
+      <if test="jCode != null">
+        j_code,
+      </if>
+      <if test="jQuota != null">
+        j_quota,
+      </if>
+      <if test="jUpcoupon != null">
+        j_upcoupon,
+      </if>
+      <if test="jData != null">
+        j_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jMembercardId != null">
+        #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jType != null">
+        #{jType,jdbcType=VARCHAR},
+      </if>
+      <if test="jCode != null">
+        #{jCode,jdbcType=VARCHAR},
+      </if>
+      <if test="jQuota != null">
+        #{jQuota,jdbcType=DECIMAL},
+      </if>
+      <if test="jUpcoupon != null">
+        #{jUpcoupon,jdbcType=DECIMAL},
+      </if>
+      <if test="jData != null">
+        #{jData,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TIntegration">
+    update dbo.TIntegration
+    <set>
+      <if test="jMembercardId != null">
+        j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jType != null">
+        j_type = #{jType,jdbcType=VARCHAR},
+      </if>
+      <if test="jCode != null">
+        j_code = #{jCode,jdbcType=VARCHAR},
+      </if>
+      <if test="jQuota != null">
+        j_quota = #{jQuota,jdbcType=DECIMAL},
+      </if>
+      <if test="jUpcoupon != null">
+        j_upcoupon = #{jUpcoupon,jdbcType=DECIMAL},
+      </if>
+      <if test="jData != null">
+        j_data = #{jData,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TIntegration">
+    update dbo.TIntegration
+    set j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      j_type = #{jType,jdbcType=VARCHAR},
+      j_code = #{jCode,jdbcType=VARCHAR},
+      j_quota = #{jQuota,jdbcType=DECIMAL},
+      j_upcoupon = #{jUpcoupon,jdbcType=DECIMAL},
+      j_data = #{jData,jdbcType=VARCHAR}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

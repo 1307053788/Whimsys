@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TBasicSortMapper">
+  <resultMap id="TBasicSortResultMap" type="com.whimsy.entity.TBasicSort">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="JClassCode" jdbcType="VARCHAR" property="jclasscode" />
+    <result column="JClassName" jdbcType="VARCHAR" property="jclassname" />
+    <result column="JParentID" jdbcType="INTEGER" property="jparentid" />
+    <result column="JFunctionID" jdbcType="INTEGER" property="jfunctionid" />
+    <result column="JPriceAttID" jdbcType="INTEGER" property="jpriceattid" />
+    <result column="JFunctionType" jdbcType="INTEGER" property="jfunctiontype" />
+    <result column="JClassIntegral" jdbcType="DECIMAL" property="jclassintegral" />
+    <result column="JDontShowInPos" jdbcType="INTEGER" property="jdontshowinpos" />
+    <result column="JDispInNet" jdbcType="INTEGER" property="jdispinnet" />
+    <result column="JOrder" jdbcType="INTEGER" property="jorder" />
+    <result column="JKeyWords" jdbcType="NVARCHAR" property="jkeywords" />
+    <result column="JDescription" jdbcType="NVARCHAR" property="jdescription" />
+    <result column="JIsParent" jdbcType="INTEGER" property="jisparent" />
+    <result column="JNeedProductCode" jdbcType="INTEGER" property="jneedproductcode" />
+    <result column="JExchange" jdbcType="INTEGER" property="jexchange" />
+    <result column="JIsCatering" jdbcType="INTEGER" property="jiscatering" />
+    <result column="JPicID" jdbcType="NVARCHAR" property="jpicid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, JClassCode, JClassName, JParentID, JFunctionID, JPriceAttID, JFunctionType, 
+    JClassIntegral, JDontShowInPos, JDispInNet, JOrder, JKeyWords, JDescription, JIsParent, 
+    JNeedProductCode, JExchange, JIsCatering, JPicID
+  </sql>
+  <!-- 查询一级分类 -->
+  <select id="selectOne" parameterType="java.lang.Integer" resultMap="TBasicSortResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TBasicSort
+    where JParentID = 0
+    and JFunctionID = 30600
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TBasicSort
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TBasicSort">
+    insert into dbo.TBasicSort (JID, JClassCode, JClassName, 
+      JParentID, JFunctionID, JPriceAttID, 
+      JFunctionType, JClassIntegral, JDontShowInPos, 
+      JDispInNet, JOrder, JKeyWords, 
+      JDescription, JIsParent, JNeedProductCode, 
+      JExchange, JIsCatering, JPicID
+      )
+    values (#{jid,jdbcType=INTEGER}, #{jclasscode,jdbcType=VARCHAR}, #{jclassname,jdbcType=VARCHAR}, 
+      #{jparentid,jdbcType=INTEGER}, #{jfunctionid,jdbcType=INTEGER}, #{jpriceattid,jdbcType=INTEGER}, 
+      #{jfunctiontype,jdbcType=INTEGER}, #{jclassintegral,jdbcType=DECIMAL}, #{jdontshowinpos,jdbcType=INTEGER}, 
+      #{jdispinnet,jdbcType=INTEGER}, #{jorder,jdbcType=INTEGER}, #{jkeywords,jdbcType=NVARCHAR}, 
+      #{jdescription,jdbcType=NVARCHAR}, #{jisparent,jdbcType=INTEGER}, #{jneedproductcode,jdbcType=INTEGER}, 
+      #{jexchange,jdbcType=INTEGER}, #{jiscatering,jdbcType=INTEGER}, #{jpicid,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TBasicSort">
+    insert into dbo.TBasicSort
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jclasscode != null">
+        JClassCode,
+      </if>
+      <if test="jclassname != null">
+        JClassName,
+      </if>
+      <if test="jparentid != null">
+        JParentID,
+      </if>
+      <if test="jfunctionid != null">
+        JFunctionID,
+      </if>
+      <if test="jpriceattid != null">
+        JPriceAttID,
+      </if>
+      <if test="jfunctiontype != null">
+        JFunctionType,
+      </if>
+      <if test="jclassintegral != null">
+        JClassIntegral,
+      </if>
+      <if test="jdontshowinpos != null">
+        JDontShowInPos,
+      </if>
+      <if test="jdispinnet != null">
+        JDispInNet,
+      </if>
+      <if test="jorder != null">
+        JOrder,
+      </if>
+      <if test="jkeywords != null">
+        JKeyWords,
+      </if>
+      <if test="jdescription != null">
+        JDescription,
+      </if>
+      <if test="jisparent != null">
+        JIsParent,
+      </if>
+      <if test="jneedproductcode != null">
+        JNeedProductCode,
+      </if>
+      <if test="jexchange != null">
+        JExchange,
+      </if>
+      <if test="jiscatering != null">
+        JIsCatering,
+      </if>
+      <if test="jpicid != null">
+        JPicID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jclasscode != null">
+        #{jclasscode,jdbcType=VARCHAR},
+      </if>
+      <if test="jclassname != null">
+        #{jclassname,jdbcType=VARCHAR},
+      </if>
+      <if test="jparentid != null">
+        #{jparentid,jdbcType=INTEGER},
+      </if>
+      <if test="jfunctionid != null">
+        #{jfunctionid,jdbcType=INTEGER},
+      </if>
+      <if test="jpriceattid != null">
+        #{jpriceattid,jdbcType=INTEGER},
+      </if>
+      <if test="jfunctiontype != null">
+        #{jfunctiontype,jdbcType=INTEGER},
+      </if>
+      <if test="jclassintegral != null">
+        #{jclassintegral,jdbcType=DECIMAL},
+      </if>
+      <if test="jdontshowinpos != null">
+        #{jdontshowinpos,jdbcType=INTEGER},
+      </if>
+      <if test="jdispinnet != null">
+        #{jdispinnet,jdbcType=INTEGER},
+      </if>
+      <if test="jorder != null">
+        #{jorder,jdbcType=INTEGER},
+      </if>
+      <if test="jkeywords != null">
+        #{jkeywords,jdbcType=NVARCHAR},
+      </if>
+      <if test="jdescription != null">
+        #{jdescription,jdbcType=NVARCHAR},
+      </if>
+      <if test="jisparent != null">
+        #{jisparent,jdbcType=INTEGER},
+      </if>
+      <if test="jneedproductcode != null">
+        #{jneedproductcode,jdbcType=INTEGER},
+      </if>
+      <if test="jexchange != null">
+        #{jexchange,jdbcType=INTEGER},
+      </if>
+      <if test="jiscatering != null">
+        #{jiscatering,jdbcType=INTEGER},
+      </if>
+      <if test="jpicid != null">
+        #{jpicid,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TBasicSort">
+    update dbo.TBasicSort
+    <set>
+      <if test="jclasscode != null">
+        JClassCode = #{jclasscode,jdbcType=VARCHAR},
+      </if>
+      <if test="jclassname != null">
+        JClassName = #{jclassname,jdbcType=VARCHAR},
+      </if>
+      <if test="jparentid != null">
+        JParentID = #{jparentid,jdbcType=INTEGER},
+      </if>
+      <if test="jfunctionid != null">
+        JFunctionID = #{jfunctionid,jdbcType=INTEGER},
+      </if>
+      <if test="jpriceattid != null">
+        JPriceAttID = #{jpriceattid,jdbcType=INTEGER},
+      </if>
+      <if test="jfunctiontype != null">
+        JFunctionType = #{jfunctiontype,jdbcType=INTEGER},
+      </if>
+      <if test="jclassintegral != null">
+        JClassIntegral = #{jclassintegral,jdbcType=DECIMAL},
+      </if>
+      <if test="jdontshowinpos != null">
+        JDontShowInPos = #{jdontshowinpos,jdbcType=INTEGER},
+      </if>
+      <if test="jdispinnet != null">
+        JDispInNet = #{jdispinnet,jdbcType=INTEGER},
+      </if>
+      <if test="jorder != null">
+        JOrder = #{jorder,jdbcType=INTEGER},
+      </if>
+      <if test="jkeywords != null">
+        JKeyWords = #{jkeywords,jdbcType=NVARCHAR},
+      </if>
+      <if test="jdescription != null">
+        JDescription = #{jdescription,jdbcType=NVARCHAR},
+      </if>
+      <if test="jisparent != null">
+        JIsParent = #{jisparent,jdbcType=INTEGER},
+      </if>
+      <if test="jneedproductcode != null">
+        JNeedProductCode = #{jneedproductcode,jdbcType=INTEGER},
+      </if>
+      <if test="jexchange != null">
+        JExchange = #{jexchange,jdbcType=INTEGER},
+      </if>
+      <if test="jiscatering != null">
+        JIsCatering = #{jiscatering,jdbcType=INTEGER},
+      </if>
+      <if test="jpicid != null">
+        JPicID = #{jpicid,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TBasicSort">
+    update dbo.TBasicSort
+    set JClassCode = #{jclasscode,jdbcType=VARCHAR},
+      JClassName = #{jclassname,jdbcType=VARCHAR},
+      JParentID = #{jparentid,jdbcType=INTEGER},
+      JFunctionID = #{jfunctionid,jdbcType=INTEGER},
+      JPriceAttID = #{jpriceattid,jdbcType=INTEGER},
+      JFunctionType = #{jfunctiontype,jdbcType=INTEGER},
+      JClassIntegral = #{jclassintegral,jdbcType=DECIMAL},
+      JDontShowInPos = #{jdontshowinpos,jdbcType=INTEGER},
+      JDispInNet = #{jdispinnet,jdbcType=INTEGER},
+      JOrder = #{jorder,jdbcType=INTEGER},
+      JKeyWords = #{jkeywords,jdbcType=NVARCHAR},
+      JDescription = #{jdescription,jdbcType=NVARCHAR},
+      JIsParent = #{jisparent,jdbcType=INTEGER},
+      JNeedProductCode = #{jneedproductcode,jdbcType=INTEGER},
+      JExchange = #{jexchange,jdbcType=INTEGER},
+      JIsCatering = #{jiscatering,jdbcType=INTEGER},
+      JPicID = #{jpicid,jdbcType=NVARCHAR}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

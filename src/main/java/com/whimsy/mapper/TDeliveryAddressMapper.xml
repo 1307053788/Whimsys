@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TDeliveryAddressMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TDeliveryAddress">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_membercard_id" jdbcType="INTEGER" property="jMembercardId" />
+    <result column="j_delivery_man" jdbcType="VARCHAR" property="jDeliveryMan" />
+    <result column="j_delivery_phone" jdbcType="VARCHAR" property="jDeliveryPhone" />
+    <result column="j_address" jdbcType="VARCHAR" property="jAddress" />
+    <result column="j_address_detailed" jdbcType="VARCHAR" property="jAddressDetailed" />
+    <result column="j_lable" jdbcType="VARCHAR" property="jLable" />
+    <result column="j_default" jdbcType="VARCHAR" property="jDefault" />
+    <result column="j_longitude" jdbcType="VARCHAR" property="jLongitude" />
+    <result column="j_latitude" jdbcType="VARCHAR" property="jLatitude" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_membercard_id, j_delivery_man, j_delivery_phone, j_address, j_address_detailed, 
+    j_lable, j_default, j_longitude, j_latitude
+  </sql>
+ <!--  查询收货地址 -->
+  <select id="getAddress" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TDeliveryAddress
+    where j_membercard_id = #{0}
+  </select>
+  <!--  下单查询收货地址 -->
+  <select id="getorderAddress" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TDeliveryAddress
+    where j_id = #{0}
+  </select>
+  <!-- 删除收货地址 -->
+  <delete id="deleteAddress" parameterType="java.lang.Integer">
+    delete from dbo.TDeliveryAddress
+    where j_id = #{jId,jdbcType=INTEGER}
+  </delete>
+  <!-- 新增收货地址 -->
+  <insert id="addAddress" parameterType="com.whimsy.entity.TDeliveryAddress">
+    insert into dbo.TDeliveryAddress (j_membercard_id, j_delivery_man, 
+      j_delivery_phone, j_address, j_address_detailed, 
+      j_lable, j_default, j_longitude, 
+      j_latitude)
+    values (#{jMembercardId,jdbcType=INTEGER}, #{jDeliveryMan,jdbcType=VARCHAR}, 
+      #{jDeliveryPhone,jdbcType=VARCHAR}, #{jAddress,jdbcType=VARCHAR}, #{jAddressDetailed,jdbcType=VARCHAR}, 
+      #{jLable,jdbcType=VARCHAR}, #{jDefault,jdbcType=VARCHAR}, #{jLongitude,jdbcType=VARCHAR}, 
+      #{jLatitude,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TDeliveryAddress">
+    insert into dbo.TDeliveryAddress
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        j_id,
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id,
+      </if>
+      <if test="jDeliveryMan != null">
+        j_delivery_man,
+      </if>
+      <if test="jDeliveryPhone != null">
+        j_delivery_phone,
+      </if>
+      <if test="jAddress != null">
+        j_address,
+      </if>
+      <if test="jAddressDetailed != null">
+        j_address_detailed,
+      </if>
+      <if test="jLable != null">
+        j_lable,
+      </if>
+      <if test="jDefault != null">
+        j_default,
+      </if>
+      <if test="jLongitude != null">
+        j_longitude,
+      </if>
+      <if test="jLatitude != null">
+        j_latitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        #{jId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeliveryMan != null">
+        #{jDeliveryMan,jdbcType=VARCHAR},
+      </if>
+      <if test="jDeliveryPhone != null">
+        #{jDeliveryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="jAddress != null">
+        #{jAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jAddressDetailed != null">
+        #{jAddressDetailed,jdbcType=VARCHAR},
+      </if>
+      <if test="jLable != null">
+        #{jLable,jdbcType=VARCHAR},
+      </if>
+      <if test="jDefault != null">
+        #{jDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="jLongitude != null">
+        #{jLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="jLatitude != null">
+        #{jLatitude,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改收货地址 -->
+  <update id="updateAddress" parameterType="com.whimsy.entity.TDeliveryAddress">
+    update dbo.TDeliveryAddress
+    <set>
+      <if test="jMembercardId != null">
+        j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeliveryMan != null">
+        j_delivery_man = #{jDeliveryMan,jdbcType=VARCHAR},
+      </if>
+      <if test="jDeliveryPhone != null">
+        j_delivery_phone = #{jDeliveryPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="jAddress != null">
+        j_address = #{jAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jAddressDetailed != null">
+        j_address_detailed = #{jAddressDetailed,jdbcType=VARCHAR},
+      </if>
+      <if test="jLable != null">
+        j_lable = #{jLable,jdbcType=VARCHAR},
+      </if>
+      <if test="jDefault != null">
+        j_default = #{jDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="jLongitude != null">
+        j_longitude = #{jLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="jLatitude != null">
+        j_latitude = #{jLatitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+  <!-- 修改默认收货地址 -->
+  <update id="updateDefault" parameterType="java.lang.Integer">
+    update dbo.TDeliveryAddress
+    set j_default = '否'
+    where j_membercard_id = #{0}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TDeliveryAddress">
+    update dbo.TDeliveryAddress
+    set j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      j_delivery_man = #{jDeliveryMan,jdbcType=VARCHAR},
+      j_delivery_phone = #{jDeliveryPhone,jdbcType=VARCHAR},
+      j_address = #{jAddress,jdbcType=VARCHAR},
+      j_address_detailed = #{jAddressDetailed,jdbcType=VARCHAR},
+      j_lable = #{jLable,jdbcType=VARCHAR},
+      j_default = #{jDefault,jdbcType=VARCHAR},
+      j_longitude = #{jLongitude,jdbcType=VARCHAR},
+      j_latitude = #{jLatitude,jdbcType=VARCHAR}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

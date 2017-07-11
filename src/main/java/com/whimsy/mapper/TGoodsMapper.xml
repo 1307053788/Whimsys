@@ -1,0 +1,1408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TGoodsMapper">
+  <resultMap id="TGoodsResultMap" type="com.whimsy.entity.TGoods">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="JGoodsCode" jdbcType="VARCHAR" property="jgoodscode" />
+    <result column="JGoodsName" jdbcType="VARCHAR" property="jgoodsname" />
+    <result column="JModel" jdbcType="VARCHAR" property="jmodel" />
+    <result column="JUnit" jdbcType="VARCHAR" property="junit" />
+    <result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+    <result column="JClassID" jdbcType="INTEGER" property="jclassid" />
+    <result column="JSupClientID" jdbcType="INTEGER" property="jsupclientid" />
+    <result column="JBarCode" jdbcType="VARCHAR" property="jbarcode" />
+    <result column="JPointSalePrice" jdbcType="DECIMAL" property="jpointsaleprice" />
+    <result column="JSale3Price" jdbcType="DECIMAL" property="jsale3price" />
+    <result column="JSale4Price" jdbcType="DECIMAL" property="jsale4price" />
+    <result column="JSale5Price" jdbcType="DECIMAL" property="jsale5price" />
+    <result column="JWholesalePrice" jdbcType="DECIMAL" property="jwholesaleprice" />
+    <result column="JRefCostPrice" jdbcType="DECIMAL" property="jrefcostprice" />
+    <result column="JMinInPrice" jdbcType="DECIMAL" property="jmininprice" />
+    <result column="JMaxInPrice" jdbcType="DECIMAL" property="jmaxinprice" />
+    <result column="JMainProductsMark" jdbcType="INTEGER" property="jmainproductsmark" />
+    <result column="JNoUse" jdbcType="BIT" property="jnouse" />
+    <result column="JAuxClassID1" jdbcType="INTEGER" property="jauxclassid1" />
+    <result column="JAuxClassID2" jdbcType="INTEGER" property="jauxclassid2" />
+    <result column="JSupplyType" jdbcType="INTEGER" property="jsupplytype" />
+    <result column="JPurchPeriod" jdbcType="INTEGER" property="jpurchperiod" />
+    <result column="JSeasonID" jdbcType="INTEGER" property="jseasonid" />
+    <result column="JBrandID" jdbcType="INTEGER" property="jbrandid" />
+    <result column="JPlace" jdbcType="VARCHAR" property="jplace" />
+    <result column="JSex" jdbcType="INTEGER" property="jsex" />
+    <result column="JPyCode" jdbcType="VARCHAR" property="jpycode" />
+    <result column="JPosIntegral" jdbcType="DECIMAL" property="jposintegral" />
+    <result column="JClrPrice" jdbcType="DECIMAL" property="jclrprice" />
+    <result column="JAuthorisationCode" jdbcType="VARCHAR" property="jauthorisationcode" />
+    <result column="JQualityPeriod" jdbcType="INTEGER" property="jqualityperiod" />
+    <result column="JUseAuxID" jdbcType="INTEGER" property="juseauxid" />
+    <result column="JTaxRate" jdbcType="DECIMAL" property="jtaxrate" />
+    <result column="JDrawingNumber" jdbcType="VARCHAR" property="jdrawingnumber" />
+    <result column="JWeigh" jdbcType="INTEGER" property="jweigh" />
+    <result column="JChangePrice" jdbcType="INTEGER" property="jchangeprice" />
+    <result column="JRetailDiscRate" jdbcType="DECIMAL" property="jretaildiscrate" />
+    <result column="JSale6Price" jdbcType="DECIMAL" property="jsale6price" />
+    <result column="JSale7Price" jdbcType="DECIMAL" property="jsale7price" />
+    <result column="JJointDisc" jdbcType="DECIMAL" property="jjointdisc" />
+    <result column="JTaxPointSalePrice" jdbcType="DECIMAL" property="jtaxpointsaleprice" />
+    <result column="JTaxWholesalePrice" jdbcType="DECIMAL" property="jtaxwholesaleprice" />
+    <result column="JTaxSale3Price" jdbcType="DECIMAL" property="jtaxsale3price" />
+    <result column="JTaxSale4Price" jdbcType="DECIMAL" property="jtaxsale4price" />
+    <result column="JTaxSale5Price" jdbcType="DECIMAL" property="jtaxsale5price" />
+    <result column="JTaxSale6Price" jdbcType="DECIMAL" property="jtaxsale6price" />
+    <result column="JTaxSale7Price" jdbcType="DECIMAL" property="jtaxsale7price" />
+    <result column="JMaterialID" jdbcType="INTEGER" property="jmaterialid" />
+    <result column="JSize" jdbcType="VARCHAR" property="jsize" />
+    <result column="JColorID" jdbcType="INTEGER" property="jcolorid" />
+    <result column="JHuaJianID" jdbcType="INTEGER" property="jhuajianid" />
+    <result column="JClassID2" jdbcType="INTEGER" property="jclassid2" />
+    <result column="JClassID3" jdbcType="INTEGER" property="jclassid3" />
+    <result column="JTotalUseQty" jdbcType="DECIMAL" property="jtotaluseqty" />
+    <result column="JMakeRule" jdbcType="VARCHAR" property="jmakerule" />
+    <result column="JShareUse" jdbcType="INTEGER" property="jshareuse" />
+    <result column="JEditDeptID" jdbcType="INTEGER" property="jeditdeptid" />
+    <result column="JGoodsAttribute" jdbcType="VARCHAR" property="jgoodsattribute" />
+    <result column="JModifyTime" jdbcType="TIMESTAMP" property="jmodifytime" />
+    <result column="JAttributeID" jdbcType="INTEGER" property="jattributeid" />
+    <result column="JPluCode" jdbcType="VARCHAR" property="jplucode" />
+    <result column="JHashCode" jdbcType="VARCHAR" property="jhashcode" />
+    <result column="JCounterID" jdbcType="INTEGER" property="jcounterid" />
+    <result column="JCubage" jdbcType="DECIMAL" property="jcubage" />
+    <result column="JWeight" jdbcType="DECIMAL" property="jweight" />
+    <result column="JIsOnSale" jdbcType="INTEGER" property="jisonsale" />
+    <result column="JGoodsTypeID" jdbcType="INTEGER" property="jgoodstypeid" />
+    <result column="JMarketPrice" jdbcType="DECIMAL" property="jmarketprice" />
+    <result column="JListPicID" jdbcType="NVARCHAR" property="jlistpicid" />
+    <result column="JGoodsKeyWords" jdbcType="NVARCHAR" property="jgoodskeywords" />
+    <result column="JSalerecord" jdbcType="INTEGER" property="jsalerecord" />
+    <result column="JVisitrecord" jdbcType="INTEGER" property="jvisitrecord" />
+    <result column="JDetailName" jdbcType="NVARCHAR" property="jdetailname" />
+    <result column="JPostageType" jdbcType="INTEGER" property="jpostagetype" />
+    <result column="JDeliveryType" jdbcType="INTEGER" property="jdeliverytype" />
+    <result column="JDeliverTo" jdbcType="INTEGER" property="jdeliverto" />
+    <result column="JDeliverDate" jdbcType="INTEGER" property="jdeliverdate" />
+    <result column="JPickTime" jdbcType="INTEGER" property="jpicktime" />
+    <result column="JNoIntegral" jdbcType="INTEGER" property="jnointegral" />
+    <result column="JServiceRate" jdbcType="DECIMAL" property="jservicerate" />
+    <result column="JSourcePlace" jdbcType="NVARCHAR" property="jsourceplace" />
+    <result column="JQualityPeriodMonth" jdbcType="INTEGER" property="jqualityperiodmonth" />
+    <result column="JNetContent" jdbcType="NVARCHAR" property="jnetcontent" />
+    <result column="JEndDate" jdbcType="TIMESTAMP" property="jenddate" />
+    <result column="JStoreageMethod" jdbcType="NVARCHAR" property="jstoreagemethod" />
+    <result column="JPackingModel" jdbcType="NVARCHAR" property="jpackingmodel" />
+    <result column="JBurdening" jdbcType="NVARCHAR" property="jburdening" />
+    <result column="JNutrientContent" jdbcType="NVARCHAR" property="jnutrientcontent" />
+    <result column="JNoDisc" jdbcType="BIT" property="jnodisc" />
+    <result column="JLevelID" jdbcType="INTEGER" property="jlevelid" />
+    <result column="JMinOrderQty" jdbcType="DECIMAL" property="jminorderqty" />
+    <result column="JCountryUnitCode" jdbcType="VARCHAR" property="jcountryunitcode" />
+    <result column="JCityUnitCode" jdbcType="VARCHAR" property="jcityunitcode" />
+    <result column="JCustomStatusID" jdbcType="VARCHAR" property="jcustomstatusid" />
+    <result column="JPostMartDate" jdbcType="TIMESTAMP" property="jpostmartdate" />
+    <result column="JIsTop" jdbcType="INTEGER" property="jistop" />
+    <result column="JMonthSaleQty" jdbcType="DECIMAL" property="jmonthsaleqty" />
+    <result column="JMonthSaleRanking" jdbcType="INTEGER" property="jmonthsaleranking" />
+    
+    <result column="JBigPhoto" jdbcType="VARCHAR" property="jbigphoto" />
+    <result column="JSubtitle" jdbcType="VARCHAR" property="jsubtitle" />
+    <result column="JLitPhoto" jdbcType="VARCHAR" property="jlitphoto" />
+    <result column="JSupClientName" jdbcType="VARCHAR" property="jsupclientname" />
+    <result column="JPhotoScript" jdbcType="LONGVARCHAR" property="jphotoscript" />
+    <!-- 查询订单时使用 -->
+    <result column="number" jdbcType="DECIMAL" property="number" />
+    <result column="goodsmoney" jdbcType="DECIMAL" property="goodsmoney" />
+  </resultMap>
+  <resultMap extends="TGoodsResultMap" id="ResultMapWithBLOBs" type="com.whimsy.entity.TGoods">
+    <result column="JPhoto" jdbcType="LONGVARBINARY" property="jphoto" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, JGoodsCode, JGoodsName, JModel, JUnit, JMemo, JClassID, JSupClientID, JBarCode, 
+    JPointSalePrice, JSale3Price, JSale4Price, JSale5Price, JWholesalePrice, JRefCostPrice, 
+    JMinInPrice, JMaxInPrice, JMainProductsMark, JNoUse, JAuxClassID1, JAuxClassID2, 
+    JSupplyType, JPurchPeriod, JSeasonID, JBrandID, JPlace, JSex, JPyCode, JPosIntegral, 
+    JClrPrice, JAuthorisationCode, JQualityPeriod, JUseAuxID, JTaxRate, JDrawingNumber, 
+    JWeigh, JChangePrice, JRetailDiscRate, JSale6Price, JSale7Price, JJointDisc, JTaxPointSalePrice, 
+    JTaxWholesalePrice, JTaxSale3Price, JTaxSale4Price, JTaxSale5Price, JTaxSale6Price, 
+    JTaxSale7Price, JMaterialID, JSize, JColorID, JHuaJianID, JClassID2, JClassID3, JTotalUseQty, 
+    JMakeRule, JShareUse, JEditDeptID, JGoodsAttribute, JModifyTime, JAttributeID, JPluCode, 
+    JHashCode, JCounterID, JCubage, JWeight, JIsOnSale, JGoodsTypeID, JMarketPrice, JListPicID, 
+    JGoodsKeyWords, JSalerecord, JVisitrecord, JDetailName, JPostageType, JDeliveryType, 
+    JDeliverTo, JDeliverDate, JPickTime, JNoIntegral, JServiceRate, JSourcePlace, JQualityPeriodMonth, 
+    JNetContent, JEndDate, JStoreageMethod, JPackingModel, JBurdening, JNutrientContent, 
+    JNoDisc, JLevelID, JMinOrderQty, JCountryUnitCode, JCityUnitCode, JCustomStatusID, 
+    JPostMartDate, JIsTop, JMonthSaleQty, JMonthSaleRanking
+  </sql>
+  <sql id="Blob_Column_List">
+    JPhoto
+  </sql>
+  <!-- 查询商品 -->
+  <select id="getGoods" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    JID as jid,
+	JGoodsCode as jgoodscode,
+	JGoodsName as jgoodsname,
+	JModel as jmodel,
+	JUnit as junit,
+	JMemo as jmemo,
+	JClassID as jclassid,
+	JSupClientID as jsupclientid,
+	JBarCode as jbarcode,
+	JPointSalePrice as jpointsaleprice,
+	JSale3Price as jsale3price,
+	JRefCostPrice as jrefcostprice,
+	JMinInPrice as jmininprice,
+	JPhoto as jphoto,
+	JPlace as jplace
+    ,
+    <include refid="Blob_Column_List" />
+	,
+	(select JStockQty from VAuxGoodsStock where JGoodsID = JID) AS number 
+    FROM dbo.TGoods where JID in
+	(select j_id from TTwokindBill where j_twokind_id = #{0})
+  </select>
+  
+  <!-- 查询商品详情 -->
+  <select id="getGoodsDetails" parameterType="java.lang.Integer" resultMap="TGoodsResultMap">
+    select 
+    aa.JID as jid,
+	aa.JGoodsCode as jgoodscode,
+	aa.JGoodsName as jgoodsname,
+	aa.JModel as jmodel,
+	aa.JUnit as junit,
+	aa.JMemo as jmemo,
+	aa.JClassID as jclassid,
+	aa.JBarCode as jbarcode,
+	aa.JPointSalePrice as jpointsaleprice,
+	aa.JSale3Price as jsale3price,
+	aa.JRefCostPrice as jrefcostprice,
+	aa.JMinInPrice as jmininprice,
+	aa.JPlace as jplace,
+	
+	isnull(aa.JSubtitle,'') as jsubtitle,
+	isnull(aa.JBigPhoto,'') AS jbigphoto,
+	isnull(aa.JLitPhoto,'') as jlitphoto,
+	isnull(bb.JSupClientName,'') as jsupclientname,
+	isnull(aa.JPhotoScript,'') as jphotoscript
+    
+    FROM dbo.TGoods aa,dbo.TSupClient bb
+    where aa.JSupClientID = bb.JID 
+    and aa.JID = #{jid,jdbcType=INTEGER}
+  </select>
+  <!-- 查询订单商品详情 -->
+  <select id="getorderGoods" parameterType="java.lang.Integer" resultMap="TGoodsResultMap">
+    select   
+    aa.JID as jid,  
+	aa.JGoodsCode as jgoodscode,  
+	aa.JGoodsName as jgoodsname,  
+	aa.JModel as jmodel,  
+	aa.JUnit as junit,  
+	aa.JMemo as jmemo,  
+	aa.JClassID as jclassid,  
+	aa.JBarCode as jbarcode,  
+	aa.JPointSalePrice as jpointsaleprice, 
+	aa.JSale3Price as jsale3price,  
+	aa.JRefCostPrice as jrefcostprice,  
+	aa.JMinInPrice as jmininprice,  
+	aa.JPlace as jplace,  
+	isnull(aa.JSubtitle,'') as jsubtitle, 
+	isnull(aa.JBigPhoto,'') AS jbigphoto,  
+	isnull(aa.JLitPhoto,'') as jlitphoto, 
+	isnull(aa.JPhotoScript,'') as jphotoscript,
+	cc.j_number as number, 
+	cc.j_goodsmoney as goodsmoney   
+	FROM dbo.TGoods aa
+	left join dbo.TOrderDetailed cc  on cc.j_goodsid  = aa.JID
+	where 
+	cc.j_orderid = #{0} 
+	and aa.JID in (select j_goodsid from dbo.TOrderDetailed where j_orderid = #{0})
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TGoods
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TGoods">
+    insert into dbo.TGoods (JID, JGoodsCode, JGoodsName, 
+      JModel, JUnit, JMemo, 
+      JClassID, JSupClientID, JBarCode, 
+      JPointSalePrice, JSale3Price, JSale4Price, 
+      JSale5Price, JWholesalePrice, JRefCostPrice, 
+      JMinInPrice, JMaxInPrice, JMainProductsMark, 
+      JNoUse, JAuxClassID1, JAuxClassID2, 
+      JSupplyType, JPurchPeriod, JSeasonID, 
+      JBrandID, JPlace, JSex, 
+      JPyCode, JPosIntegral, JClrPrice, 
+      JAuthorisationCode, JQualityPeriod, JUseAuxID, 
+      JTaxRate, JDrawingNumber, JWeigh, 
+      JChangePrice, JRetailDiscRate, JSale6Price, 
+      JSale7Price, JJointDisc, JTaxPointSalePrice, 
+      JTaxWholesalePrice, JTaxSale3Price, JTaxSale4Price, 
+      JTaxSale5Price, JTaxSale6Price, JTaxSale7Price, 
+      JMaterialID, JSize, JColorID, 
+      JHuaJianID, JClassID2, JClassID3, 
+      JTotalUseQty, JMakeRule, JShareUse, 
+      JEditDeptID, JGoodsAttribute, JModifyTime, 
+      JAttributeID, JPluCode, JHashCode, 
+      JCounterID, JCubage, JWeight, 
+      JIsOnSale, JGoodsTypeID, JMarketPrice, 
+      JListPicID, JGoodsKeyWords, JSalerecord, 
+      JVisitrecord, JDetailName, JPostageType, 
+      JDeliveryType, JDeliverTo, JDeliverDate, 
+      JPickTime, JNoIntegral, JServiceRate, 
+      JSourcePlace, JQualityPeriodMonth, JNetContent, 
+      JEndDate, JStoreageMethod, JPackingModel, 
+      JBurdening, JNutrientContent, JNoDisc, 
+      JLevelID, JMinOrderQty, JCountryUnitCode, 
+      JCityUnitCode, JCustomStatusID, JPostMartDate, 
+      JIsTop, JMonthSaleQty, JMonthSaleRanking, 
+      JPhoto)
+    values (#{jid,jdbcType=INTEGER}, #{jgoodscode,jdbcType=VARCHAR}, #{jgoodsname,jdbcType=VARCHAR}, 
+      #{jmodel,jdbcType=VARCHAR}, #{junit,jdbcType=VARCHAR}, #{jmemo,jdbcType=VARCHAR}, 
+      #{jclassid,jdbcType=INTEGER}, #{jsupclientid,jdbcType=INTEGER}, #{jbarcode,jdbcType=VARCHAR}, 
+      #{jpointsaleprice,jdbcType=DECIMAL}, #{jsale3price,jdbcType=DECIMAL}, #{jsale4price,jdbcType=DECIMAL}, 
+      #{jsale5price,jdbcType=DECIMAL}, #{jwholesaleprice,jdbcType=DECIMAL}, #{jrefcostprice,jdbcType=DECIMAL}, 
+      #{jmininprice,jdbcType=DECIMAL}, #{jmaxinprice,jdbcType=DECIMAL}, #{jmainproductsmark,jdbcType=INTEGER}, 
+      #{jnouse,jdbcType=BIT}, #{jauxclassid1,jdbcType=INTEGER}, #{jauxclassid2,jdbcType=INTEGER}, 
+      #{jsupplytype,jdbcType=INTEGER}, #{jpurchperiod,jdbcType=INTEGER}, #{jseasonid,jdbcType=INTEGER}, 
+      #{jbrandid,jdbcType=INTEGER}, #{jplace,jdbcType=VARCHAR}, #{jsex,jdbcType=INTEGER}, 
+      #{jpycode,jdbcType=VARCHAR}, #{jposintegral,jdbcType=DECIMAL}, #{jclrprice,jdbcType=DECIMAL}, 
+      #{jauthorisationcode,jdbcType=VARCHAR}, #{jqualityperiod,jdbcType=INTEGER}, #{juseauxid,jdbcType=INTEGER}, 
+      #{jtaxrate,jdbcType=DECIMAL}, #{jdrawingnumber,jdbcType=VARCHAR}, #{jweigh,jdbcType=INTEGER}, 
+      #{jchangeprice,jdbcType=INTEGER}, #{jretaildiscrate,jdbcType=DECIMAL}, #{jsale6price,jdbcType=DECIMAL}, 
+      #{jsale7price,jdbcType=DECIMAL}, #{jjointdisc,jdbcType=DECIMAL}, #{jtaxpointsaleprice,jdbcType=DECIMAL}, 
+      #{jtaxwholesaleprice,jdbcType=DECIMAL}, #{jtaxsale3price,jdbcType=DECIMAL}, #{jtaxsale4price,jdbcType=DECIMAL}, 
+      #{jtaxsale5price,jdbcType=DECIMAL}, #{jtaxsale6price,jdbcType=DECIMAL}, #{jtaxsale7price,jdbcType=DECIMAL}, 
+      #{jmaterialid,jdbcType=INTEGER}, #{jsize,jdbcType=VARCHAR}, #{jcolorid,jdbcType=INTEGER}, 
+      #{jhuajianid,jdbcType=INTEGER}, #{jclassid2,jdbcType=INTEGER}, #{jclassid3,jdbcType=INTEGER}, 
+      #{jtotaluseqty,jdbcType=DECIMAL}, #{jmakerule,jdbcType=VARCHAR}, #{jshareuse,jdbcType=INTEGER}, 
+      #{jeditdeptid,jdbcType=INTEGER}, #{jgoodsattribute,jdbcType=VARCHAR}, #{jmodifytime,jdbcType=TIMESTAMP}, 
+      #{jattributeid,jdbcType=INTEGER}, #{jplucode,jdbcType=VARCHAR}, #{jhashcode,jdbcType=VARCHAR}, 
+      #{jcounterid,jdbcType=INTEGER}, #{jcubage,jdbcType=DECIMAL}, #{jweight,jdbcType=DECIMAL}, 
+      #{jisonsale,jdbcType=INTEGER}, #{jgoodstypeid,jdbcType=INTEGER}, #{jmarketprice,jdbcType=DECIMAL}, 
+      #{jlistpicid,jdbcType=NVARCHAR}, #{jgoodskeywords,jdbcType=NVARCHAR}, #{jsalerecord,jdbcType=INTEGER}, 
+      #{jvisitrecord,jdbcType=INTEGER}, #{jdetailname,jdbcType=NVARCHAR}, #{jpostagetype,jdbcType=INTEGER}, 
+      #{jdeliverytype,jdbcType=INTEGER}, #{jdeliverto,jdbcType=INTEGER}, #{jdeliverdate,jdbcType=INTEGER}, 
+      #{jpicktime,jdbcType=INTEGER}, #{jnointegral,jdbcType=INTEGER}, #{jservicerate,jdbcType=DECIMAL}, 
+      #{jsourceplace,jdbcType=NVARCHAR}, #{jqualityperiodmonth,jdbcType=INTEGER}, #{jnetcontent,jdbcType=NVARCHAR}, 
+      #{jenddate,jdbcType=TIMESTAMP}, #{jstoreagemethod,jdbcType=NVARCHAR}, #{jpackingmodel,jdbcType=NVARCHAR}, 
+      #{jburdening,jdbcType=NVARCHAR}, #{jnutrientcontent,jdbcType=NVARCHAR}, #{jnodisc,jdbcType=BIT}, 
+      #{jlevelid,jdbcType=INTEGER}, #{jminorderqty,jdbcType=DECIMAL}, #{jcountryunitcode,jdbcType=VARCHAR}, 
+      #{jcityunitcode,jdbcType=VARCHAR}, #{jcustomstatusid,jdbcType=VARCHAR}, #{jpostmartdate,jdbcType=TIMESTAMP}, 
+      #{jistop,jdbcType=INTEGER}, #{jmonthsaleqty,jdbcType=DECIMAL}, #{jmonthsaleranking,jdbcType=INTEGER}, 
+      #{jphoto,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TGoods">
+    insert into dbo.TGoods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jgoodscode != null">
+        JGoodsCode,
+      </if>
+      <if test="jgoodsname != null">
+        JGoodsName,
+      </if>
+      <if test="jmodel != null">
+        JModel,
+      </if>
+      <if test="junit != null">
+        JUnit,
+      </if>
+      <if test="jmemo != null">
+        JMemo,
+      </if>
+      <if test="jclassid != null">
+        JClassID,
+      </if>
+      <if test="jsupclientid != null">
+        JSupClientID,
+      </if>
+      <if test="jbarcode != null">
+        JBarCode,
+      </if>
+      <if test="jpointsaleprice != null">
+        JPointSalePrice,
+      </if>
+      <if test="jsale3price != null">
+        JSale3Price,
+      </if>
+      <if test="jsale4price != null">
+        JSale4Price,
+      </if>
+      <if test="jsale5price != null">
+        JSale5Price,
+      </if>
+      <if test="jwholesaleprice != null">
+        JWholesalePrice,
+      </if>
+      <if test="jrefcostprice != null">
+        JRefCostPrice,
+      </if>
+      <if test="jmininprice != null">
+        JMinInPrice,
+      </if>
+      <if test="jmaxinprice != null">
+        JMaxInPrice,
+      </if>
+      <if test="jmainproductsmark != null">
+        JMainProductsMark,
+      </if>
+      <if test="jnouse != null">
+        JNoUse,
+      </if>
+      <if test="jauxclassid1 != null">
+        JAuxClassID1,
+      </if>
+      <if test="jauxclassid2 != null">
+        JAuxClassID2,
+      </if>
+      <if test="jsupplytype != null">
+        JSupplyType,
+      </if>
+      <if test="jpurchperiod != null">
+        JPurchPeriod,
+      </if>
+      <if test="jseasonid != null">
+        JSeasonID,
+      </if>
+      <if test="jbrandid != null">
+        JBrandID,
+      </if>
+      <if test="jplace != null">
+        JPlace,
+      </if>
+      <if test="jsex != null">
+        JSex,
+      </if>
+      <if test="jpycode != null">
+        JPyCode,
+      </if>
+      <if test="jposintegral != null">
+        JPosIntegral,
+      </if>
+      <if test="jclrprice != null">
+        JClrPrice,
+      </if>
+      <if test="jauthorisationcode != null">
+        JAuthorisationCode,
+      </if>
+      <if test="jqualityperiod != null">
+        JQualityPeriod,
+      </if>
+      <if test="juseauxid != null">
+        JUseAuxID,
+      </if>
+      <if test="jtaxrate != null">
+        JTaxRate,
+      </if>
+      <if test="jdrawingnumber != null">
+        JDrawingNumber,
+      </if>
+      <if test="jweigh != null">
+        JWeigh,
+      </if>
+      <if test="jchangeprice != null">
+        JChangePrice,
+      </if>
+      <if test="jretaildiscrate != null">
+        JRetailDiscRate,
+      </if>
+      <if test="jsale6price != null">
+        JSale6Price,
+      </if>
+      <if test="jsale7price != null">
+        JSale7Price,
+      </if>
+      <if test="jjointdisc != null">
+        JJointDisc,
+      </if>
+      <if test="jtaxpointsaleprice != null">
+        JTaxPointSalePrice,
+      </if>
+      <if test="jtaxwholesaleprice != null">
+        JTaxWholesalePrice,
+      </if>
+      <if test="jtaxsale3price != null">
+        JTaxSale3Price,
+      </if>
+      <if test="jtaxsale4price != null">
+        JTaxSale4Price,
+      </if>
+      <if test="jtaxsale5price != null">
+        JTaxSale5Price,
+      </if>
+      <if test="jtaxsale6price != null">
+        JTaxSale6Price,
+      </if>
+      <if test="jtaxsale7price != null">
+        JTaxSale7Price,
+      </if>
+      <if test="jmaterialid != null">
+        JMaterialID,
+      </if>
+      <if test="jsize != null">
+        JSize,
+      </if>
+      <if test="jcolorid != null">
+        JColorID,
+      </if>
+      <if test="jhuajianid != null">
+        JHuaJianID,
+      </if>
+      <if test="jclassid2 != null">
+        JClassID2,
+      </if>
+      <if test="jclassid3 != null">
+        JClassID3,
+      </if>
+      <if test="jtotaluseqty != null">
+        JTotalUseQty,
+      </if>
+      <if test="jmakerule != null">
+        JMakeRule,
+      </if>
+      <if test="jshareuse != null">
+        JShareUse,
+      </if>
+      <if test="jeditdeptid != null">
+        JEditDeptID,
+      </if>
+      <if test="jgoodsattribute != null">
+        JGoodsAttribute,
+      </if>
+      <if test="jmodifytime != null">
+        JModifyTime,
+      </if>
+      <if test="jattributeid != null">
+        JAttributeID,
+      </if>
+      <if test="jplucode != null">
+        JPluCode,
+      </if>
+      <if test="jhashcode != null">
+        JHashCode,
+      </if>
+      <if test="jcounterid != null">
+        JCounterID,
+      </if>
+      <if test="jcubage != null">
+        JCubage,
+      </if>
+      <if test="jweight != null">
+        JWeight,
+      </if>
+      <if test="jisonsale != null">
+        JIsOnSale,
+      </if>
+      <if test="jgoodstypeid != null">
+        JGoodsTypeID,
+      </if>
+      <if test="jmarketprice != null">
+        JMarketPrice,
+      </if>
+      <if test="jlistpicid != null">
+        JListPicID,
+      </if>
+      <if test="jgoodskeywords != null">
+        JGoodsKeyWords,
+      </if>
+      <if test="jsalerecord != null">
+        JSalerecord,
+      </if>
+      <if test="jvisitrecord != null">
+        JVisitrecord,
+      </if>
+      <if test="jdetailname != null">
+        JDetailName,
+      </if>
+      <if test="jpostagetype != null">
+        JPostageType,
+      </if>
+      <if test="jdeliverytype != null">
+        JDeliveryType,
+      </if>
+      <if test="jdeliverto != null">
+        JDeliverTo,
+      </if>
+      <if test="jdeliverdate != null">
+        JDeliverDate,
+      </if>
+      <if test="jpicktime != null">
+        JPickTime,
+      </if>
+      <if test="jnointegral != null">
+        JNoIntegral,
+      </if>
+      <if test="jservicerate != null">
+        JServiceRate,
+      </if>
+      <if test="jsourceplace != null">
+        JSourcePlace,
+      </if>
+      <if test="jqualityperiodmonth != null">
+        JQualityPeriodMonth,
+      </if>
+      <if test="jnetcontent != null">
+        JNetContent,
+      </if>
+      <if test="jenddate != null">
+        JEndDate,
+      </if>
+      <if test="jstoreagemethod != null">
+        JStoreageMethod,
+      </if>
+      <if test="jpackingmodel != null">
+        JPackingModel,
+      </if>
+      <if test="jburdening != null">
+        JBurdening,
+      </if>
+      <if test="jnutrientcontent != null">
+        JNutrientContent,
+      </if>
+      <if test="jnodisc != null">
+        JNoDisc,
+      </if>
+      <if test="jlevelid != null">
+        JLevelID,
+      </if>
+      <if test="jminorderqty != null">
+        JMinOrderQty,
+      </if>
+      <if test="jcountryunitcode != null">
+        JCountryUnitCode,
+      </if>
+      <if test="jcityunitcode != null">
+        JCityUnitCode,
+      </if>
+      <if test="jcustomstatusid != null">
+        JCustomStatusID,
+      </if>
+      <if test="jpostmartdate != null">
+        JPostMartDate,
+      </if>
+      <if test="jistop != null">
+        JIsTop,
+      </if>
+      <if test="jmonthsaleqty != null">
+        JMonthSaleQty,
+      </if>
+      <if test="jmonthsaleranking != null">
+        JMonthSaleRanking,
+      </if>
+      <if test="jphoto != null">
+        JPhoto,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jgoodscode != null">
+        #{jgoodscode,jdbcType=VARCHAR},
+      </if>
+      <if test="jgoodsname != null">
+        #{jgoodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="jmodel != null">
+        #{jmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="junit != null">
+        #{junit,jdbcType=VARCHAR},
+      </if>
+      <if test="jmemo != null">
+        #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jclassid != null">
+        #{jclassid,jdbcType=INTEGER},
+      </if>
+      <if test="jsupclientid != null">
+        #{jsupclientid,jdbcType=INTEGER},
+      </if>
+      <if test="jbarcode != null">
+        #{jbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jpointsaleprice != null">
+        #{jpointsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale3price != null">
+        #{jsale3price,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale4price != null">
+        #{jsale4price,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale5price != null">
+        #{jsale5price,jdbcType=DECIMAL},
+      </if>
+      <if test="jwholesaleprice != null">
+        #{jwholesaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jrefcostprice != null">
+        #{jrefcostprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jmininprice != null">
+        #{jmininprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jmaxinprice != null">
+        #{jmaxinprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jmainproductsmark != null">
+        #{jmainproductsmark,jdbcType=INTEGER},
+      </if>
+      <if test="jnouse != null">
+        #{jnouse,jdbcType=BIT},
+      </if>
+      <if test="jauxclassid1 != null">
+        #{jauxclassid1,jdbcType=INTEGER},
+      </if>
+      <if test="jauxclassid2 != null">
+        #{jauxclassid2,jdbcType=INTEGER},
+      </if>
+      <if test="jsupplytype != null">
+        #{jsupplytype,jdbcType=INTEGER},
+      </if>
+      <if test="jpurchperiod != null">
+        #{jpurchperiod,jdbcType=INTEGER},
+      </if>
+      <if test="jseasonid != null">
+        #{jseasonid,jdbcType=INTEGER},
+      </if>
+      <if test="jbrandid != null">
+        #{jbrandid,jdbcType=INTEGER},
+      </if>
+      <if test="jplace != null">
+        #{jplace,jdbcType=VARCHAR},
+      </if>
+      <if test="jsex != null">
+        #{jsex,jdbcType=INTEGER},
+      </if>
+      <if test="jpycode != null">
+        #{jpycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jposintegral != null">
+        #{jposintegral,jdbcType=DECIMAL},
+      </if>
+      <if test="jclrprice != null">
+        #{jclrprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jauthorisationcode != null">
+        #{jauthorisationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jqualityperiod != null">
+        #{jqualityperiod,jdbcType=INTEGER},
+      </if>
+      <if test="juseauxid != null">
+        #{juseauxid,jdbcType=INTEGER},
+      </if>
+      <if test="jtaxrate != null">
+        #{jtaxrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jdrawingnumber != null">
+        #{jdrawingnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jweigh != null">
+        #{jweigh,jdbcType=INTEGER},
+      </if>
+      <if test="jchangeprice != null">
+        #{jchangeprice,jdbcType=INTEGER},
+      </if>
+      <if test="jretaildiscrate != null">
+        #{jretaildiscrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale6price != null">
+        #{jsale6price,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale7price != null">
+        #{jsale7price,jdbcType=DECIMAL},
+      </if>
+      <if test="jjointdisc != null">
+        #{jjointdisc,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxpointsaleprice != null">
+        #{jtaxpointsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxwholesaleprice != null">
+        #{jtaxwholesaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale3price != null">
+        #{jtaxsale3price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale4price != null">
+        #{jtaxsale4price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale5price != null">
+        #{jtaxsale5price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale6price != null">
+        #{jtaxsale6price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale7price != null">
+        #{jtaxsale7price,jdbcType=DECIMAL},
+      </if>
+      <if test="jmaterialid != null">
+        #{jmaterialid,jdbcType=INTEGER},
+      </if>
+      <if test="jsize != null">
+        #{jsize,jdbcType=VARCHAR},
+      </if>
+      <if test="jcolorid != null">
+        #{jcolorid,jdbcType=INTEGER},
+      </if>
+      <if test="jhuajianid != null">
+        #{jhuajianid,jdbcType=INTEGER},
+      </if>
+      <if test="jclassid2 != null">
+        #{jclassid2,jdbcType=INTEGER},
+      </if>
+      <if test="jclassid3 != null">
+        #{jclassid3,jdbcType=INTEGER},
+      </if>
+      <if test="jtotaluseqty != null">
+        #{jtotaluseqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jmakerule != null">
+        #{jmakerule,jdbcType=VARCHAR},
+      </if>
+      <if test="jshareuse != null">
+        #{jshareuse,jdbcType=INTEGER},
+      </if>
+      <if test="jeditdeptid != null">
+        #{jeditdeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jgoodsattribute != null">
+        #{jgoodsattribute,jdbcType=VARCHAR},
+      </if>
+      <if test="jmodifytime != null">
+        #{jmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jattributeid != null">
+        #{jattributeid,jdbcType=INTEGER},
+      </if>
+      <if test="jplucode != null">
+        #{jplucode,jdbcType=VARCHAR},
+      </if>
+      <if test="jhashcode != null">
+        #{jhashcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcounterid != null">
+        #{jcounterid,jdbcType=INTEGER},
+      </if>
+      <if test="jcubage != null">
+        #{jcubage,jdbcType=DECIMAL},
+      </if>
+      <if test="jweight != null">
+        #{jweight,jdbcType=DECIMAL},
+      </if>
+      <if test="jisonsale != null">
+        #{jisonsale,jdbcType=INTEGER},
+      </if>
+      <if test="jgoodstypeid != null">
+        #{jgoodstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="jmarketprice != null">
+        #{jmarketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jlistpicid != null">
+        #{jlistpicid,jdbcType=NVARCHAR},
+      </if>
+      <if test="jgoodskeywords != null">
+        #{jgoodskeywords,jdbcType=NVARCHAR},
+      </if>
+      <if test="jsalerecord != null">
+        #{jsalerecord,jdbcType=INTEGER},
+      </if>
+      <if test="jvisitrecord != null">
+        #{jvisitrecord,jdbcType=INTEGER},
+      </if>
+      <if test="jdetailname != null">
+        #{jdetailname,jdbcType=NVARCHAR},
+      </if>
+      <if test="jpostagetype != null">
+        #{jpostagetype,jdbcType=INTEGER},
+      </if>
+      <if test="jdeliverytype != null">
+        #{jdeliverytype,jdbcType=INTEGER},
+      </if>
+      <if test="jdeliverto != null">
+        #{jdeliverto,jdbcType=INTEGER},
+      </if>
+      <if test="jdeliverdate != null">
+        #{jdeliverdate,jdbcType=INTEGER},
+      </if>
+      <if test="jpicktime != null">
+        #{jpicktime,jdbcType=INTEGER},
+      </if>
+      <if test="jnointegral != null">
+        #{jnointegral,jdbcType=INTEGER},
+      </if>
+      <if test="jservicerate != null">
+        #{jservicerate,jdbcType=DECIMAL},
+      </if>
+      <if test="jsourceplace != null">
+        #{jsourceplace,jdbcType=NVARCHAR},
+      </if>
+      <if test="jqualityperiodmonth != null">
+        #{jqualityperiodmonth,jdbcType=INTEGER},
+      </if>
+      <if test="jnetcontent != null">
+        #{jnetcontent,jdbcType=NVARCHAR},
+      </if>
+      <if test="jenddate != null">
+        #{jenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jstoreagemethod != null">
+        #{jstoreagemethod,jdbcType=NVARCHAR},
+      </if>
+      <if test="jpackingmodel != null">
+        #{jpackingmodel,jdbcType=NVARCHAR},
+      </if>
+      <if test="jburdening != null">
+        #{jburdening,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnutrientcontent != null">
+        #{jnutrientcontent,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnodisc != null">
+        #{jnodisc,jdbcType=BIT},
+      </if>
+      <if test="jlevelid != null">
+        #{jlevelid,jdbcType=INTEGER},
+      </if>
+      <if test="jminorderqty != null">
+        #{jminorderqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jcountryunitcode != null">
+        #{jcountryunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcityunitcode != null">
+        #{jcityunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomstatusid != null">
+        #{jcustomstatusid,jdbcType=VARCHAR},
+      </if>
+      <if test="jpostmartdate != null">
+        #{jpostmartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jistop != null">
+        #{jistop,jdbcType=INTEGER},
+      </if>
+      <if test="jmonthsaleqty != null">
+        #{jmonthsaleqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jmonthsaleranking != null">
+        #{jmonthsaleranking,jdbcType=INTEGER},
+      </if>
+      <if test="jphoto != null">
+        #{jphoto,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TGoods">
+    update dbo.TGoods
+    <set>
+      <if test="jgoodscode != null">
+        JGoodsCode = #{jgoodscode,jdbcType=VARCHAR},
+      </if>
+      <if test="jgoodsname != null">
+        JGoodsName = #{jgoodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="jmodel != null">
+        JModel = #{jmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="junit != null">
+        JUnit = #{junit,jdbcType=VARCHAR},
+      </if>
+      <if test="jmemo != null">
+        JMemo = #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jclassid != null">
+        JClassID = #{jclassid,jdbcType=INTEGER},
+      </if>
+      <if test="jsupclientid != null">
+        JSupClientID = #{jsupclientid,jdbcType=INTEGER},
+      </if>
+      <if test="jbarcode != null">
+        JBarCode = #{jbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jpointsaleprice != null">
+        JPointSalePrice = #{jpointsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale3price != null">
+        JSale3Price = #{jsale3price,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale4price != null">
+        JSale4Price = #{jsale4price,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale5price != null">
+        JSale5Price = #{jsale5price,jdbcType=DECIMAL},
+      </if>
+      <if test="jwholesaleprice != null">
+        JWholesalePrice = #{jwholesaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jrefcostprice != null">
+        JRefCostPrice = #{jrefcostprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jmininprice != null">
+        JMinInPrice = #{jmininprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jmaxinprice != null">
+        JMaxInPrice = #{jmaxinprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jmainproductsmark != null">
+        JMainProductsMark = #{jmainproductsmark,jdbcType=INTEGER},
+      </if>
+      <if test="jnouse != null">
+        JNoUse = #{jnouse,jdbcType=BIT},
+      </if>
+      <if test="jauxclassid1 != null">
+        JAuxClassID1 = #{jauxclassid1,jdbcType=INTEGER},
+      </if>
+      <if test="jauxclassid2 != null">
+        JAuxClassID2 = #{jauxclassid2,jdbcType=INTEGER},
+      </if>
+      <if test="jsupplytype != null">
+        JSupplyType = #{jsupplytype,jdbcType=INTEGER},
+      </if>
+      <if test="jpurchperiod != null">
+        JPurchPeriod = #{jpurchperiod,jdbcType=INTEGER},
+      </if>
+      <if test="jseasonid != null">
+        JSeasonID = #{jseasonid,jdbcType=INTEGER},
+      </if>
+      <if test="jbrandid != null">
+        JBrandID = #{jbrandid,jdbcType=INTEGER},
+      </if>
+      <if test="jplace != null">
+        JPlace = #{jplace,jdbcType=VARCHAR},
+      </if>
+      <if test="jsex != null">
+        JSex = #{jsex,jdbcType=INTEGER},
+      </if>
+      <if test="jpycode != null">
+        JPyCode = #{jpycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jposintegral != null">
+        JPosIntegral = #{jposintegral,jdbcType=DECIMAL},
+      </if>
+      <if test="jclrprice != null">
+        JClrPrice = #{jclrprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jauthorisationcode != null">
+        JAuthorisationCode = #{jauthorisationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jqualityperiod != null">
+        JQualityPeriod = #{jqualityperiod,jdbcType=INTEGER},
+      </if>
+      <if test="juseauxid != null">
+        JUseAuxID = #{juseauxid,jdbcType=INTEGER},
+      </if>
+      <if test="jtaxrate != null">
+        JTaxRate = #{jtaxrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jdrawingnumber != null">
+        JDrawingNumber = #{jdrawingnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jweigh != null">
+        JWeigh = #{jweigh,jdbcType=INTEGER},
+      </if>
+      <if test="jchangeprice != null">
+        JChangePrice = #{jchangeprice,jdbcType=INTEGER},
+      </if>
+      <if test="jretaildiscrate != null">
+        JRetailDiscRate = #{jretaildiscrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale6price != null">
+        JSale6Price = #{jsale6price,jdbcType=DECIMAL},
+      </if>
+      <if test="jsale7price != null">
+        JSale7Price = #{jsale7price,jdbcType=DECIMAL},
+      </if>
+      <if test="jjointdisc != null">
+        JJointDisc = #{jjointdisc,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxpointsaleprice != null">
+        JTaxPointSalePrice = #{jtaxpointsaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxwholesaleprice != null">
+        JTaxWholesalePrice = #{jtaxwholesaleprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale3price != null">
+        JTaxSale3Price = #{jtaxsale3price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale4price != null">
+        JTaxSale4Price = #{jtaxsale4price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale5price != null">
+        JTaxSale5Price = #{jtaxsale5price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale6price != null">
+        JTaxSale6Price = #{jtaxsale6price,jdbcType=DECIMAL},
+      </if>
+      <if test="jtaxsale7price != null">
+        JTaxSale7Price = #{jtaxsale7price,jdbcType=DECIMAL},
+      </if>
+      <if test="jmaterialid != null">
+        JMaterialID = #{jmaterialid,jdbcType=INTEGER},
+      </if>
+      <if test="jsize != null">
+        JSize = #{jsize,jdbcType=VARCHAR},
+      </if>
+      <if test="jcolorid != null">
+        JColorID = #{jcolorid,jdbcType=INTEGER},
+      </if>
+      <if test="jhuajianid != null">
+        JHuaJianID = #{jhuajianid,jdbcType=INTEGER},
+      </if>
+      <if test="jclassid2 != null">
+        JClassID2 = #{jclassid2,jdbcType=INTEGER},
+      </if>
+      <if test="jclassid3 != null">
+        JClassID3 = #{jclassid3,jdbcType=INTEGER},
+      </if>
+      <if test="jtotaluseqty != null">
+        JTotalUseQty = #{jtotaluseqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jmakerule != null">
+        JMakeRule = #{jmakerule,jdbcType=VARCHAR},
+      </if>
+      <if test="jshareuse != null">
+        JShareUse = #{jshareuse,jdbcType=INTEGER},
+      </if>
+      <if test="jeditdeptid != null">
+        JEditDeptID = #{jeditdeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jgoodsattribute != null">
+        JGoodsAttribute = #{jgoodsattribute,jdbcType=VARCHAR},
+      </if>
+      <if test="jmodifytime != null">
+        JModifyTime = #{jmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jattributeid != null">
+        JAttributeID = #{jattributeid,jdbcType=INTEGER},
+      </if>
+      <if test="jplucode != null">
+        JPluCode = #{jplucode,jdbcType=VARCHAR},
+      </if>
+      <if test="jhashcode != null">
+        JHashCode = #{jhashcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcounterid != null">
+        JCounterID = #{jcounterid,jdbcType=INTEGER},
+      </if>
+      <if test="jcubage != null">
+        JCubage = #{jcubage,jdbcType=DECIMAL},
+      </if>
+      <if test="jweight != null">
+        JWeight = #{jweight,jdbcType=DECIMAL},
+      </if>
+      <if test="jisonsale != null">
+        JIsOnSale = #{jisonsale,jdbcType=INTEGER},
+      </if>
+      <if test="jgoodstypeid != null">
+        JGoodsTypeID = #{jgoodstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="jmarketprice != null">
+        JMarketPrice = #{jmarketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jlistpicid != null">
+        JListPicID = #{jlistpicid,jdbcType=NVARCHAR},
+      </if>
+      <if test="jgoodskeywords != null">
+        JGoodsKeyWords = #{jgoodskeywords,jdbcType=NVARCHAR},
+      </if>
+      <if test="jsalerecord != null">
+        JSalerecord = #{jsalerecord,jdbcType=INTEGER},
+      </if>
+      <if test="jvisitrecord != null">
+        JVisitrecord = #{jvisitrecord,jdbcType=INTEGER},
+      </if>
+      <if test="jdetailname != null">
+        JDetailName = #{jdetailname,jdbcType=NVARCHAR},
+      </if>
+      <if test="jpostagetype != null">
+        JPostageType = #{jpostagetype,jdbcType=INTEGER},
+      </if>
+      <if test="jdeliverytype != null">
+        JDeliveryType = #{jdeliverytype,jdbcType=INTEGER},
+      </if>
+      <if test="jdeliverto != null">
+        JDeliverTo = #{jdeliverto,jdbcType=INTEGER},
+      </if>
+      <if test="jdeliverdate != null">
+        JDeliverDate = #{jdeliverdate,jdbcType=INTEGER},
+      </if>
+      <if test="jpicktime != null">
+        JPickTime = #{jpicktime,jdbcType=INTEGER},
+      </if>
+      <if test="jnointegral != null">
+        JNoIntegral = #{jnointegral,jdbcType=INTEGER},
+      </if>
+      <if test="jservicerate != null">
+        JServiceRate = #{jservicerate,jdbcType=DECIMAL},
+      </if>
+      <if test="jsourceplace != null">
+        JSourcePlace = #{jsourceplace,jdbcType=NVARCHAR},
+      </if>
+      <if test="jqualityperiodmonth != null">
+        JQualityPeriodMonth = #{jqualityperiodmonth,jdbcType=INTEGER},
+      </if>
+      <if test="jnetcontent != null">
+        JNetContent = #{jnetcontent,jdbcType=NVARCHAR},
+      </if>
+      <if test="jenddate != null">
+        JEndDate = #{jenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jstoreagemethod != null">
+        JStoreageMethod = #{jstoreagemethod,jdbcType=NVARCHAR},
+      </if>
+      <if test="jpackingmodel != null">
+        JPackingModel = #{jpackingmodel,jdbcType=NVARCHAR},
+      </if>
+      <if test="jburdening != null">
+        JBurdening = #{jburdening,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnutrientcontent != null">
+        JNutrientContent = #{jnutrientcontent,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnodisc != null">
+        JNoDisc = #{jnodisc,jdbcType=BIT},
+      </if>
+      <if test="jlevelid != null">
+        JLevelID = #{jlevelid,jdbcType=INTEGER},
+      </if>
+      <if test="jminorderqty != null">
+        JMinOrderQty = #{jminorderqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jcountryunitcode != null">
+        JCountryUnitCode = #{jcountryunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcityunitcode != null">
+        JCityUnitCode = #{jcityunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomstatusid != null">
+        JCustomStatusID = #{jcustomstatusid,jdbcType=VARCHAR},
+      </if>
+      <if test="jpostmartdate != null">
+        JPostMartDate = #{jpostmartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jistop != null">
+        JIsTop = #{jistop,jdbcType=INTEGER},
+      </if>
+      <if test="jmonthsaleqty != null">
+        JMonthSaleQty = #{jmonthsaleqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jmonthsaleranking != null">
+        JMonthSaleRanking = #{jmonthsaleranking,jdbcType=INTEGER},
+      </if>
+      <if test="jphoto != null">
+        JPhoto = #{jphoto,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.whimsy.entity.TGoods">
+    update dbo.TGoods
+    set JGoodsCode = #{jgoodscode,jdbcType=VARCHAR},
+      JGoodsName = #{jgoodsname,jdbcType=VARCHAR},
+      JModel = #{jmodel,jdbcType=VARCHAR},
+      JUnit = #{junit,jdbcType=VARCHAR},
+      JMemo = #{jmemo,jdbcType=VARCHAR},
+      JClassID = #{jclassid,jdbcType=INTEGER},
+      JSupClientID = #{jsupclientid,jdbcType=INTEGER},
+      JBarCode = #{jbarcode,jdbcType=VARCHAR},
+      JPointSalePrice = #{jpointsaleprice,jdbcType=DECIMAL},
+      JSale3Price = #{jsale3price,jdbcType=DECIMAL},
+      JSale4Price = #{jsale4price,jdbcType=DECIMAL},
+      JSale5Price = #{jsale5price,jdbcType=DECIMAL},
+      JWholesalePrice = #{jwholesaleprice,jdbcType=DECIMAL},
+      JRefCostPrice = #{jrefcostprice,jdbcType=DECIMAL},
+      JMinInPrice = #{jmininprice,jdbcType=DECIMAL},
+      JMaxInPrice = #{jmaxinprice,jdbcType=DECIMAL},
+      JMainProductsMark = #{jmainproductsmark,jdbcType=INTEGER},
+      JNoUse = #{jnouse,jdbcType=BIT},
+      JAuxClassID1 = #{jauxclassid1,jdbcType=INTEGER},
+      JAuxClassID2 = #{jauxclassid2,jdbcType=INTEGER},
+      JSupplyType = #{jsupplytype,jdbcType=INTEGER},
+      JPurchPeriod = #{jpurchperiod,jdbcType=INTEGER},
+      JSeasonID = #{jseasonid,jdbcType=INTEGER},
+      JBrandID = #{jbrandid,jdbcType=INTEGER},
+      JPlace = #{jplace,jdbcType=VARCHAR},
+      JSex = #{jsex,jdbcType=INTEGER},
+      JPyCode = #{jpycode,jdbcType=VARCHAR},
+      JPosIntegral = #{jposintegral,jdbcType=DECIMAL},
+      JClrPrice = #{jclrprice,jdbcType=DECIMAL},
+      JAuthorisationCode = #{jauthorisationcode,jdbcType=VARCHAR},
+      JQualityPeriod = #{jqualityperiod,jdbcType=INTEGER},
+      JUseAuxID = #{juseauxid,jdbcType=INTEGER},
+      JTaxRate = #{jtaxrate,jdbcType=DECIMAL},
+      JDrawingNumber = #{jdrawingnumber,jdbcType=VARCHAR},
+      JWeigh = #{jweigh,jdbcType=INTEGER},
+      JChangePrice = #{jchangeprice,jdbcType=INTEGER},
+      JRetailDiscRate = #{jretaildiscrate,jdbcType=DECIMAL},
+      JSale6Price = #{jsale6price,jdbcType=DECIMAL},
+      JSale7Price = #{jsale7price,jdbcType=DECIMAL},
+      JJointDisc = #{jjointdisc,jdbcType=DECIMAL},
+      JTaxPointSalePrice = #{jtaxpointsaleprice,jdbcType=DECIMAL},
+      JTaxWholesalePrice = #{jtaxwholesaleprice,jdbcType=DECIMAL},
+      JTaxSale3Price = #{jtaxsale3price,jdbcType=DECIMAL},
+      JTaxSale4Price = #{jtaxsale4price,jdbcType=DECIMAL},
+      JTaxSale5Price = #{jtaxsale5price,jdbcType=DECIMAL},
+      JTaxSale6Price = #{jtaxsale6price,jdbcType=DECIMAL},
+      JTaxSale7Price = #{jtaxsale7price,jdbcType=DECIMAL},
+      JMaterialID = #{jmaterialid,jdbcType=INTEGER},
+      JSize = #{jsize,jdbcType=VARCHAR},
+      JColorID = #{jcolorid,jdbcType=INTEGER},
+      JHuaJianID = #{jhuajianid,jdbcType=INTEGER},
+      JClassID2 = #{jclassid2,jdbcType=INTEGER},
+      JClassID3 = #{jclassid3,jdbcType=INTEGER},
+      JTotalUseQty = #{jtotaluseqty,jdbcType=DECIMAL},
+      JMakeRule = #{jmakerule,jdbcType=VARCHAR},
+      JShareUse = #{jshareuse,jdbcType=INTEGER},
+      JEditDeptID = #{jeditdeptid,jdbcType=INTEGER},
+      JGoodsAttribute = #{jgoodsattribute,jdbcType=VARCHAR},
+      JModifyTime = #{jmodifytime,jdbcType=TIMESTAMP},
+      JAttributeID = #{jattributeid,jdbcType=INTEGER},
+      JPluCode = #{jplucode,jdbcType=VARCHAR},
+      JHashCode = #{jhashcode,jdbcType=VARCHAR},
+      JCounterID = #{jcounterid,jdbcType=INTEGER},
+      JCubage = #{jcubage,jdbcType=DECIMAL},
+      JWeight = #{jweight,jdbcType=DECIMAL},
+      JIsOnSale = #{jisonsale,jdbcType=INTEGER},
+      JGoodsTypeID = #{jgoodstypeid,jdbcType=INTEGER},
+      JMarketPrice = #{jmarketprice,jdbcType=DECIMAL},
+      JListPicID = #{jlistpicid,jdbcType=NVARCHAR},
+      JGoodsKeyWords = #{jgoodskeywords,jdbcType=NVARCHAR},
+      JSalerecord = #{jsalerecord,jdbcType=INTEGER},
+      JVisitrecord = #{jvisitrecord,jdbcType=INTEGER},
+      JDetailName = #{jdetailname,jdbcType=NVARCHAR},
+      JPostageType = #{jpostagetype,jdbcType=INTEGER},
+      JDeliveryType = #{jdeliverytype,jdbcType=INTEGER},
+      JDeliverTo = #{jdeliverto,jdbcType=INTEGER},
+      JDeliverDate = #{jdeliverdate,jdbcType=INTEGER},
+      JPickTime = #{jpicktime,jdbcType=INTEGER},
+      JNoIntegral = #{jnointegral,jdbcType=INTEGER},
+      JServiceRate = #{jservicerate,jdbcType=DECIMAL},
+      JSourcePlace = #{jsourceplace,jdbcType=NVARCHAR},
+      JQualityPeriodMonth = #{jqualityperiodmonth,jdbcType=INTEGER},
+      JNetContent = #{jnetcontent,jdbcType=NVARCHAR},
+      JEndDate = #{jenddate,jdbcType=TIMESTAMP},
+      JStoreageMethod = #{jstoreagemethod,jdbcType=NVARCHAR},
+      JPackingModel = #{jpackingmodel,jdbcType=NVARCHAR},
+      JBurdening = #{jburdening,jdbcType=NVARCHAR},
+      JNutrientContent = #{jnutrientcontent,jdbcType=NVARCHAR},
+      JNoDisc = #{jnodisc,jdbcType=BIT},
+      JLevelID = #{jlevelid,jdbcType=INTEGER},
+      JMinOrderQty = #{jminorderqty,jdbcType=DECIMAL},
+      JCountryUnitCode = #{jcountryunitcode,jdbcType=VARCHAR},
+      JCityUnitCode = #{jcityunitcode,jdbcType=VARCHAR},
+      JCustomStatusID = #{jcustomstatusid,jdbcType=VARCHAR},
+      JPostMartDate = #{jpostmartdate,jdbcType=TIMESTAMP},
+      JIsTop = #{jistop,jdbcType=INTEGER},
+      JMonthSaleQty = #{jmonthsaleqty,jdbcType=DECIMAL},
+      JMonthSaleRanking = #{jmonthsaleranking,jdbcType=INTEGER},
+      JPhoto = #{jphoto,jdbcType=LONGVARBINARY}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TGoods">
+    update dbo.TGoods
+    set JGoodsCode = #{jgoodscode,jdbcType=VARCHAR},
+      JGoodsName = #{jgoodsname,jdbcType=VARCHAR},
+      JModel = #{jmodel,jdbcType=VARCHAR},
+      JUnit = #{junit,jdbcType=VARCHAR},
+      JMemo = #{jmemo,jdbcType=VARCHAR},
+      JClassID = #{jclassid,jdbcType=INTEGER},
+      JSupClientID = #{jsupclientid,jdbcType=INTEGER},
+      JBarCode = #{jbarcode,jdbcType=VARCHAR},
+      JPointSalePrice = #{jpointsaleprice,jdbcType=DECIMAL},
+      JSale3Price = #{jsale3price,jdbcType=DECIMAL},
+      JSale4Price = #{jsale4price,jdbcType=DECIMAL},
+      JSale5Price = #{jsale5price,jdbcType=DECIMAL},
+      JWholesalePrice = #{jwholesaleprice,jdbcType=DECIMAL},
+      JRefCostPrice = #{jrefcostprice,jdbcType=DECIMAL},
+      JMinInPrice = #{jmininprice,jdbcType=DECIMAL},
+      JMaxInPrice = #{jmaxinprice,jdbcType=DECIMAL},
+      JMainProductsMark = #{jmainproductsmark,jdbcType=INTEGER},
+      JNoUse = #{jnouse,jdbcType=BIT},
+      JAuxClassID1 = #{jauxclassid1,jdbcType=INTEGER},
+      JAuxClassID2 = #{jauxclassid2,jdbcType=INTEGER},
+      JSupplyType = #{jsupplytype,jdbcType=INTEGER},
+      JPurchPeriod = #{jpurchperiod,jdbcType=INTEGER},
+      JSeasonID = #{jseasonid,jdbcType=INTEGER},
+      JBrandID = #{jbrandid,jdbcType=INTEGER},
+      JPlace = #{jplace,jdbcType=VARCHAR},
+      JSex = #{jsex,jdbcType=INTEGER},
+      JPyCode = #{jpycode,jdbcType=VARCHAR},
+      JPosIntegral = #{jposintegral,jdbcType=DECIMAL},
+      JClrPrice = #{jclrprice,jdbcType=DECIMAL},
+      JAuthorisationCode = #{jauthorisationcode,jdbcType=VARCHAR},
+      JQualityPeriod = #{jqualityperiod,jdbcType=INTEGER},
+      JUseAuxID = #{juseauxid,jdbcType=INTEGER},
+      JTaxRate = #{jtaxrate,jdbcType=DECIMAL},
+      JDrawingNumber = #{jdrawingnumber,jdbcType=VARCHAR},
+      JWeigh = #{jweigh,jdbcType=INTEGER},
+      JChangePrice = #{jchangeprice,jdbcType=INTEGER},
+      JRetailDiscRate = #{jretaildiscrate,jdbcType=DECIMAL},
+      JSale6Price = #{jsale6price,jdbcType=DECIMAL},
+      JSale7Price = #{jsale7price,jdbcType=DECIMAL},
+      JJointDisc = #{jjointdisc,jdbcType=DECIMAL},
+      JTaxPointSalePrice = #{jtaxpointsaleprice,jdbcType=DECIMAL},
+      JTaxWholesalePrice = #{jtaxwholesaleprice,jdbcType=DECIMAL},
+      JTaxSale3Price = #{jtaxsale3price,jdbcType=DECIMAL},
+      JTaxSale4Price = #{jtaxsale4price,jdbcType=DECIMAL},
+      JTaxSale5Price = #{jtaxsale5price,jdbcType=DECIMAL},
+      JTaxSale6Price = #{jtaxsale6price,jdbcType=DECIMAL},
+      JTaxSale7Price = #{jtaxsale7price,jdbcType=DECIMAL},
+      JMaterialID = #{jmaterialid,jdbcType=INTEGER},
+      JSize = #{jsize,jdbcType=VARCHAR},
+      JColorID = #{jcolorid,jdbcType=INTEGER},
+      JHuaJianID = #{jhuajianid,jdbcType=INTEGER},
+      JClassID2 = #{jclassid2,jdbcType=INTEGER},
+      JClassID3 = #{jclassid3,jdbcType=INTEGER},
+      JTotalUseQty = #{jtotaluseqty,jdbcType=DECIMAL},
+      JMakeRule = #{jmakerule,jdbcType=VARCHAR},
+      JShareUse = #{jshareuse,jdbcType=INTEGER},
+      JEditDeptID = #{jeditdeptid,jdbcType=INTEGER},
+      JGoodsAttribute = #{jgoodsattribute,jdbcType=VARCHAR},
+      JModifyTime = #{jmodifytime,jdbcType=TIMESTAMP},
+      JAttributeID = #{jattributeid,jdbcType=INTEGER},
+      JPluCode = #{jplucode,jdbcType=VARCHAR},
+      JHashCode = #{jhashcode,jdbcType=VARCHAR},
+      JCounterID = #{jcounterid,jdbcType=INTEGER},
+      JCubage = #{jcubage,jdbcType=DECIMAL},
+      JWeight = #{jweight,jdbcType=DECIMAL},
+      JIsOnSale = #{jisonsale,jdbcType=INTEGER},
+      JGoodsTypeID = #{jgoodstypeid,jdbcType=INTEGER},
+      JMarketPrice = #{jmarketprice,jdbcType=DECIMAL},
+      JListPicID = #{jlistpicid,jdbcType=NVARCHAR},
+      JGoodsKeyWords = #{jgoodskeywords,jdbcType=NVARCHAR},
+      JSalerecord = #{jsalerecord,jdbcType=INTEGER},
+      JVisitrecord = #{jvisitrecord,jdbcType=INTEGER},
+      JDetailName = #{jdetailname,jdbcType=NVARCHAR},
+      JPostageType = #{jpostagetype,jdbcType=INTEGER},
+      JDeliveryType = #{jdeliverytype,jdbcType=INTEGER},
+      JDeliverTo = #{jdeliverto,jdbcType=INTEGER},
+      JDeliverDate = #{jdeliverdate,jdbcType=INTEGER},
+      JPickTime = #{jpicktime,jdbcType=INTEGER},
+      JNoIntegral = #{jnointegral,jdbcType=INTEGER},
+      JServiceRate = #{jservicerate,jdbcType=DECIMAL},
+      JSourcePlace = #{jsourceplace,jdbcType=NVARCHAR},
+      JQualityPeriodMonth = #{jqualityperiodmonth,jdbcType=INTEGER},
+      JNetContent = #{jnetcontent,jdbcType=NVARCHAR},
+      JEndDate = #{jenddate,jdbcType=TIMESTAMP},
+      JStoreageMethod = #{jstoreagemethod,jdbcType=NVARCHAR},
+      JPackingModel = #{jpackingmodel,jdbcType=NVARCHAR},
+      JBurdening = #{jburdening,jdbcType=NVARCHAR},
+      JNutrientContent = #{jnutrientcontent,jdbcType=NVARCHAR},
+      JNoDisc = #{jnodisc,jdbcType=BIT},
+      JLevelID = #{jlevelid,jdbcType=INTEGER},
+      JMinOrderQty = #{jminorderqty,jdbcType=DECIMAL},
+      JCountryUnitCode = #{jcountryunitcode,jdbcType=VARCHAR},
+      JCityUnitCode = #{jcityunitcode,jdbcType=VARCHAR},
+      JCustomStatusID = #{jcustomstatusid,jdbcType=VARCHAR},
+      JPostMartDate = #{jpostmartdate,jdbcType=TIMESTAMP},
+      JIsTop = #{jistop,jdbcType=INTEGER},
+      JMonthSaleQty = #{jmonthsaleqty,jdbcType=DECIMAL},
+      JMonthSaleRanking = #{jmonthsaleranking,jdbcType=INTEGER}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

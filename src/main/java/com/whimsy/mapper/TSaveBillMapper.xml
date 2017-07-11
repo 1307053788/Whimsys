@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TSaveBillMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TSaveBill">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="JBillCode" jdbcType="VARCHAR" property="jbillcode" />
+    <result column="JBillDate" jdbcType="TIMESTAMP" property="jbilldate" />
+    <result column="JDeptID" jdbcType="INTEGER" property="jdeptid" />
+    <result column="JBillType" jdbcType="INTEGER" property="jbilltype" />
+    <result column="JSaveCardID" jdbcType="INTEGER" property="jsavecardid" />
+    <result column="JBillAmt" jdbcType="DECIMAL" property="jbillamt" />
+    <result column="JHandleID" jdbcType="INTEGER" property="jhandleid" />
+    <result column="JInputrID" jdbcType="INTEGER" property="jinputrid" />
+    <result column="JUseID" jdbcType="INTEGER" property="juseid" />
+    <result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+    <result column="JCardType" jdbcType="INTEGER" property="jcardtype" />
+    <result column="JCashAmt" jdbcType="DECIMAL" property="jcashamt" />
+    <result column="JDiscRate" jdbcType="DECIMAL" property="jdiscrate" />
+    <result column="JBankID" jdbcType="INTEGER" property="jbankid" />
+    <result column="JEndAmt" jdbcType="DECIMAL" property="jendamt" />
+    <result column="JFillTimes" jdbcType="DECIMAL" property="jfilltimes" />
+    <result column="JMachineID" jdbcType="INTEGER" property="jmachineid" />
+    <result column="JFillSourceID" jdbcType="INTEGER" property="jfillsourceid" />
+    <result column="JFillCode" jdbcType="NVARCHAR" property="jfillcode" />
+    <result column="JIntegral" jdbcType="DECIMAL" property="jintegral" />
+    <result column="JTransactionId" jdbcType="NVARCHAR" property="jtransactionid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, JBillCode, JBillDate, JDeptID, JBillType, JSaveCardID, JBillAmt, JHandleID, 
+    JInputrID, JUseID, JMemo, JCardType, JCashAmt, JDiscRate, JBankID, JEndAmt, JFillTimes, 
+    JMachineID, JFillSourceID, JFillCode, JIntegral, JTransactionId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TSaveBill
+    where JID = #{jid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TSaveBill
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TSaveBill">
+    insert into dbo.TSaveBill (JID, JBillCode, JBillDate, 
+      JDeptID, JBillType, JSaveCardID, 
+      JBillAmt, JHandleID, JInputrID, 
+      JUseID, JMemo, JCardType, 
+      JCashAmt, JDiscRate, JBankID, 
+      JEndAmt, JFillTimes, JMachineID, 
+      JFillSourceID, JFillCode, JIntegral, 
+      JTransactionId)
+    values (#{jid,jdbcType=INTEGER}, #{jbillcode,jdbcType=VARCHAR}, #{jbilldate,jdbcType=TIMESTAMP}, 
+      #{jdeptid,jdbcType=INTEGER}, #{jbilltype,jdbcType=INTEGER}, #{jsavecardid,jdbcType=INTEGER}, 
+      #{jbillamt,jdbcType=DECIMAL}, #{jhandleid,jdbcType=INTEGER}, #{jinputrid,jdbcType=INTEGER}, 
+      #{juseid,jdbcType=INTEGER}, #{jmemo,jdbcType=VARCHAR}, #{jcardtype,jdbcType=INTEGER}, 
+      #{jcashamt,jdbcType=DECIMAL}, #{jdiscrate,jdbcType=DECIMAL}, #{jbankid,jdbcType=INTEGER}, 
+      #{jendamt,jdbcType=DECIMAL}, #{jfilltimes,jdbcType=DECIMAL}, #{jmachineid,jdbcType=INTEGER}, 
+      #{jfillsourceid,jdbcType=INTEGER}, #{jfillcode,jdbcType=NVARCHAR}, #{jintegral,jdbcType=DECIMAL}, 
+      #{jtransactionid,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TSaveBill">
+    insert into dbo.TSaveBill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jbillcode != null">
+        JBillCode,
+      </if>
+      <if test="jbilldate != null">
+        JBillDate,
+      </if>
+      <if test="jdeptid != null">
+        JDeptID,
+      </if>
+      <if test="jbilltype != null">
+        JBillType,
+      </if>
+      <if test="jsavecardid != null">
+        JSaveCardID,
+      </if>
+      <if test="jbillamt != null">
+        JBillAmt,
+      </if>
+      <if test="jhandleid != null">
+        JHandleID,
+      </if>
+      <if test="jinputrid != null">
+        JInputrID,
+      </if>
+      <if test="juseid != null">
+        JUseID,
+      </if>
+      <if test="jmemo != null">
+        JMemo,
+      </if>
+      <if test="jcardtype != null">
+        JCardType,
+      </if>
+      <if test="jcashamt != null">
+        JCashAmt,
+      </if>
+      <if test="jdiscrate != null">
+        JDiscRate,
+      </if>
+      <if test="jbankid != null">
+        JBankID,
+      </if>
+      <if test="jendamt != null">
+        JEndAmt,
+      </if>
+      <if test="jfilltimes != null">
+        JFillTimes,
+      </if>
+      <if test="jmachineid != null">
+        JMachineID,
+      </if>
+      <if test="jfillsourceid != null">
+        JFillSourceID,
+      </if>
+      <if test="jfillcode != null">
+        JFillCode,
+      </if>
+      <if test="jintegral != null">
+        JIntegral,
+      </if>
+      <if test="jtransactionid != null">
+        JTransactionId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jbillcode != null">
+        #{jbillcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jbilldate != null">
+        #{jbilldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeptid != null">
+        #{jdeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jbilltype != null">
+        #{jbilltype,jdbcType=INTEGER},
+      </if>
+      <if test="jsavecardid != null">
+        #{jsavecardid,jdbcType=INTEGER},
+      </if>
+      <if test="jbillamt != null">
+        #{jbillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jhandleid != null">
+        #{jhandleid,jdbcType=INTEGER},
+      </if>
+      <if test="jinputrid != null">
+        #{jinputrid,jdbcType=INTEGER},
+      </if>
+      <if test="juseid != null">
+        #{juseid,jdbcType=INTEGER},
+      </if>
+      <if test="jmemo != null">
+        #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jcardtype != null">
+        #{jcardtype,jdbcType=INTEGER},
+      </if>
+      <if test="jcashamt != null">
+        #{jcashamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jdiscrate != null">
+        #{jdiscrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jbankid != null">
+        #{jbankid,jdbcType=INTEGER},
+      </if>
+      <if test="jendamt != null">
+        #{jendamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jfilltimes != null">
+        #{jfilltimes,jdbcType=DECIMAL},
+      </if>
+      <if test="jmachineid != null">
+        #{jmachineid,jdbcType=INTEGER},
+      </if>
+      <if test="jfillsourceid != null">
+        #{jfillsourceid,jdbcType=INTEGER},
+      </if>
+      <if test="jfillcode != null">
+        #{jfillcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="jintegral != null">
+        #{jintegral,jdbcType=DECIMAL},
+      </if>
+      <if test="jtransactionid != null">
+        #{jtransactionid,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TSaveBill">
+    update dbo.TSaveBill
+    <set>
+      <if test="jbillcode != null">
+        JBillCode = #{jbillcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jbilldate != null">
+        JBillDate = #{jbilldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeptid != null">
+        JDeptID = #{jdeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jbilltype != null">
+        JBillType = #{jbilltype,jdbcType=INTEGER},
+      </if>
+      <if test="jsavecardid != null">
+        JSaveCardID = #{jsavecardid,jdbcType=INTEGER},
+      </if>
+      <if test="jbillamt != null">
+        JBillAmt = #{jbillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jhandleid != null">
+        JHandleID = #{jhandleid,jdbcType=INTEGER},
+      </if>
+      <if test="jinputrid != null">
+        JInputrID = #{jinputrid,jdbcType=INTEGER},
+      </if>
+      <if test="juseid != null">
+        JUseID = #{juseid,jdbcType=INTEGER},
+      </if>
+      <if test="jmemo != null">
+        JMemo = #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jcardtype != null">
+        JCardType = #{jcardtype,jdbcType=INTEGER},
+      </if>
+      <if test="jcashamt != null">
+        JCashAmt = #{jcashamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jdiscrate != null">
+        JDiscRate = #{jdiscrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jbankid != null">
+        JBankID = #{jbankid,jdbcType=INTEGER},
+      </if>
+      <if test="jendamt != null">
+        JEndAmt = #{jendamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jfilltimes != null">
+        JFillTimes = #{jfilltimes,jdbcType=DECIMAL},
+      </if>
+      <if test="jmachineid != null">
+        JMachineID = #{jmachineid,jdbcType=INTEGER},
+      </if>
+      <if test="jfillsourceid != null">
+        JFillSourceID = #{jfillsourceid,jdbcType=INTEGER},
+      </if>
+      <if test="jfillcode != null">
+        JFillCode = #{jfillcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="jintegral != null">
+        JIntegral = #{jintegral,jdbcType=DECIMAL},
+      </if>
+      <if test="jtransactionid != null">
+        JTransactionId = #{jtransactionid,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TSaveBill">
+    update dbo.TSaveBill
+    set JBillCode = #{jbillcode,jdbcType=VARCHAR},
+      JBillDate = #{jbilldate,jdbcType=TIMESTAMP},
+      JDeptID = #{jdeptid,jdbcType=INTEGER},
+      JBillType = #{jbilltype,jdbcType=INTEGER},
+      JSaveCardID = #{jsavecardid,jdbcType=INTEGER},
+      JBillAmt = #{jbillamt,jdbcType=DECIMAL},
+      JHandleID = #{jhandleid,jdbcType=INTEGER},
+      JInputrID = #{jinputrid,jdbcType=INTEGER},
+      JUseID = #{juseid,jdbcType=INTEGER},
+      JMemo = #{jmemo,jdbcType=VARCHAR},
+      JCardType = #{jcardtype,jdbcType=INTEGER},
+      JCashAmt = #{jcashamt,jdbcType=DECIMAL},
+      JDiscRate = #{jdiscrate,jdbcType=DECIMAL},
+      JBankID = #{jbankid,jdbcType=INTEGER},
+      JEndAmt = #{jendamt,jdbcType=DECIMAL},
+      JFillTimes = #{jfilltimes,jdbcType=DECIMAL},
+      JMachineID = #{jmachineid,jdbcType=INTEGER},
+      JFillSourceID = #{jfillsourceid,jdbcType=INTEGER},
+      JFillCode = #{jfillcode,jdbcType=NVARCHAR},
+      JIntegral = #{jintegral,jdbcType=DECIMAL},
+      JTransactionId = #{jtransactionid,jdbcType=NVARCHAR}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

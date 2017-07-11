@@ -1,0 +1,120 @@
+body {
+	background: url("../images/register/repeat_bg.png") repeat-x #bee1f5;
+}
+
+/*头部*/
+.W_width {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.W_logo_wave {
+	height: 150px;
+	background: url("../images/register/header.png") no-repeat center bottom;
+}
+
+.W_width a img {
+	padding-left: 150px;
+}
+
+#register-form {
+	width: 352px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+.tab_line {
+	width: 100%;
+	height: 70px;
+	padding: 24px 0 22px;
+	margin: 0px;
+}
+
+.tab_line_login {
+	width: 40%;
+	height: 100%;
+	float: right;
+	line-height: 70px;
+}
+
+.tab_line_login h2 a {
+	color: #ee2222;
+}
+
+.w_prn {
+	float: left;
+	padding-left: 85px;
+	line-height: 70px;
+	display: inline-block;
+	font-size: 22px;
+	color: #333;
+}
+
+.chunk {
+	width: 350px;
+	height: 50px;
+	position: relative;
+	background-color:white;
+	border: solid 1px #DDDDDD;
+}
+
+label {
+	font-size: 14px;
+	font-family: "Microsoft YaHei", "Hiragino Sans GB";
+	float: left;
+	width: 80px;
+	height: 52px;
+	line-height: 52px;
+	padding-left: 20px;
+}
+
+.same {
+	border: 0 none;
+	font-size: 14px;
+	width: 190px;
+	height: 19px;
+	padding-bottom: 11px;
+	padding-left: 20px;
+	padding-top: 16px;
+}
+
+.img-code {
+	position: absolute;
+	right: 0px;
+	width: 110px;
+	height: 50px;
+	cursor: pointer;
+}
+
+.btn-register {
+	width: 350px;
+	height: 54px;
+	color: #ffffff;
+	background-color: #FFA00A;
+	border: 0px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/*footer*/
+.footer {
+	width: 530px;
+	margin: 20px auto;
+}
+
+.company_name {
+	margin-right: 10px;
+	color: #6e9ab8;
+}
+
+.input-tip {
+	color: #DDDDDD;
+	width: 352px;
+	height: 27px;
+	font-size: 12px;
+	padding-top: 5px;
+}
+
+.changeLanguage {
+	float: right;
+}

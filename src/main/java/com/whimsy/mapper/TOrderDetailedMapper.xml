@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TOrderDetailedMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TOrderDetailed">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_orderid" jdbcType="INTEGER" property="jOrderid" />
+    <result column="j_goodsid" jdbcType="INTEGER" property="jGoodsid" />
+    <result column="j_number" jdbcType="DECIMAL" property="jNumber" />
+    <result column="j_goodsmoney" jdbcType="DECIMAL" property="jGoodsmoney" />
+    
+    <result column="j_membercard_id" jdbcType="INTEGER" property="jMembercardId" />
+    <result column="j_dept_id" jdbcType="INTEGER" property="jDeptId" />
+    <result column="j_state" jdbcType="VARCHAR" property="jState" />
+    <result column="j_money" jdbcType="DECIMAL" property="jMoney" />
+    <result column="j_ordercode" jdbcType="VARCHAR" property="jOrdercode" />
+    <result column="j_payment" jdbcType="VARCHAR" property="jPayment" />
+    <result column="j_iffreight" jdbcType="DECIMAL" property="jIffreight" />
+    <result column="j_ifcoupon" jdbcType="DECIMAL" property="jIfcoupon" />
+    <result column="j_ifscore" jdbcType="DECIMAL" property="jIfscore" />
+    <result column="j_ifmembercard" jdbcType="DECIMAL" property="jIfmembercard" />
+    <result column="j_address" jdbcType="VARCHAR" property="jAddress" />
+    <result column="j_time" jdbcType="VARCHAR" property="jTime" />
+    <result column="j_begintime" jdbcType="TIMESTAMP" property="jBegintime" />
+    <result column="j_paytime" jdbcType="TIMESTAMP" property="jPaytime" />
+    <result column="j_endtime" jdbcType="TIMESTAMP" property="jEndtime" />
+    <result column="j_uptime" jdbcType="TIMESTAMP" property="jUptime" />
+    <result column="j_allmoney" jdbcType="DECIMAL" property="jAllmoney" />
+    <result column="youhuimoney" jdbcType="DECIMAL" property="youhuimoney" />
+    <result column="shijimoney" jdbcType="DECIMAL" property="shijimoney" />
+    <result column="j_copid" jdbcType="INTEGER" property="jCopId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_orderid, j_goodsid, j_number, j_goodsmoney
+  </sql>
+  <!-- 查询订单号 -->
+  <select id="getOrderID" parameterType="String" resultMap="BaseResultMap">
+    select 
+    j_id as jId
+    from dbo.TOrder
+    where j_ordercode = #{0}
+  </select>
+  <!-- 查询订单 -->
+  <select id="getOrder" parameterType="String" resultMap="BaseResultMap">
+    select 
+    j_id as jId,
+    j_membercard_id as jMembercardId,
+    j_dept_id as jDeptId,
+    j_state as jState,
+    j_money as jMoney,
+    j_ordercode as jOrdercode,
+    j_payment as jPayment,
+    j_iffreight as jIffreight,
+    j_ifcoupon as jIfcoupon,
+    j_ifscore as jIfscore,
+    j_ifmembercard as jIfmembercard,
+    j_address as jAddress,
+    j_time as jTime,
+    (j_iffreight + j_ifcoupon + j_ifscore) as youhuimoney,
+    (j_money + j_ifmembercard) as shijimoney,
+    j_begintime as jBegintime,
+    j_paytime as jPaytime,
+    j_endtime as jEndtime,
+    j_uptime as jUptime,
+    j_allmoney as jAllmoney,
+    j_copid as jCopId
+    from dbo.TOrder
+    where j_ordercode = #{0}
+  </select>
+  <!-- 查询所有订单 -->
+  <select id="getOrderAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	SELECT 
+	j_id as jId,
+    j_membercard_id as jMembercardId,
+    j_dept_id as jDeptId,
+    j_money as jMoney,
+    j_ordercode as jOrdercode,
+    j_payment as jPayment,
+    j_iffreight as jIffreight,
+    j_ifcoupon as jIfcoupon,
+    j_ifscore as jIfscore,
+    j_ifmembercard as jIfmembercard,
+    j_address as jAddress,
+    j_time as jTime,
+    j_begintime as jBegintime,
+    (j_iffreight + j_ifcoupon + j_ifscore) as youhuimoney,
+    (j_money + j_ifmembercard) as shijimoney,
+    j_paytime as jPaytime,
+    j_endtime as jEndtime,
+    j_uptime as jUptime,
+	(case j_state
+	when '0' then (case when datediff(ss,j_begintime,getdate()) > 30*60 then '2' else j_state end)
+	when '4' then (case when datediff(ss,j_uptime,getdate()) > 24*60*60 then '5' else j_state end)
+	else j_state end) as jState,
+    j_allmoney as jAllmoney,
+    j_copid as jCopId
+	FROM [TSNET1001].[dbo].[TOrder]
+	where j_membercard_id = #{0}
+  </select>
+  <!-- 取消订单 -->
+  <delete id="deleteorder" parameterType="java.lang.Integer">
+    delete from dbo.TOrder
+    where j_id = #{0}
+  </delete>
+  <!-- 取消订单 -->
+  <delete id="deleteorderdetailed" parameterType="java.lang.Integer">
+    delete from dbo.TOrderDetailed
+    where j_orderid = #{0}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TOrderDetailed">
+    insert into dbo.TOrderDetailed (j_id, j_orderid, j_goodsid, 
+      j_number, j_goodsmoney)
+    values (#{jId,jdbcType=INTEGER}, #{jOrderid,jdbcType=INTEGER}, #{jGoodsid,jdbcType=INTEGER}, 
+      #{jNumber,jdbcType=DECIMAL}, #{jGoodsmoney,jdbcType=DECIMAL})
+  </insert>
+  <!-- 生成订单 -->
+  <insert id="setOrder" parameterType="com.whimsy.entity.TOrderDetailed">
+    insert into dbo.TOrder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jMembercardId != null">
+        j_membercard_id,
+      </if>
+      <if test="jDeptId != null">
+        j_dept_id,
+      </if>
+      <if test="jState != null">
+        j_state,
+      </if>
+      <if test="jMoney != null">
+        j_money,
+      </if>
+      <if test="jOrdercode != null">
+        j_ordercode,
+      </if>
+      <if test="jIffreight != null">
+        j_iffreight,
+      </if>
+      <if test="jIfcoupon != null">
+        j_ifcoupon,
+      </if>
+      <if test="jIfscore != null">
+        j_ifscore,
+      </if>
+      <if test="jIfmembercard != null">
+        j_ifmembercard,
+      </if>
+      <if test="jPayment != null">
+        j_payment,
+      </if>
+      <if test="jAddress != null">
+        j_address,
+      </if>
+      <if test="jTime != null">
+        j_time,
+      </if>
+      <if test="jBegintime != null">
+        j_begintime,
+      </if>
+      <if test="jAllmoney != null">
+        j_allmoney,
+      </if>
+      <if test="jCopId != null">
+        j_copid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jMembercardId != null">
+        #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeptId != null">
+        #{jDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="jState != null">
+        #{jState,jdbcType=VARCHAR},
+      </if>
+      <if test="jMoney != null">
+        #{jMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jOrdercode != null">
+        #{jOrdercode,jdbcType=VARCHAR},
+      </if>
+      <if test="jIffreight != null">
+        #{jIffreight,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfcoupon != null">
+        #{jIfcoupon,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfscore != null">
+        #{jIfscore,jdbcType=DECIMAL},
+      </if>
+      <if test="jIfmembercard != null">
+        #{jIfmembercard,jdbcType=DECIMAL},
+      </if>
+      <if test="jPayment != null">
+        #{jPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="jAddress != null">
+        #{jAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jTime != null">
+        #{jTime,jdbcType=VARCHAR},
+      </if>
+      <if test="jBegintime != null">
+        #{jBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jAllmoney != null">
+        #{jAllmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jCopId != null">
+        #{jCopId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!-- 生成订单细表 -->
+  <insert id="setOrderdatiled" parameterType="com.whimsy.entity.TOrderDetailed">
+    insert into dbo.TOrderDetailed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jOrderid != null">
+        j_orderid,
+      </if>
+      <if test="jGoodsid != null">
+        j_goodsid,
+      </if>
+      <if test="jNumber != null">
+        j_number,
+      </if>
+      <if test="jGoodsmoney != null">
+        j_goodsmoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jOrderid != null">
+        #{jOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="jGoodsid != null">
+        #{jGoodsid,jdbcType=INTEGER},
+      </if>
+      <if test="jNumber != null">
+        #{jNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="jGoodsmoney != null">
+        #{jGoodsmoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改订单状态 -->
+  <update id="uporderstate" parameterType="com.whimsy.entity.TOrderDetailed">
+    update dbo.TOrder
+    <set>
+      <if test="jState != null">
+        j_state = #{jState,jdbcType=VARCHAR},
+      </if>
+      <if test="jBegintime != null">
+        j_begintime = #{jBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jPaytime != null">
+        j_paytime = #{jPaytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jEndtime != null">
+        j_endtime = #{jEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jUptime != null">
+        j_uptime = #{jUptime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where j_ordercode = #{jOrdercode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TOrder">
+    update dbo.TOrder
+    set j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      j_dept_id = #{jDeptId,jdbcType=INTEGER},
+      j_state = #{jState,jdbcType=VARCHAR},
+      j_money = #{jMoney,jdbcType=DECIMAL},
+      j_ordercode = #{jOrdercode,jdbcType=VARCHAR},
+      j_iffreight = #{jIffreight,jdbcType=DECIMAL},
+      j_ifcoupon = #{jIfcoupon,jdbcType=DECIMAL},
+      j_ifscore = #{jIfscore,jdbcType=DECIMAL},
+      j_ifmembercard = #{jIfmembercard,jdbcType=DECIMAL}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

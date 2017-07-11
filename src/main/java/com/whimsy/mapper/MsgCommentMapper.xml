@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.MsgCommentDao">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.MsgComment">
+    <id column="COMMENT_ID" jdbcType="DECIMAL" property="commentId" />
+    <result column="MSG_ID" jdbcType="DECIMAL" property="msgId" />
+    <result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <result column="COMMENT_CONTENT" jdbcType="VARCHAR" property="commentContent" />
+    <result column="COMMENT_TIME" jdbcType="DATE" property="commentTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    COMMENT_ID, MSG_ID, USER_ID, COMMENT_CONTENT, COMMENT_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WHIMSY_MESSAGE_COMMENT
+    where COMMENT_ID = #{commentId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from WHIMSY_MESSAGE_COMMENT
+    where COMMENT_ID = #{commentId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.MsgComment">
+    insert into WHIMSY_MESSAGE_COMMENT (COMMENT_ID, MSG_ID, USER_ID, 
+      COMMENT_CONTENT, COMMENT_TIME)
+    values (#{commentId,jdbcType=DECIMAL}, #{msgId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, 
+      #{commentContent,jdbcType=VARCHAR}, #{commentTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.MsgComment">
+    insert into WHIMSY_MESSAGE_COMMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        COMMENT_ID,
+      </if>
+      <if test="msgId != null">
+        MSG_ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="commentContent != null">
+        COMMENT_CONTENT,
+      </if>
+      <if test="commentTime != null">
+        COMMENT_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=DECIMAL},
+      </if>
+      <if test="msgId != null">
+        #{msgId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        #{commentTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.MsgComment">
+    update WHIMSY_MESSAGE_COMMENT
+    <set>
+      <if test="msgId != null">
+        MSG_ID = #{msgId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="commentContent != null">
+        COMMENT_CONTENT = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        COMMENT_TIME = #{commentTime,jdbcType=DATE},
+      </if>
+    </set>
+    where COMMENT_ID = #{commentId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.MsgComment">
+    update WHIMSY_MESSAGE_COMMENT
+    set MSG_ID = #{msgId,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL},
+      COMMENT_CONTENT = #{commentContent,jdbcType=VARCHAR},
+      COMMENT_TIME = #{commentTime,jdbcType=DATE}
+    where COMMENT_ID = #{commentId,jdbcType=DECIMAL}
+  </update>
+</mapper>

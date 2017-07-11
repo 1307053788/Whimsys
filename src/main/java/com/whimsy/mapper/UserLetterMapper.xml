@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.UserLetterDao">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.UserLetter">
+    <id column="LETTER_ID" jdbcType="DECIMAL" property="letterId" />
+    <result column="MY_ID" jdbcType="DECIMAL" property="myId" />
+    <result column="FRIEND_ID" jdbcType="DECIMAL" property="friendId" />
+    <result column="LETTER_CONTENT" jdbcType="VARCHAR" property="letterContent" />
+    <result column="LETTER_TIME" jdbcType="DATE" property="letterTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LETTER_ID, MY_ID, FRIEND_ID, LETTER_CONTENT, LETTER_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WHIMSY_USER_LETTER
+    where LETTER_ID = #{letterId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from WHIMSY_USER_LETTER
+    where LETTER_ID = #{letterId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.UserLetter">
+    insert into WHIMSY_USER_LETTER (LETTER_ID, MY_ID, FRIEND_ID, 
+      LETTER_CONTENT, LETTER_TIME)
+    values (#{letterId,jdbcType=DECIMAL}, #{myId,jdbcType=DECIMAL}, #{friendId,jdbcType=DECIMAL}, 
+      #{letterContent,jdbcType=VARCHAR}, #{letterTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.UserLetter">
+    insert into WHIMSY_USER_LETTER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="letterId != null">
+        LETTER_ID,
+      </if>
+      <if test="myId != null">
+        MY_ID,
+      </if>
+      <if test="friendId != null">
+        FRIEND_ID,
+      </if>
+      <if test="letterContent != null">
+        LETTER_CONTENT,
+      </if>
+      <if test="letterTime != null">
+        LETTER_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="letterId != null">
+        #{letterId,jdbcType=DECIMAL},
+      </if>
+      <if test="myId != null">
+        #{myId,jdbcType=DECIMAL},
+      </if>
+      <if test="friendId != null">
+        #{friendId,jdbcType=DECIMAL},
+      </if>
+      <if test="letterContent != null">
+        #{letterContent,jdbcType=VARCHAR},
+      </if>
+      <if test="letterTime != null">
+        #{letterTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.UserLetter">
+    update WHIMSY_USER_LETTER
+    <set>
+      <if test="myId != null">
+        MY_ID = #{myId,jdbcType=DECIMAL},
+      </if>
+      <if test="friendId != null">
+        FRIEND_ID = #{friendId,jdbcType=DECIMAL},
+      </if>
+      <if test="letterContent != null">
+        LETTER_CONTENT = #{letterContent,jdbcType=VARCHAR},
+      </if>
+      <if test="letterTime != null">
+        LETTER_TIME = #{letterTime,jdbcType=DATE},
+      </if>
+    </set>
+    where LETTER_ID = #{letterId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.UserLetter">
+    update WHIMSY_USER_LETTER
+    set MY_ID = #{myId,jdbcType=DECIMAL},
+      FRIEND_ID = #{friendId,jdbcType=DECIMAL},
+      LETTER_CONTENT = #{letterContent,jdbcType=VARCHAR},
+      LETTER_TIME = #{letterTime,jdbcType=DATE}
+    where LETTER_ID = #{letterId,jdbcType=DECIMAL}
+  </update>
+</mapper>

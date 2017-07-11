@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TUserGroupMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TUserGroup">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="JGroupName" jdbcType="VARCHAR" property="jgroupname" />
+    <result column="JParentGroupID" jdbcType="INTEGER" property="jparentgroupid" />
+    <result column="JIdentityID" jdbcType="INTEGER" property="jidentityid" />
+    <result column="JRemark" jdbcType="NVARCHAR" property="jremark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, JGroupName, JParentGroupID, JIdentityID, JRemark
+  </sql>
+ <!--  查询分组 -->
+  <select id="selectGroup" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TUserGroup
+    where JID = #{0}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TUserGroup
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TUserGroup">
+    insert into dbo.TUserGroup (JID, JGroupName, JParentGroupID, 
+      JIdentityID, JRemark)
+    values (#{jid,jdbcType=INTEGER}, #{jgroupname,jdbcType=VARCHAR}, #{jparentgroupid,jdbcType=INTEGER}, 
+      #{jidentityid,jdbcType=INTEGER}, #{jremark,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TUserGroup">
+    insert into dbo.TUserGroup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jgroupname != null">
+        JGroupName,
+      </if>
+      <if test="jparentgroupid != null">
+        JParentGroupID,
+      </if>
+      <if test="jidentityid != null">
+        JIdentityID,
+      </if>
+      <if test="jremark != null">
+        JRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jgroupname != null">
+        #{jgroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="jparentgroupid != null">
+        #{jparentgroupid,jdbcType=INTEGER},
+      </if>
+      <if test="jidentityid != null">
+        #{jidentityid,jdbcType=INTEGER},
+      </if>
+      <if test="jremark != null">
+        #{jremark,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TUserGroup">
+    update dbo.TUserGroup
+    <set>
+      <if test="jgroupname != null">
+        JGroupName = #{jgroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="jparentgroupid != null">
+        JParentGroupID = #{jparentgroupid,jdbcType=INTEGER},
+      </if>
+      <if test="jidentityid != null">
+        JIdentityID = #{jidentityid,jdbcType=INTEGER},
+      </if>
+      <if test="jremark != null">
+        JRemark = #{jremark,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TUserGroup">
+    update dbo.TUserGroup
+    set JGroupName = #{jgroupname,jdbcType=VARCHAR},
+      JParentGroupID = #{jparentgroupid,jdbcType=INTEGER},
+      JIdentityID = #{jidentityid,jdbcType=INTEGER},
+      JRemark = #{jremark,jdbcType=NVARCHAR}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

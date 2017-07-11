@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TMsgCodeMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TMsgCode">
+    <result column="j_phone" jdbcType="NVARCHAR" property="jPhone" />
+    <result column="j_code" jdbcType="NVARCHAR" property="jCode" />
+    <result column="j_data" jdbcType="NVARCHAR" property="jData" />
+  </resultMap>
+  <!-- 查询验证码 -->
+  <select id="selectCode" parameterType="com.whimsy.entity.TMsgCode" resultType="com.whimsy.entity.TMsgCode">
+	select 
+	    j_phone as jPhone, 
+	    j_code as jCode,
+	    j_data as jData
+	    from dbo.TMsgCode
+		where j_phone =
+		#{jPhone,jdbcType=NVARCHAR}
+		and j_code =
+		#{jCode,jdbcType=NVARCHAR}
+  </select>
+  <!-- 插入验证码 -->
+  <insert id="insertCode" parameterType="com.whimsy.entity.TMsgCode">
+    insert into dbo.TMsgCode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jPhone != null">
+        j_phone,
+      </if>
+      <if test="jCode != null">
+        j_code,
+      </if>
+      <if test="jData != null">
+        j_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jPhone != null">
+        #{jPhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="jCode != null">
+        #{jCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="jData != null">
+        #{jData,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 删除验证码 -->
+  <delete id="deleteCode" parameterType="com.whimsy.entity.TMsgCode">
+    delete from dbo.TMsgCode
+    where j_phone = #{jPhone,jdbcType=NVARCHAR}
+  </delete>
+</mapper>

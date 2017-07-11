@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TShopCartMapper">
+  <resultMap id="TShopCartResultMap" type="com.whimsy.entity.TShopCart">
+  	<id column="j_id" jdbcType="INTEGER" property="jId" />
+	<result column="j_goods_id" jdbcType="INTEGER" property="jGoodsId" />
+	<result column="j_department_id" jdbcType="INTEGER" property="jDepartmentId" />
+	<result column="j_membercard_id" jdbcType="INTEGER" property="jMembercardId" />
+  	<result column="j_number" jdbcType="INTEGER" property="jNumber" />
+  	<result column="JGoodsCode" jdbcType="VARCHAR" property="jgoodscode" />
+	<result column="JGoodsName" jdbcType="VARCHAR" property="jgoodsname" />
+	<result column="JModel" jdbcType="VARCHAR" property="jmodel" />
+	<result column="JUnit" jdbcType="VARCHAR" property="junit" />
+	<result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+	<result column="JClassID" jdbcType="INTEGER" property="jclassid" />
+	<result column="JSupClientID" jdbcType="INTEGER" property="jsupclientid" />
+	<result column="JBarCode" jdbcType="VARCHAR" property="jbarcode" />
+	<result column="JPointSalePrice" jdbcType="DECIMAL" property="jpointsaleprice" />
+	<result column="JSale3Price" jdbcType="DECIMAL" property="jsale3price" />
+	<result column="JRefCostPrice" jdbcType="DECIMAL" property="jrefcostprice" />
+	<result column="JMinInPrice" jdbcType="DECIMAL" property="jmininprice" />
+	<result column="JPlace" jdbcType="VARCHAR" property="jplace" />
+	
+	<result column="JBigPhoto" jdbcType="VARCHAR" property="jbigphoto" />
+	<result column="JSubtitle" jdbcType="VARCHAR" property="jsubtitle" />
+	<result column="JLitPhoto" jdbcType="VARCHAR" property="jlitphoto" />
+	
+	<result column="j_discount" jdbcType="DECIMAL" property="jdiscount" />
+	<result column="j_actprice" jdbcType="DECIMAL" property="jactprice" />
+  </resultMap>
+  <!-- 查询购物车 -->
+  <select id="selectShopCart" parameterType="java.lang.Integer" resultMap="TShopCartResultMap">
+    select 
+    bb.j_id as jId,
+    bb.j_goods_id as jGoodsId,
+    bb.j_department_id as jDepartmenId,
+    bb.j_membercard_id as jMembercardId,
+    bb.j_number as jNumber,
+	aa.JGoodsCode as jgoodscode,
+	aa.JGoodsName as jgoodsname,
+	aa.JModel as jmodel,
+	aa.JUnit as junit,
+	aa.JMemo as jmemo,
+	aa.JClassID as jclassid,
+	aa.JSupClientID as jsupclientid,
+	aa.JBarCode as jbarcode,
+	aa.JPointSalePrice as jpointsaleprice,
+	aa.JSale3Price as jsale3price,
+	aa.JRefCostPrice as jrefcostprice,
+	aa.JMinInPrice as jmininprice,
+	aa.JPlace as jplace,
+	
+	isnull(aa.JSubtitle,'') as jsubtitle,
+	isnull(aa.JBigPhoto,'') AS jbigphoto,
+	isnull(aa.JLitPhoto,'') as jlitphoto,
+	
+	isnull(cc.j_discount,0) as jdiscount,
+	isnull(cc.j_actprice,-1) as jactprice
+    from dbo.TGoods aa,dbo.TShopCart bb
+	left join dbo.TActivityDatiled cc on bb.j_goods_id = cc.j_goods_id
+
+    where bb.j_goods_id = aa.JID
+    and bb.j_membercard_id = #{1}
+    and bb.j_department_id = #{0}
+  </select>
+  <insert id="insert" parameterType="com.whimsy.entity.TShopCart">
+    insert into dbo.TShopCart (j_id, j_goods_id, j_department_id, 
+      j_membercard_id, j_number)
+    values (#{jId,jdbcType=INTEGER}, #{jGoodsId,jdbcType=INTEGER}, #{jDepartmentId,jdbcType=INTEGER}, 
+      #{jMembercardId,jdbcType=INTEGER}, #{jNumber,jdbcType=INTEGER})
+  </insert>
+  <!-- 查询购物车商品数量 -->
+  <select id="selectGoodsNumber" parameterType="com.whimsy.entity.TShopCart" resultType="com.whimsy.entity.TShopCart">
+    select 
+    j_number as jNumber
+    from dbo.TShopCart
+    where j_membercard_id = #{jMembercardId,jdbcType=INTEGER}
+    and j_department_id = #{jDepartmentId,jdbcType=INTEGER}
+    and j_goods_id = #{jGoodsId,jdbcType=INTEGER}
+  </select>
+  <!-- 加入购物车 -->
+  <insert id="setShopCart" parameterType="com.whimsy.entity.TShopCart">
+    insert into dbo.TShopCart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jGoodsId != null">
+        j_goods_id,
+      </if>
+      <if test="jDepartmentId != null">
+        j_department_id,
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id,
+      </if>
+      <if test="jNumber != null">
+        j_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jGoodsId != null">
+        #{jGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="jDepartmentId != null">
+        #{jDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jNumber != null">
+        #{jNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!-- 加减购物车 -->
+  <update id="updateShopCart" parameterType="com.whimsy.entity.TShopCart">
+    update dbo.TShopCart
+    <set>
+      <if test="jGoodsId != null">
+        j_goods_id = #{jGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="jDepartmentId != null">
+        j_department_id = #{jDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jNumber != null">
+        j_number = #{jNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where j_membercard_id = #{jMembercardId,jdbcType=INTEGER}
+    and j_department_id = #{jDepartmentId,jdbcType=INTEGER}
+    and j_goods_id = #{jGoodsId,jdbcType=INTEGER}
+  </update>
+  <!-- 删除购物车 -->
+	<delete id="deleteShopCart" parameterType="com.whimsy.entity.TShopCart">
+		delete from dbo.TShopCart
+		where j_id = #{jId,jdbcType=INTEGER}
+	</delete>
+	<!-- 下单成功后删除购物车 -->
+	<delete id="ordelShop" parameterType="java.lang.Integer">
+		delete from dbo.TShopCart
+		where j_goods_id = #{0}
+		and j_membercard_id = #{1}
+		and j_department_id = #{2}
+	</delete>
+</mapper>

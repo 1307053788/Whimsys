@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TUsersMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TUsers">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="JUserCode" jdbcType="VARCHAR" property="jusercode" />
+    <result column="JUserName" jdbcType="VARCHAR" property="jusername" />
+    <result column="JPassword" jdbcType="VARCHAR" property="jpassword" />
+    <result column="JQtyAmtManage" jdbcType="INTEGER" property="jqtyamtmanage" />
+    <result column="JCreditCheckMark" jdbcType="BIT" property="jcreditcheckmark" />
+    <result column="JCreditCheckAmt" jdbcType="BIT" property="jcreditcheckamt" />
+    <result column="JUserGroupID" jdbcType="INTEGER" property="jusergroupid" />
+    <result column="JNoUse" jdbcType="INTEGER" property="jnouse" />
+    <result column="JQueryCost" jdbcType="BIT" property="jquerycost" />
+    <result column="JSendInformID" jdbcType="INTEGER" property="jsendinformid" />
+    <result column="JQueryGoodsCostID" jdbcType="BIT" property="jquerygoodscostid" />
+    <result column="JRole" jdbcType="INTEGER" property="jrole" />
+    <result column="JPDAChangePrice" jdbcType="BIT" property="jpdachangeprice" />
+    <result column="JModifyClientCredit" jdbcType="BIT" property="jmodifyclientcredit" />
+    <result column="JConsigneeName" jdbcType="VARCHAR" property="jconsigneename" />
+    <result column="JConsigneeAddress" jdbcType="VARCHAR" property="jconsigneeaddress" />
+    <result column="JConsigneePost" jdbcType="VARCHAR" property="jconsigneepost" />
+    <result column="JConsigneeTele" jdbcType="VARCHAR" property="jconsigneetele" />
+    <result column="JConsigneePhone" jdbcType="VARCHAR" property="jconsigneephone" />
+    <result column="JMobileNumber" jdbcType="VARCHAR" property="jmobilenumber" />
+    <result column="JSeleNoUse" jdbcType="INTEGER" property="jselenouse" />
+    <result column="JRemark" jdbcType="NVARCHAR" property="jremark" />
+    <result column="JNetPassword" jdbcType="NVARCHAR" property="jnetpassword" />
+    <result column="JNetUser" jdbcType="INTEGER" property="jnetuser" />
+    <result column="JSendCardAllDept" jdbcType="INTEGER" property="jsendcardalldept" />
+    <result column="JSave0Amt" jdbcType="INTEGER" property="jsave0amt" />
+    <result column="JchkNeRechrge" jdbcType="INTEGER" property="jchknerechrge" />
+    <result column="JDisplayStockQty" jdbcType="INTEGER" property="jdisplaystockqty" />
+    <result column="JOpenID" jdbcType="NVARCHAR" property="jopenid" />
+    <result column="JMinSaleDisc" jdbcType="INTEGER" property="jminsaledisc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, JUserCode, JUserName, JPassword, JQtyAmtManage, JCreditCheckMark, JCreditCheckAmt, 
+    JUserGroupID, JNoUse, JQueryCost, JSendInformID, JQueryGoodsCostID, JRole, JPDAChangePrice, 
+    JModifyClientCredit, JConsigneeName, JConsigneeAddress, JConsigneePost, JConsigneeTele, 
+    JConsigneePhone, JMobileNumber, JSeleNoUse, JRemark, JNetPassword, JNetUser, JSendCardAllDept, 
+    JSave0Amt, JchkNeRechrge, JDisplayStockQty, JOpenID, JMinSaleDisc
+  </sql>
+ <!--  查询登录用户 -->
+  <select id="selectUser" parameterType="String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TUser
+    where JUserCode = #{0}
+    and JPassword = #{1}
+    and JNoUse = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TUser
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TUsers">
+    insert into dbo.TUser (JID, JUserCode, JUserName, 
+      JPassword, JQtyAmtManage, JCreditCheckMark, 
+      JCreditCheckAmt, JUserGroupID, JNoUse, 
+      JQueryCost, JSendInformID, JQueryGoodsCostID, 
+      JRole, JPDAChangePrice, JModifyClientCredit, 
+      JConsigneeName, JConsigneeAddress, JConsigneePost, 
+      JConsigneeTele, JConsigneePhone, JMobileNumber, 
+      JSeleNoUse, JRemark, JNetPassword, 
+      JNetUser, JSendCardAllDept, JSave0Amt, 
+      JchkNeRechrge, JDisplayStockQty, JOpenID, 
+      JMinSaleDisc)
+    values (#{jid,jdbcType=INTEGER}, #{jusercode,jdbcType=VARCHAR}, #{jusername,jdbcType=VARCHAR}, 
+      #{jpassword,jdbcType=VARCHAR}, #{jqtyamtmanage,jdbcType=INTEGER}, #{jcreditcheckmark,jdbcType=BIT}, 
+      #{jcreditcheckamt,jdbcType=BIT}, #{jusergroupid,jdbcType=INTEGER}, #{jnouse,jdbcType=INTEGER}, 
+      #{jquerycost,jdbcType=BIT}, #{jsendinformid,jdbcType=INTEGER}, #{jquerygoodscostid,jdbcType=BIT}, 
+      #{jrole,jdbcType=INTEGER}, #{jpdachangeprice,jdbcType=BIT}, #{jmodifyclientcredit,jdbcType=BIT}, 
+      #{jconsigneename,jdbcType=VARCHAR}, #{jconsigneeaddress,jdbcType=VARCHAR}, #{jconsigneepost,jdbcType=VARCHAR}, 
+      #{jconsigneetele,jdbcType=VARCHAR}, #{jconsigneephone,jdbcType=VARCHAR}, #{jmobilenumber,jdbcType=VARCHAR}, 
+      #{jselenouse,jdbcType=INTEGER}, #{jremark,jdbcType=NVARCHAR}, #{jnetpassword,jdbcType=NVARCHAR}, 
+      #{jnetuser,jdbcType=INTEGER}, #{jsendcardalldept,jdbcType=INTEGER}, #{jsave0amt,jdbcType=INTEGER}, 
+      #{jchknerechrge,jdbcType=INTEGER}, #{jdisplaystockqty,jdbcType=INTEGER}, #{jopenid,jdbcType=NVARCHAR}, 
+      #{jminsaledisc,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TUsers">
+    insert into dbo.TUser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jusercode != null">
+        JUserCode,
+      </if>
+      <if test="jusername != null">
+        JUserName,
+      </if>
+      <if test="jpassword != null">
+        JPassword,
+      </if>
+      <if test="jqtyamtmanage != null">
+        JQtyAmtManage,
+      </if>
+      <if test="jcreditcheckmark != null">
+        JCreditCheckMark,
+      </if>
+      <if test="jcreditcheckamt != null">
+        JCreditCheckAmt,
+      </if>
+      <if test="jusergroupid != null">
+        JUserGroupID,
+      </if>
+      <if test="jnouse != null">
+        JNoUse,
+      </if>
+      <if test="jquerycost != null">
+        JQueryCost,
+      </if>
+      <if test="jsendinformid != null">
+        JSendInformID,
+      </if>
+      <if test="jquerygoodscostid != null">
+        JQueryGoodsCostID,
+      </if>
+      <if test="jrole != null">
+        JRole,
+      </if>
+      <if test="jpdachangeprice != null">
+        JPDAChangePrice,
+      </if>
+      <if test="jmodifyclientcredit != null">
+        JModifyClientCredit,
+      </if>
+      <if test="jconsigneename != null">
+        JConsigneeName,
+      </if>
+      <if test="jconsigneeaddress != null">
+        JConsigneeAddress,
+      </if>
+      <if test="jconsigneepost != null">
+        JConsigneePost,
+      </if>
+      <if test="jconsigneetele != null">
+        JConsigneeTele,
+      </if>
+      <if test="jconsigneephone != null">
+        JConsigneePhone,
+      </if>
+      <if test="jmobilenumber != null">
+        JMobileNumber,
+      </if>
+      <if test="jselenouse != null">
+        JSeleNoUse,
+      </if>
+      <if test="jremark != null">
+        JRemark,
+      </if>
+      <if test="jnetpassword != null">
+        JNetPassword,
+      </if>
+      <if test="jnetuser != null">
+        JNetUser,
+      </if>
+      <if test="jsendcardalldept != null">
+        JSendCardAllDept,
+      </if>
+      <if test="jsave0amt != null">
+        JSave0Amt,
+      </if>
+      <if test="jchknerechrge != null">
+        JchkNeRechrge,
+      </if>
+      <if test="jdisplaystockqty != null">
+        JDisplayStockQty,
+      </if>
+      <if test="jopenid != null">
+        JOpenID,
+      </if>
+      <if test="jminsaledisc != null">
+        JMinSaleDisc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jusercode != null">
+        #{jusercode,jdbcType=VARCHAR},
+      </if>
+      <if test="jusername != null">
+        #{jusername,jdbcType=VARCHAR},
+      </if>
+      <if test="jpassword != null">
+        #{jpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="jqtyamtmanage != null">
+        #{jqtyamtmanage,jdbcType=INTEGER},
+      </if>
+      <if test="jcreditcheckmark != null">
+        #{jcreditcheckmark,jdbcType=BIT},
+      </if>
+      <if test="jcreditcheckamt != null">
+        #{jcreditcheckamt,jdbcType=BIT},
+      </if>
+      <if test="jusergroupid != null">
+        #{jusergroupid,jdbcType=INTEGER},
+      </if>
+      <if test="jnouse != null">
+        #{jnouse,jdbcType=INTEGER},
+      </if>
+      <if test="jquerycost != null">
+        #{jquerycost,jdbcType=BIT},
+      </if>
+      <if test="jsendinformid != null">
+        #{jsendinformid,jdbcType=INTEGER},
+      </if>
+      <if test="jquerygoodscostid != null">
+        #{jquerygoodscostid,jdbcType=BIT},
+      </if>
+      <if test="jrole != null">
+        #{jrole,jdbcType=INTEGER},
+      </if>
+      <if test="jpdachangeprice != null">
+        #{jpdachangeprice,jdbcType=BIT},
+      </if>
+      <if test="jmodifyclientcredit != null">
+        #{jmodifyclientcredit,jdbcType=BIT},
+      </if>
+      <if test="jconsigneename != null">
+        #{jconsigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneeaddress != null">
+        #{jconsigneeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneepost != null">
+        #{jconsigneepost,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneetele != null">
+        #{jconsigneetele,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneephone != null">
+        #{jconsigneephone,jdbcType=VARCHAR},
+      </if>
+      <if test="jmobilenumber != null">
+        #{jmobilenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jselenouse != null">
+        #{jselenouse,jdbcType=INTEGER},
+      </if>
+      <if test="jremark != null">
+        #{jremark,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnetpassword != null">
+        #{jnetpassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnetuser != null">
+        #{jnetuser,jdbcType=INTEGER},
+      </if>
+      <if test="jsendcardalldept != null">
+        #{jsendcardalldept,jdbcType=INTEGER},
+      </if>
+      <if test="jsave0amt != null">
+        #{jsave0amt,jdbcType=INTEGER},
+      </if>
+      <if test="jchknerechrge != null">
+        #{jchknerechrge,jdbcType=INTEGER},
+      </if>
+      <if test="jdisplaystockqty != null">
+        #{jdisplaystockqty,jdbcType=INTEGER},
+      </if>
+      <if test="jopenid != null">
+        #{jopenid,jdbcType=NVARCHAR},
+      </if>
+      <if test="jminsaledisc != null">
+        #{jminsaledisc,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TUsers">
+    update dbo.TUser
+    <set>
+      <if test="jusercode != null">
+        JUserCode = #{jusercode,jdbcType=VARCHAR},
+      </if>
+      <if test="jusername != null">
+        JUserName = #{jusername,jdbcType=VARCHAR},
+      </if>
+      <if test="jpassword != null">
+        JPassword = #{jpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="jqtyamtmanage != null">
+        JQtyAmtManage = #{jqtyamtmanage,jdbcType=INTEGER},
+      </if>
+      <if test="jcreditcheckmark != null">
+        JCreditCheckMark = #{jcreditcheckmark,jdbcType=BIT},
+      </if>
+      <if test="jcreditcheckamt != null">
+        JCreditCheckAmt = #{jcreditcheckamt,jdbcType=BIT},
+      </if>
+      <if test="jusergroupid != null">
+        JUserGroupID = #{jusergroupid,jdbcType=INTEGER},
+      </if>
+      <if test="jnouse != null">
+        JNoUse = #{jnouse,jdbcType=INTEGER},
+      </if>
+      <if test="jquerycost != null">
+        JQueryCost = #{jquerycost,jdbcType=BIT},
+      </if>
+      <if test="jsendinformid != null">
+        JSendInformID = #{jsendinformid,jdbcType=INTEGER},
+      </if>
+      <if test="jquerygoodscostid != null">
+        JQueryGoodsCostID = #{jquerygoodscostid,jdbcType=BIT},
+      </if>
+      <if test="jrole != null">
+        JRole = #{jrole,jdbcType=INTEGER},
+      </if>
+      <if test="jpdachangeprice != null">
+        JPDAChangePrice = #{jpdachangeprice,jdbcType=BIT},
+      </if>
+      <if test="jmodifyclientcredit != null">
+        JModifyClientCredit = #{jmodifyclientcredit,jdbcType=BIT},
+      </if>
+      <if test="jconsigneename != null">
+        JConsigneeName = #{jconsigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneeaddress != null">
+        JConsigneeAddress = #{jconsigneeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneepost != null">
+        JConsigneePost = #{jconsigneepost,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneetele != null">
+        JConsigneeTele = #{jconsigneetele,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneephone != null">
+        JConsigneePhone = #{jconsigneephone,jdbcType=VARCHAR},
+      </if>
+      <if test="jmobilenumber != null">
+        JMobileNumber = #{jmobilenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jselenouse != null">
+        JSeleNoUse = #{jselenouse,jdbcType=INTEGER},
+      </if>
+      <if test="jremark != null">
+        JRemark = #{jremark,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnetpassword != null">
+        JNetPassword = #{jnetpassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="jnetuser != null">
+        JNetUser = #{jnetuser,jdbcType=INTEGER},
+      </if>
+      <if test="jsendcardalldept != null">
+        JSendCardAllDept = #{jsendcardalldept,jdbcType=INTEGER},
+      </if>
+      <if test="jsave0amt != null">
+        JSave0Amt = #{jsave0amt,jdbcType=INTEGER},
+      </if>
+      <if test="jchknerechrge != null">
+        JchkNeRechrge = #{jchknerechrge,jdbcType=INTEGER},
+      </if>
+      <if test="jdisplaystockqty != null">
+        JDisplayStockQty = #{jdisplaystockqty,jdbcType=INTEGER},
+      </if>
+      <if test="jopenid != null">
+        JOpenID = #{jopenid,jdbcType=NVARCHAR},
+      </if>
+      <if test="jminsaledisc != null">
+        JMinSaleDisc = #{jminsaledisc,jdbcType=INTEGER},
+      </if>
+    </set>
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TUsers">
+    update dbo.TUser
+    set JUserCode = #{jusercode,jdbcType=VARCHAR},
+      JUserName = #{jusername,jdbcType=VARCHAR},
+      JPassword = #{jpassword,jdbcType=VARCHAR},
+      JQtyAmtManage = #{jqtyamtmanage,jdbcType=INTEGER},
+      JCreditCheckMark = #{jcreditcheckmark,jdbcType=BIT},
+      JCreditCheckAmt = #{jcreditcheckamt,jdbcType=BIT},
+      JUserGroupID = #{jusergroupid,jdbcType=INTEGER},
+      JNoUse = #{jnouse,jdbcType=INTEGER},
+      JQueryCost = #{jquerycost,jdbcType=BIT},
+      JSendInformID = #{jsendinformid,jdbcType=INTEGER},
+      JQueryGoodsCostID = #{jquerygoodscostid,jdbcType=BIT},
+      JRole = #{jrole,jdbcType=INTEGER},
+      JPDAChangePrice = #{jpdachangeprice,jdbcType=BIT},
+      JModifyClientCredit = #{jmodifyclientcredit,jdbcType=BIT},
+      JConsigneeName = #{jconsigneename,jdbcType=VARCHAR},
+      JConsigneeAddress = #{jconsigneeaddress,jdbcType=VARCHAR},
+      JConsigneePost = #{jconsigneepost,jdbcType=VARCHAR},
+      JConsigneeTele = #{jconsigneetele,jdbcType=VARCHAR},
+      JConsigneePhone = #{jconsigneephone,jdbcType=VARCHAR},
+      JMobileNumber = #{jmobilenumber,jdbcType=VARCHAR},
+      JSeleNoUse = #{jselenouse,jdbcType=INTEGER},
+      JRemark = #{jremark,jdbcType=NVARCHAR},
+      JNetPassword = #{jnetpassword,jdbcType=NVARCHAR},
+      JNetUser = #{jnetuser,jdbcType=INTEGER},
+      JSendCardAllDept = #{jsendcardalldept,jdbcType=INTEGER},
+      JSave0Amt = #{jsave0amt,jdbcType=INTEGER},
+      JchkNeRechrge = #{jchknerechrge,jdbcType=INTEGER},
+      JDisplayStockQty = #{jdisplaystockqty,jdbcType=INTEGER},
+      JOpenID = #{jopenid,jdbcType=NVARCHAR},
+      JMinSaleDisc = #{jminsaledisc,jdbcType=INTEGER}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,803 @@
+/*更换皮肤*/
+.WB_miniblog {
+	
+}
+
+body {
+	width: 100%;
+	min-width: 1200px;
+	margin: 0 auto;
+	background: url("../images/public/main.png") repeat-x #bee1f5;
+}
+
+/*内容*/
+.container {
+	width: 100%;
+	padding-top: 80px;
+}
+
+.contain {
+	width: 58%;
+	min-height: 865px;
+}
+
+/*导航*/
+.navigation {
+	float: left;
+	width: 200px;
+	margin-right: 20px;
+	font-size: 18px;
+	font-weight: bolder;
+	position: fixed;
+	background-color: rgba(70, 149, 194, 0.3);
+}
+
+.navigation_top {
+	width: 60%;
+	padding-left: 40px;
+}
+
+.navigation_top ul li {
+	padding-top: 14px;
+	margin-bottom: 20px;
+}
+
+.navigation_top ul li a {
+	color: #fff;
+}
+
+/*左侧列表*/
+.n1 {
+	height: 60px;
+	padding-left: 40px;
+}
+
+.n1 ul {
+	height: 100%;
+	border-bottom: solid 1px #f8f8f8;
+	border-top: solid 1px #f8f8f8;
+	margin-top: 3px;
+}
+
+.n1 ul li {
+	padding-top: 15px;
+	padding-left: 25px;
+}
+
+.n1 ul li a {
+	color: #fff;
+}
+
+.n2 {
+	height: 268px;
+	padding-left: 40px;
+}
+
+.n3 {
+	text-align: center;
+	color: #fff;
+}
+
+.n2 ul {
+	height: 100%;
+	border-bottom: solid 1px #f8f8f8;
+	margin-top: 3px;
+}
+
+.n2 ul li {
+	padding-top: 15px;
+	padding-left: 20px;
+}
+
+.n2 ul li a {
+	color: #fff;
+}
+
+/*详细内容*/
+.content {
+	float: left;
+	width: 720px;
+	margin-left: 220px;
+}
+
+/*ct_1*/
+.ct_1 {
+	margin-top: 20px;
+	background-color: #fff;
+}
+
+.title_area {
+	position: relative;
+	overflow: hidden;
+	height: 10px;
+	padding: 10px 10px;
+	font-weight: bold;
+}
+
+/* 评论框 */
+.comment {
+	width: 100%;
+	height: auto;
+}
+
+.comment .content {
+	width: 98%;
+	height: 120px;
+	margin: 0 1%;
+}
+
+.figure {
+	font-weight: 100;
+	font-size: 14px;
+	float: right;
+	font-family: Constantia, Georgia;
+}
+
+.cont-box {
+	width: 100%;
+	height: 80px;
+	border: 1px solid #cccccc;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	float: left;
+}
+
+.cont-box .text {
+	width: 96.6%;
+	height: 86.9%;
+	border-radius: 5px;
+	padding: 5px 10px;
+	color: #999;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	resize: none;
+	border: none;
+	outline: none;
+	float: left;
+}
+
+.tools-box {
+	width: 100%;
+	height: 30px;
+	border: 1px solid #cccccc;
+	margin-top: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	float: left;
+}
+
+.tools-box .operator-box-btn {
+	width: 85%;
+	height: 30px;
+	float: left;
+}
+
+.tools-box .operator-box-btn .face-icon {
+	display: block;
+	float: left;
+	margin-top: 6px;
+	margin-left: 10px;
+	font-family: "微软雅黑";
+	font-size: 22px;
+	color: #ffc09f;
+	cursor: pointer;
+}
+
+.tools-box .operator-box-btn .img-icon {
+	display: block;
+	float: left;
+	margin-top: 5px;
+	margin-left: 10px;
+	font-family: "微软雅黑";
+	font-size: 33px;
+	font-weight: lighter;
+	color: #99cc66;
+	cursor: pointer;
+}
+
+.tools-box .submit-btn {
+	width: 15%;
+	height: 30px;
+	float: right;
+}
+
+.tools-box .submit-btn input {
+	width: 100%;
+	height: 100%;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: #ffc09f;
+}
+
+/* 回复信息 */
+#info-show {
+	float: left;
+	width: 100%;
+	margin-top: 20px;
+}
+
+#info-show li {
+	width: 100%;
+	height: auto;
+	padding: 10px 0 0 0;
+	float: left;
+	background-color: #fff;
+	margin-bottom: 10px;
+	border-radius: 6px
+}
+
+#info-show .head-face {
+	width: 10%;
+	float: left;
+	text-align: center;
+}
+
+#info-show .head-face img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	box-shadow: 0 0 8px #c0c0c0;
+}
+
+#info-show .reply-cont {
+	width: 89%;
+	padding-right: 1%;
+	float: right;
+}
+
+#info-show .reply-cont p {
+	min-height: 20px;
+	line-height: 20px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+
+#info-show .reply-cont .userName {
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+#info-show .reply-cont .msgTime {
+	color: #808080;
+	margin-bottom: 5px;
+}
+
+#info-show .reply-cont .comment-body {
+	color: #999;
+	max-height: 400px;
+}
+
+#info-show .comment-footer {
+	width: 100%;
+	height: 30px;
+	font-size: 16px;
+	color: #0d0d0d;
+	margin-top: 10px;
+}
+
+#info-show .comment-footer .cftr_ul {
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+
+#info-show .comment-footer .cftr_s {
+	float: left;
+	width: 24%;
+	display: block;
+	margin: 7px 0;
+	border-left-width: 1px;
+	border-left-style: solid;
+	line-height: 22px;
+}
+
+#info-show .comment-footer .bor {
+	border: none;
+}
+
+/*选择是否可见*/
+.func {
+	float: right;
+	padding: 5px 0 0;
+	text-align: right;
+	width: 170px;
+	height: 40px;
+	white-space: nowrap;
+}
+
+.func input {
+	width: 100px;
+	height: 42px;
+}
+
+/*表情---分类选择*/
+.kind {
+	float: left;
+	width: 380px;
+	height: 40px;
+	padding: 5px 0 0;
+}
+
+.kind ul li {
+	width: 60px;
+	height: 40px;
+	float: left;
+	line-height: 40px;
+}
+
+/*ct-2*/
+/*分类+搜索*/
+.WB_tab_a {
+	width: 100%;
+	height: 30px;
+	margin: 0 0 10px;
+	box-shadow: -1px 0 0 rgba(0, 0, 0, 0.04), 0 -1px 0 rgba(0, 0, 0, 0.04),
+		1px 0 0 rgba(0, 0, 0, 0.04);
+	background-color: #F9F9F9;
+}
+
+.WB_tab_a ul li {
+	width: 9%;
+	height: 100%;
+	line-height: 30px;
+	float: left;
+	text-align: center;
+}
+
+.WB_tab_a ul li a {
+	color: black;
+}
+
+.WB_tab_a .w11 {
+	margin-left: 117px;
+	margin-top: 5px;
+}
+
+.WB_tab_a .w12 {
+	float: right;
+	margin-top: 5px;
+}
+
+.f_content {
+	border: 1px darkgrey solid;
+}
+
+.flc_u {
+	height: 10px;
+}
+
+/*循环显示分享内容*/
+.ww {
+	margin: 15px 0 15px 0;
+}
+
+.w1 {
+	background-color: #F9F9F9;
+	width: 100%;
+	height: 55px;
+	line-height: 24px;
+}
+
+.w1 ul li {
+	float: left;
+	margin-left: 5px;
+}
+
+.w2 {
+	padding: 10px;
+	background-color: #fff;
+	border-top: solid 1px #a6cbe7;
+}
+
+.w1 span {
+	float: right;
+	padding-right: 10px;
+}
+
+/*内容end*/
+/*用户信息*/
+.contain-r {
+	float: right;
+	margin: 20px 10px;
+	position: relative;
+	width: 240px;
+	height: 100%;
+}
+
+.contain-r .cc {
+	height: 180px;
+	background: url("../images/main/69.jpg") no-repeat;
+}
+
+.contain-r .cc .cc1 {
+	height: 55px;
+	padding: 15px 0;
+	text-align: center;
+}
+
+.cc1 .cc1_img {
+	position: relative;
+	margin: 0 auto;
+	width: 55px;
+	height: 55px;
+	overflow: hidden;
+	border-radius: 30px;
+}
+
+.contain-r .cc .cc2 {
+	height: 20%;
+	text-align: center;
+	font-weight: bold;
+	color: #000;
+	font: 20px/1.5 'Arial', 'Microsoft YaHei';
+}
+
+.contain-r .cc .cc3 {
+	height: 30%;
+	text-align: center;
+}
+
+.contain-r .cc .cc3 ul li {
+	float: left;
+}
+
+.contain-r .cc .cc3 li a {
+	text-decoration: none;
+	color: #5d5d5d;
+}
+
+.contain-r .cc .cc3 li a:hover {
+	color: red;
+}
+
+.contain-r .cc .cc3 li {
+	margin-left: 40px;
+}
+
+.contain-r .cc .cc3 strong {
+	display: block;
+	margin: 2px 0 6px 0;
+	font-family: Tahoma;
+	font-weight: 400;
+	line-height: 14px;
+	font-size: 18px;
+}
+
+/*右侧热门话题*/
+.WB_cardwrap {
+	height: 300px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	margin-top: 11px;
+	background-color: #F9F9F9;
+}
+
+.WB_cardwrap ul li span {
+	float: right;
+	margin-right: 10px;
+	color: #5d5d5d;
+}
+
+.WB_cardwrap ul {
+	height: 100%;
+}
+
+.WB_cardwrap ul li {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.WB_cardwrap ul li a {
+	color: #5d5d5d;
+}
+
+.WB_cardwrap a:hover {
+	color: red;
+}
+
+.wc {
+	height: 40px;
+	background-color: #F9F9F9;
+}
+
+.wc1 {
+	text-align: center;
+	height: 100%;
+	padding-top: 8px;
+	border-top: solid 1px #333333;
+}
+
+.wc ul li a {
+	color: #5d5d5d;
+}
+
+/*右侧广告*/
+.wc2 {
+	height: 300px;
+	margin-top: 11px;
+	background-color: #F9F9F9;
+}
+
+.wc2 .wc21 {
+	text-align: center;
+	padding-top: 21px;
+}
+
+.wc2 .wc22 {
+	float: right;
+	margin-right: 25px;
+}
+
+/*右下角好友关注状态*/
+.wc3 {
+	height: 40px;
+	margin-top: 11px;
+	border-bottom: solid 1px #333333;
+	background-color: #F9F9F9;
+}
+
+.wc3 li {
+	padding-left: 10px;
+	padding-top: 9px;
+}
+
+.wc4 {
+	height: 300px;
+	background-color: #F9F9F9;
+}
+
+.wc4 ul {
+	height: 100%;
+}
+
+.wc4 li span {
+	float: right;
+	padding-right: 5px
+}
+
+.wc4 ul li {
+	padding-top: 10px;
+}
+
+.wc4 li a {
+	color: darksalmon;
+}
+
+/*右下角公告栏*/
+.wc5 {
+	height: 110px;
+	background-color: #F9F9F9;
+}
+
+.wc5 li {
+	padding-top: 15px;
+}
+
+.wc5 li a {
+	color: darksalmon;
+}
+
+.W_person_info {
+	height: 30px;
+	overflow: hidden;
+	text-align: center;
+	line-height: 19px;
+	color: #0d0d0d;
+	background-color: #F9F9F9;
+	margin-top: 11px;
+}
+
+.www {
+	height: 30px;
+	background-color: #F9F9F9;
+}
+
+.www ul li {
+	float: left;
+}
+
+.head li a:hover {
+	color: red;
+}
+
+.ftr_d {
+	height: 80px;
+}
+
+/*音乐*/
+.wb_music_show {
+	position: fixed;
+	width: 200px;
+	height: 20px;
+	bottom: 20px;
+	margin-left: 0px;
+	background-color: #5d5d5d;
+	border: 1px double #0d0d0d;
+	text-align: center;
+	padding: 10px;
+}
+
+.wb_music_show_up {
+	position: fixed;
+	bottom: 20px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	background-color: #5d5d5d;
+	border: 1px #0d0d0d solid;
+	padding: 10px;
+}
+
+.wb_music_show_button {
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	float: right;
+	border-left: 1px #0d0d0d solid;
+}
+
+/*私信*/
+.wb_litter {
+	position: fixed;
+	width: 200px;
+	height: 20px;
+	bottom: 0px;
+	z-index: 2;
+	right: 0px;
+	margin-right: 0px;
+	background-color: #F9F9F9;
+	border: 1px double #5d5d5d;
+	text-align: center;
+	line-height: 20px;
+	padding: 10px;
+}
+
+.wb_litter_content {
+	position: fixed;
+	width: 300px;
+	height: 300px;
+	bottom: 0px;
+	z-index: 2;
+	right: 0px;
+	margin-right: 0px;
+	background-color: #F9F9F9;
+	border: 1px double #5d5d5d;
+	text-align: center;
+	line-height: 20px;
+	padding: 10px;
+}
+
+.wb_litter_delete {
+	width: 20px;
+	height: 20px;
+	float: right;
+	text-align: center;
+	line-height: 20px;
+}
+/*上传图片*/
+.WsendImg {
+	position: absolute;
+	z-index: 9999;
+	width: 300px;
+	left: 572px;
+	top: 245px;
+	display: none;
+}
+
+.Wimg_Content {
+	position: relative;
+	background: #fff;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.2);
+}
+/*关闭并取消上传*/
+.W_close .close {
+	position: absolute;
+	z-index: 2;
+	right: 6px;
+	top: 5px;
+	font-size: 18px;
+	cursor: pointer;
+}
+/*内容*/
+.W_inner .W_clearfix {
+	width: 260px;
+	overflow: hidden;
+	padding: 20px 20px 10px 20px;
+	_position: relative;
+}
+
+.W_layer_con_tit {
+	margin: -20px 0 0;
+	padding: 28px 0 0;
+	text-align: left;
+}
+
+.W_layer_con_tit h1 {
+	margin: -11px 0 10px;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.W_layer_con_tit h2 {
+	margin: 0 0 10px;
+	line-height: 17px;
+}
+
+.W_clearfix .add {
+	float: left;
+	position: relative;
+	margin: 0 6px 6px 0;
+	text-align: center;
+	overflow: hidden;
+	width: 76px;
+	height: 76px;
+	border: 2px dashed #ccc;
+	background: none;
+}
+
+.W_clearfix .add .Wadd {
+	display: block;
+	font-size: 40px;
+	font-weight: bold;
+	color: #ccc;
+	margin-top: 28px;
+}
+
+.W_clearfix  .addImg {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: block;
+	overflow: hidden;
+	opacity: 0;
+	width: 80px;
+	height: 80px;
+	background-color: rgb(0, 0, 0);
+}
+
+.W_clearfix  .addImgPic {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: block;
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+}
+
+#imgPic {
+	width: 80px;
+	height: 80px;
+}
+/*显示缩略图*/
+.W_clearfix .pic {
+	float: left;
+	position: relative;
+	margin: 0 6px 6px 0;
+	text-align: center;
+	overflow: hidden;
+	width: 76px;
+	height: 76px;
+	border: 2px dashed white;
+	background: none;
+}
+
+/*这儿是为了改变上传按钮样式把input设为了透明色*/
+input[id='file'] {
+	width: 80px;
+	height: 80px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	position: absolute;
+	top: 0;
+	right: 0;
+}

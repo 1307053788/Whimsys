@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TDepartmentMapper">
+  <resultMap id="TDepartmentResultMap" type="com.whimsy.entity.TDepartment">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="JClassCode" jdbcType="VARCHAR" property="jclasscode" />
+    <result column="JClassName" jdbcType="VARCHAR" property="jclassname" />
+    <result column="JParentID" jdbcType="INTEGER" property="jparentid" />
+    <result column="JDeptType" jdbcType="INTEGER" property="jdepttype" />
+    <result column="JEmail" jdbcType="VARCHAR" property="jemail" />
+    <result column="JTele" jdbcType="VARCHAR" property="jtele" />
+    <result column="JAddress" jdbcType="VARCHAR" property="jaddress" />
+    <result column="JFunctionID" jdbcType="INTEGER" property="jfunctionid" />
+    <result column="JAreaID" jdbcType="INTEGER" property="jareaid" />
+    <result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+    <result column="JIndieDeptID" jdbcType="INTEGER" property="jindiedeptid" />
+    <result column="JMobileNumber" jdbcType="VARCHAR" property="jmobilenumber" />
+    <result column="JAddXYLocation" jdbcType="VARCHAR" property="jaddxylocation" />
+    <result column="JNoUse" jdbcType="BIT" property="jnouse" />
+    <result column="JEmpID" jdbcType="INTEGER" property="jempid" />
+    <result column="JIsDispOnApp" jdbcType="INTEGER" property="jisdisponapp" />
+    <result column="JCountryCode" jdbcType="VARCHAR" property="jcountrycode" />
+    <result column="JProvinceCode" jdbcType="VARCHAR" property="jprovincecode" />
+    <result column="JCityCode" jdbcType="VARCHAR" property="jcitycode" />
+    <result column="JCountyCode" jdbcType="VARCHAR" property="jcountycode" />
+    <result column="JLongitude" jdbcType="VARCHAR" property="jlongitude" />
+    <result column="JDimension" jdbcType="VARCHAR" property="jdimension" />
+    <result column="JRadius" jdbcType="VARCHAR" property="jradius" />
+    <result column="JSign" jdbcType="DECIMAL" property="jsign" />
+    <result column="JScoreforrmb" jdbcType="DECIMAL" property="jscoreforrmb" />
+    <result column="JFullrmb" jdbcType="DECIMAL" property="jfullrmb" />
+    <result column="JReduce" jdbcType="DECIMAL" property="jreduce" />
+    <result column="JPhoto" jdbcType="VARCHAR" property="jphoto" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, JClassCode, JClassName, JParentID, JDeptType, JEmail, JTele, JAddress, JFunctionID, 
+    JAreaID, JMemo, JIndieDeptID, JMobileNumber, JAddXYLocation, JNoUse, JEmpID, JIsDispOnApp, 
+    JCountryCode, JProvinceCode, JCityCode, JCountyCode, JLongitude, JDimension, JRadius
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="TDepartmentResultMap">
+    select 
+    <include refid="Base_Column_List" />,
+    isnull(JSign,1) as jsign,
+    isnull(JScoreforrmb,100) as jscoreforrmb,
+    isnull(JFullrmb,100) as jfullrmb,
+    isnull(JReduce,20) as jreduce,
+    isnull(JPhoto,'') as jphoto
+    from dbo.TDepartment
+    where JID = #{jid,jdbcType=INTEGER}
+  </select>
+  <!-- 查询签到获得积分数 -->
+  <select id="selectSign" parameterType="java.lang.Integer" resultMap="TDepartmentResultMap">
+    select 
+    isnull(JSign,0) as jsign
+    from dbo.TDepartment
+    where JID = #{0}
+  </select>
+  <!-- 查询积分数兑换RMB数 -->
+  <select id="selectScore" parameterType="java.lang.Integer" resultMap="TDepartmentResultMap">
+    select 
+    isnull(JScoreforrmb,0) as jscoreforrmb
+    from dbo.TDepartment
+    where JID = #{0}
+  </select>
+  <!-- 查询满n元减配送费 -->
+  <select id="selectPeisong" parameterType="java.lang.Integer" resultMap="TDepartmentResultMap">
+    select 
+    isnull(JFullrmb,0) as jfullrmb,
+    isnull(JReduce,0) as jreduce
+    from dbo.TDepartment
+    where JID = #{0}
+  </select>  
+  <!-- 查询所有店铺信息 -->
+  <select id="selectAll" parameterType="com.whimsy.entity.TDepartment" resultMap="TDepartmentResultMap">
+    select 
+    <include refid="Base_Column_List" />,
+    isnull(JSign,1) as jsign,
+    isnull(JScoreforrmb,100) as jscoreforrmb,
+    isnull(JFullrmb,100) as jfullrmb,
+    isnull(JReduce,20) as jreduce,
+    isnull(JPhoto,'') as jphoto
+    from dbo.TDepartment
+    <!-- where JID = #{jid,jdbcType=INTEGER} -->
+  </select>
+  <!-- 查询店铺信息 -->
+  <select id="selectOne" parameterType="java.lang.Integer" resultMap="TDepartmentResultMap">
+    select 
+    <include refid="Base_Column_List" />,
+    isnull(JSign,1) as jsign,
+    isnull(JScoreforrmb,100) as jscoreforrmb,
+    isnull(JFullrmb,100) as jfullrmb,
+    isnull(JReduce,20) as jreduce,
+    isnull(JPhoto,'') as jphoto
+    from dbo.TDepartment
+    where JParentID = 0 
+    and JID in (
+    	select JDeptID 
+    	FROM dbo.TUserDeptFunc
+    	where JUserID = #{0}
+    	)
+  </select>
+  <!-- 查询店铺信息 -->
+  <select id="selectTwo" parameterType="java.lang.Integer" resultMap="TDepartmentResultMap">
+    select 
+    <include refid="Base_Column_List" />,
+    isnull(JSign,1) as jsign,
+    isnull(JScoreforrmb,100) as jscoreforrmb,
+    isnull(JFullrmb,100) as jfullrmb,
+    isnull(JReduce,20) as jreduce,
+    isnull(JPhoto,'') as jphoto
+    from dbo.TDepartment
+    where JID = (
+    	select JDeptID 
+    	FROM dbo.TUserDeptFunc
+    	where JUserID = #{0}
+    	)
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TDepartment
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TDepartment">
+    insert into dbo.TDepartment (JID, JClassCode, JClassName, 
+      JParentID, JDeptType, JEmail, 
+      JTele, JAddress, JFunctionID, 
+      JAreaID, JMemo, JIndieDeptID, 
+      JMobileNumber, JAddXYLocation, JNoUse, 
+      JEmpID, JIsDispOnApp, JCountryCode, 
+      JProvinceCode, JCityCode, JCountyCode, 
+      JLongitude, JDimension, JRadius
+      )
+    values (#{jid,jdbcType=INTEGER}, #{jclasscode,jdbcType=VARCHAR}, #{jclassname,jdbcType=VARCHAR}, 
+      #{jparentid,jdbcType=INTEGER}, #{jdepttype,jdbcType=INTEGER}, #{jemail,jdbcType=VARCHAR}, 
+      #{jtele,jdbcType=VARCHAR}, #{jaddress,jdbcType=VARCHAR}, #{jfunctionid,jdbcType=INTEGER}, 
+      #{jareaid,jdbcType=INTEGER}, #{jmemo,jdbcType=VARCHAR}, #{jindiedeptid,jdbcType=INTEGER}, 
+      #{jmobilenumber,jdbcType=VARCHAR}, #{jaddxylocation,jdbcType=VARCHAR}, #{jnouse,jdbcType=BIT}, 
+      #{jempid,jdbcType=INTEGER}, #{jisdisponapp,jdbcType=INTEGER}, #{jcountrycode,jdbcType=VARCHAR}, 
+      #{jprovincecode,jdbcType=VARCHAR}, #{jcitycode,jdbcType=VARCHAR}, #{jcountycode,jdbcType=VARCHAR}, 
+      #{jlongitude,jdbcType=VARCHAR}, #{jdimension,jdbcType=VARCHAR}, #{jradius,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TDepartment">
+    insert into dbo.TDepartment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jclasscode != null">
+        JClassCode,
+      </if>
+      <if test="jclassname != null">
+        JClassName,
+      </if>
+      <if test="jparentid != null">
+        JParentID,
+      </if>
+      <if test="jdepttype != null">
+        JDeptType,
+      </if>
+      <if test="jemail != null">
+        JEmail,
+      </if>
+      <if test="jtele != null">
+        JTele,
+      </if>
+      <if test="jaddress != null">
+        JAddress,
+      </if>
+      <if test="jfunctionid != null">
+        JFunctionID,
+      </if>
+      <if test="jareaid != null">
+        JAreaID,
+      </if>
+      <if test="jmemo != null">
+        JMemo,
+      </if>
+      <if test="jindiedeptid != null">
+        JIndieDeptID,
+      </if>
+      <if test="jmobilenumber != null">
+        JMobileNumber,
+      </if>
+      <if test="jaddxylocation != null">
+        JAddXYLocation,
+      </if>
+      <if test="jnouse != null">
+        JNoUse,
+      </if>
+      <if test="jempid != null">
+        JEmpID,
+      </if>
+      <if test="jisdisponapp != null">
+        JIsDispOnApp,
+      </if>
+      <if test="jcountrycode != null">
+        JCountryCode,
+      </if>
+      <if test="jprovincecode != null">
+        JProvinceCode,
+      </if>
+      <if test="jcitycode != null">
+        JCityCode,
+      </if>
+      <if test="jcountycode != null">
+        JCountyCode,
+      </if>
+      <if test="jlongitude != null">
+        JLongitude,
+      </if>
+      <if test="jdimension != null">
+        JDimension,
+      </if>
+      <if test="jradius != null">
+        JRadius,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jclasscode != null">
+        #{jclasscode,jdbcType=VARCHAR},
+      </if>
+      <if test="jclassname != null">
+        #{jclassname,jdbcType=VARCHAR},
+      </if>
+      <if test="jparentid != null">
+        #{jparentid,jdbcType=INTEGER},
+      </if>
+      <if test="jdepttype != null">
+        #{jdepttype,jdbcType=INTEGER},
+      </if>
+      <if test="jemail != null">
+        #{jemail,jdbcType=VARCHAR},
+      </if>
+      <if test="jtele != null">
+        #{jtele,jdbcType=VARCHAR},
+      </if>
+      <if test="jaddress != null">
+        #{jaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jfunctionid != null">
+        #{jfunctionid,jdbcType=INTEGER},
+      </if>
+      <if test="jareaid != null">
+        #{jareaid,jdbcType=INTEGER},
+      </if>
+      <if test="jmemo != null">
+        #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jindiedeptid != null">
+        #{jindiedeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jmobilenumber != null">
+        #{jmobilenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jaddxylocation != null">
+        #{jaddxylocation,jdbcType=VARCHAR},
+      </if>
+      <if test="jnouse != null">
+        #{jnouse,jdbcType=BIT},
+      </if>
+      <if test="jempid != null">
+        #{jempid,jdbcType=INTEGER},
+      </if>
+      <if test="jisdisponapp != null">
+        #{jisdisponapp,jdbcType=INTEGER},
+      </if>
+      <if test="jcountrycode != null">
+        #{jcountrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jprovincecode != null">
+        #{jprovincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcitycode != null">
+        #{jcitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcountycode != null">
+        #{jcountycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jlongitude != null">
+        #{jlongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="jdimension != null">
+        #{jdimension,jdbcType=VARCHAR},
+      </if>
+      <if test="jradius != null">
+        #{jradius,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TDepartment">
+    update dbo.TDepartment
+    <set>
+      <if test="jclasscode != null">
+        JClassCode = #{jclasscode,jdbcType=VARCHAR},
+      </if>
+      <if test="jclassname != null">
+        JClassName = #{jclassname,jdbcType=VARCHAR},
+      </if>
+      <if test="jparentid != null">
+        JParentID = #{jparentid,jdbcType=INTEGER},
+      </if>
+      <if test="jdepttype != null">
+        JDeptType = #{jdepttype,jdbcType=INTEGER},
+      </if>
+      <if test="jemail != null">
+        JEmail = #{jemail,jdbcType=VARCHAR},
+      </if>
+      <if test="jtele != null">
+        JTele = #{jtele,jdbcType=VARCHAR},
+      </if>
+      <if test="jaddress != null">
+        JAddress = #{jaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jfunctionid != null">
+        JFunctionID = #{jfunctionid,jdbcType=INTEGER},
+      </if>
+      <if test="jareaid != null">
+        JAreaID = #{jareaid,jdbcType=INTEGER},
+      </if>
+      <if test="jmemo != null">
+        JMemo = #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jindiedeptid != null">
+        JIndieDeptID = #{jindiedeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jmobilenumber != null">
+        JMobileNumber = #{jmobilenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jaddxylocation != null">
+        JAddXYLocation = #{jaddxylocation,jdbcType=VARCHAR},
+      </if>
+      <if test="jnouse != null">
+        JNoUse = #{jnouse,jdbcType=BIT},
+      </if>
+      <if test="jempid != null">
+        JEmpID = #{jempid,jdbcType=INTEGER},
+      </if>
+      <if test="jisdisponapp != null">
+        JIsDispOnApp = #{jisdisponapp,jdbcType=INTEGER},
+      </if>
+      <if test="jcountrycode != null">
+        JCountryCode = #{jcountrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jprovincecode != null">
+        JProvinceCode = #{jprovincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcitycode != null">
+        JCityCode = #{jcitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcountycode != null">
+        JCountyCode = #{jcountycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jlongitude != null">
+        JLongitude = #{jlongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="jdimension != null">
+        JDimension = #{jdimension,jdbcType=VARCHAR},
+      </if>
+      <if test="jradius != null">
+        JRadius = #{jradius,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TDepartment">
+    update dbo.TDepartment
+    set JClassCode = #{jclasscode,jdbcType=VARCHAR},
+      JClassName = #{jclassname,jdbcType=VARCHAR},
+      JParentID = #{jparentid,jdbcType=INTEGER},
+      JDeptType = #{jdepttype,jdbcType=INTEGER},
+      JEmail = #{jemail,jdbcType=VARCHAR},
+      JTele = #{jtele,jdbcType=VARCHAR},
+      JAddress = #{jaddress,jdbcType=VARCHAR},
+      JFunctionID = #{jfunctionid,jdbcType=INTEGER},
+      JAreaID = #{jareaid,jdbcType=INTEGER},
+      JMemo = #{jmemo,jdbcType=VARCHAR},
+      JIndieDeptID = #{jindiedeptid,jdbcType=INTEGER},
+      JMobileNumber = #{jmobilenumber,jdbcType=VARCHAR},
+      JAddXYLocation = #{jaddxylocation,jdbcType=VARCHAR},
+      JNoUse = #{jnouse,jdbcType=BIT},
+      JEmpID = #{jempid,jdbcType=INTEGER},
+      JIsDispOnApp = #{jisdisponapp,jdbcType=INTEGER},
+      JCountryCode = #{jcountrycode,jdbcType=VARCHAR},
+      JProvinceCode = #{jprovincecode,jdbcType=VARCHAR},
+      JCityCode = #{jcitycode,jdbcType=VARCHAR},
+      JCountyCode = #{jcountycode,jdbcType=VARCHAR},
+      JLongitude = #{jlongitude,jdbcType=VARCHAR},
+      JDimension = #{jdimension,jdbcType=VARCHAR},
+      JRadius = #{jradius,jdbcType=VARCHAR}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

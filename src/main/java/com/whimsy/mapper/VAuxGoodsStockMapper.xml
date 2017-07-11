@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.VAuxGoodsStockMapper">
+  <resultMap id="VAuxGoodsStockResultMap" type="com.whimsy.entity.VAuxGoodsStock">
+    <result column="JDeptID" jdbcType="INTEGER" property="jdeptid" />
+    <result column="JStockID" jdbcType="INTEGER" property="jstockid" />
+    <result column="JClassID" jdbcType="INTEGER" property="jclassid" />
+    <result column="JAuxAttID1" jdbcType="INTEGER" property="jauxattid1" />
+    <result column="JAuxAttID2" jdbcType="INTEGER" property="jauxattid2" />
+    <result column="JStockQty" jdbcType="DECIMAL" property="jstockqty" />
+    <result column="JNowQty" jdbcType="DECIMAL" property="jnowqty" />
+    <result column="JEnsendQty" jdbcType="DECIMAL" property="jensendqty" />
+    <result column="JCostAmt" jdbcType="DECIMAL" property="jcostamt" />
+    <result column="JCostPrice" jdbcType="DECIMAL" property="jcostprice" />
+    <result column="JNoUse" jdbcType="BIT" property="jnouse" />
+    <result column="JMainProductsMark" jdbcType="INTEGER" property="jmainproductsmark" />
+    <association property="tGoods" resultMap="TGoodsResultMap" />
+    </resultMap>  
+      
+    <resultMap type="com.whimsy.entity.TGoods" id="TGoodsResultMap">
+    <!-- <collection property="tGoods" ofType="com.whimsy.entity.TGoods"> -->
+    	<id column="JID" jdbcType="INTEGER" property="jid" />
+	    <result column="JGoodsCode" jdbcType="VARCHAR" property="jgoodscode" />
+	    <result column="JGoodsName" jdbcType="VARCHAR" property="jgoodsname" />
+	    <result column="JModel" jdbcType="VARCHAR" property="jmodel" />
+	    <result column="JUnit" jdbcType="VARCHAR" property="junit" />
+	    <result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+	    <result column="JClassID" jdbcType="INTEGER" property="jclassid" />
+	    <result column="JSupClientID" jdbcType="INTEGER" property="jsupclientid" />
+	    <result column="JBarCode" jdbcType="VARCHAR" property="jbarcode" />
+	    <result column="JPointSalePrice" jdbcType="DECIMAL" property="jpointsaleprice" />
+	    <result column="JSale3Price" jdbcType="DECIMAL" property="jsale3price" />
+	    <result column="JSale4Price" jdbcType="DECIMAL" property="jsale4price" />
+	    <result column="JSale5Price" jdbcType="DECIMAL" property="jsale5price" />
+	    <result column="JWholesalePrice" jdbcType="DECIMAL" property="jwholesaleprice" />
+	    <result column="JRefCostPrice" jdbcType="DECIMAL" property="jrefcostprice" />
+	    <result column="JMinInPrice" jdbcType="DECIMAL" property="jmininprice" />
+	    <result column="JMaxInPrice" jdbcType="DECIMAL" property="jmaxinprice" />
+	    <result column="JMainProductsMark" jdbcType="INTEGER" property="jmainproductsmark" />
+	    <result column="JNoUse" jdbcType="BIT" property="jnouse" />
+	    <result column="JAuxClassID1" jdbcType="INTEGER" property="jauxclassid1" />
+	    <result column="JAuxClassID2" jdbcType="INTEGER" property="jauxclassid2" />
+	    <result column="JSupplyType" jdbcType="INTEGER" property="jsupplytype" />
+	    <result column="JPurchPeriod" jdbcType="INTEGER" property="jpurchperiod" />
+	    <result column="JSeasonID" jdbcType="INTEGER" property="jseasonid" />
+	    <result column="JBrandID" jdbcType="INTEGER" property="jbrandid" />
+	    <result column="JPlace" jdbcType="VARCHAR" property="jplace" />
+	    <result column="JSex" jdbcType="INTEGER" property="jsex" />
+	    <result column="JPyCode" jdbcType="VARCHAR" property="jpycode" />
+	    <result column="JPosIntegral" jdbcType="DECIMAL" property="jposintegral" />
+	    <result column="JClrPrice" jdbcType="DECIMAL" property="jclrprice" />
+	    <result column="JAuthorisationCode" jdbcType="VARCHAR" property="jauthorisationcode" />
+	    <result column="JQualityPeriod" jdbcType="INTEGER" property="jqualityperiod" />
+	    <result column="JUseAuxID" jdbcType="INTEGER" property="juseauxid" />
+	    <result column="JTaxRate" jdbcType="DECIMAL" property="jtaxrate" />
+	    <result column="JDrawingNumber" jdbcType="VARCHAR" property="jdrawingnumber" />
+	    <result column="JWeigh" jdbcType="INTEGER" property="jweigh" />
+	    <result column="JChangePrice" jdbcType="INTEGER" property="jchangeprice" />
+	    <result column="JRetailDiscRate" jdbcType="DECIMAL" property="jretaildiscrate" />
+	    <result column="JSale6Price" jdbcType="DECIMAL" property="jsale6price" />
+	    <result column="JSale7Price" jdbcType="DECIMAL" property="jsale7price" />
+	    <result column="JJointDisc" jdbcType="DECIMAL" property="jjointdisc" />
+	    <result column="JTaxPointSalePrice" jdbcType="DECIMAL" property="jtaxpointsaleprice" />
+	    <result column="JTaxWholesalePrice" jdbcType="DECIMAL" property="jtaxwholesaleprice" />
+	    <result column="JTaxSale3Price" jdbcType="DECIMAL" property="jtaxsale3price" />
+	    <result column="JTaxSale4Price" jdbcType="DECIMAL" property="jtaxsale4price" />
+	    <result column="JTaxSale5Price" jdbcType="DECIMAL" property="jtaxsale5price" />
+	    <result column="JTaxSale6Price" jdbcType="DECIMAL" property="jtaxsale6price" />
+	    <result column="JTaxSale7Price" jdbcType="DECIMAL" property="jtaxsale7price" />
+	    <result column="JMaterialID" jdbcType="INTEGER" property="jmaterialid" />
+	    <result column="JSize" jdbcType="VARCHAR" property="jsize" />
+	    <result column="JColorID" jdbcType="INTEGER" property="jcolorid" />
+	    <result column="JHuaJianID" jdbcType="INTEGER" property="jhuajianid" />
+	    <result column="JClassID2" jdbcType="INTEGER" property="jclassid2" />
+	    <result column="JClassID3" jdbcType="INTEGER" property="jclassid3" />
+	    <result column="JTotalUseQty" jdbcType="DECIMAL" property="jtotaluseqty" />
+	    <result column="JMakeRule" jdbcType="VARCHAR" property="jmakerule" />
+	    <result column="JShareUse" jdbcType="INTEGER" property="jshareuse" />
+	    <result column="JEditDeptID" jdbcType="INTEGER" property="jeditdeptid" />
+	    <result column="JGoodsAttribute" jdbcType="VARCHAR" property="jgoodsattribute" />
+	    <result column="JModifyTime" jdbcType="TIMESTAMP" property="jmodifytime" />
+	    <result column="JAttributeID" jdbcType="INTEGER" property="jattributeid" />
+	    <result column="JPluCode" jdbcType="VARCHAR" property="jplucode" />
+	    <result column="JHashCode" jdbcType="VARCHAR" property="jhashcode" />
+	    <result column="JCounterID" jdbcType="INTEGER" property="jcounterid" />
+	    <result column="JCubage" jdbcType="DECIMAL" property="jcubage" />
+	    <result column="JWeight" jdbcType="DECIMAL" property="jweight" />
+	    <result column="JIsOnSale" jdbcType="INTEGER" property="jisonsale" />
+	    <result column="JGoodsTypeID" jdbcType="INTEGER" property="jgoodstypeid" />
+	    <result column="JMarketPrice" jdbcType="DECIMAL" property="jmarketprice" />
+	    <result column="JListPicID" jdbcType="NVARCHAR" property="jlistpicid" />
+	    <result column="JGoodsKeyWords" jdbcType="NVARCHAR" property="jgoodskeywords" />
+	    <result column="JSalerecord" jdbcType="INTEGER" property="jsalerecord" />
+	    <result column="JVisitrecord" jdbcType="INTEGER" property="jvisitrecord" />
+	    <result column="JDetailName" jdbcType="NVARCHAR" property="jdetailname" />
+	    <result column="JPostageType" jdbcType="INTEGER" property="jpostagetype" />
+	    <result column="JDeliveryType" jdbcType="INTEGER" property="jdeliverytype" />
+	    <result column="JDeliverTo" jdbcType="INTEGER" property="jdeliverto" />
+	    <result column="JDeliverDate" jdbcType="INTEGER" property="jdeliverdate" />
+	    <result column="JPickTime" jdbcType="INTEGER" property="jpicktime" />
+	    <result column="JNoIntegral" jdbcType="INTEGER" property="jnointegral" />
+	    <result column="JServiceRate" jdbcType="DECIMAL" property="jservicerate" />
+	    <result column="JSourcePlace" jdbcType="NVARCHAR" property="jsourceplace" />
+	    <result column="JQualityPeriodMonth" jdbcType="INTEGER" property="jqualityperiodmonth" />
+	    <result column="JNetContent" jdbcType="NVARCHAR" property="jnetcontent" />
+	    <result column="JEndDate" jdbcType="TIMESTAMP" property="jenddate" />
+	    <result column="JStoreageMethod" jdbcType="NVARCHAR" property="jstoreagemethod" />
+	    <result column="JPackingModel" jdbcType="NVARCHAR" property="jpackingmodel" />
+	    <result column="JBurdening" jdbcType="NVARCHAR" property="jburdening" />
+	    <result column="JNutrientContent" jdbcType="NVARCHAR" property="jnutrientcontent" />
+	    <result column="JNoDisc" jdbcType="BIT" property="jnodisc" />
+	    <result column="JLevelID" jdbcType="INTEGER" property="jlevelid" />
+	    <result column="JMinOrderQty" jdbcType="DECIMAL" property="jminorderqty" />
+	    <result column="JCountryUnitCode" jdbcType="VARCHAR" property="jcountryunitcode" />
+	    <result column="JCityUnitCode" jdbcType="VARCHAR" property="jcityunitcode" />
+	    <result column="JCustomStatusID" jdbcType="VARCHAR" property="jcustomstatusid" />
+	    <result column="JPostMartDate" jdbcType="TIMESTAMP" property="jpostmartdate" />
+	    <result column="JIsTop" jdbcType="INTEGER" property="jistop" />
+	    <result column="JMonthSaleQty" jdbcType="DECIMAL" property="jmonthsaleqty" />
+	    <result column="JMonthSaleRanking" jdbcType="INTEGER" property="jmonthsaleranking" />
+	    
+	    <result column="JBigPhoto" jdbcType="VARCHAR" property="jbigphoto" />
+	    <result column="JSubtitle" jdbcType="VARCHAR" property="jsubtitle" />
+	    <result column="JLitPhoto" jdbcType="VARCHAR" property="jlitphoto" />
+    <!-- </collection> -->
+  </resultMap>
+  <!-- 查询展示商品列表 -->
+  <select id="getGoods" parameterType="java.lang.Integer"  resultMap="VAuxGoodsStockResultMap">
+    select 
+    bb.JStockQty as jstockqty,
+    aa.JID as jid,
+	aa.JGoodsCode as jgoodscode,
+	aa.JGoodsName as jgoodsname,
+	aa.JModel as jmodel,
+	aa.JUnit as junit,
+	aa.JMemo as jmemo,
+	aa.JClassID as jclassid,
+	aa.JSupClientID as jsupclientid,
+	aa.JBarCode as jbarcode,
+	aa.JPointSalePrice as jpointsaleprice,
+	aa.JSale3Price as jsale3price,
+	aa.JRefCostPrice as jrefcostprice,
+	aa.JMinInPrice as jmininprice,
+	aa.JPlace as jplace,
+	
+	isnull(aa.JSubtitle,'') as jsubtitle,
+	isnull(aa.JBigPhoto,'') AS jbigphoto,
+	isnull(aa.JLitPhoto,'') as jlitphoto
+	
+    FROM dbo.TGoods aa,VAuxGoodsStock bb 
+    where bb.JGoodsID = aa.JID 
+    and bb.JDeptID = #{1}
+    and aa.JClassID = bb.JClassID
+    and aa.JID in
+	(select j_id from TTwokindBill where j_twokind_id = #{0})
+  </select>
+  <!-- 查询商品关键字 -->
+  <select id="searchGoods" parameterType="com.whimsy.entity.VAuxGoodsStock"  resultMap="VAuxGoodsStockResultMap">
+    select 
+    bb.JStockQty as jstockqty,
+    aa.JID as jid,
+	aa.JGoodsCode as jgoodscode,
+	aa.JGoodsName as jgoodsname,
+	aa.JModel as jmodel,
+	aa.JUnit as junit,
+	aa.JMemo as jmemo,
+	aa.JClassID as jclassid,
+	aa.JSupClientID as jsupclientid,
+	aa.JBarCode as jbarcode,
+	aa.JPointSalePrice as jpointsaleprice,
+	aa.JSale3Price as jsale3price,
+	aa.JRefCostPrice as jrefcostprice,
+	aa.JMinInPrice as jmininprice,
+	aa.JPhoto as jphoto,
+	aa.JPlace as jplace,
+	
+	isnull(aa.JSubtitle,'') as jsubtitle,
+	isnull(aa.JBigPhoto,'') AS jbigphoto,
+	isnull(aa.JLitPhoto,'') as jlitphoto
+	
+    FROM dbo.TGoods aa,VAuxGoodsStock bb where bb.JGoodsID = aa.JID 
+    and aa.JClassID = bb.JClassID
+    and bb.JDeptID = #{jdeptid,jdbcType=INTEGER}
+    and aa.JGoodsName like '%${tGoods.jgoodsname}%'
+  </select>
+  <insert id="insert" parameterType="com.whimsy.entity.VAuxGoodsStock">
+    insert into dbo.VAuxGoodsStock (JDeptID, JStockID, JClassID, 
+      JGoodsID, JAuxAttID1, JAuxAttID2, 
+      JStockQty, JNowQty, JEnsendQty, 
+      JCostAmt, JCostPrice, JNoUse, 
+      JMainProductsMark)
+    values (#{jdeptid,jdbcType=INTEGER}, #{jstockid,jdbcType=INTEGER}, #{jclassid,jdbcType=INTEGER}, 
+      #{jgoodsid,jdbcType=INTEGER}, #{jauxattid1,jdbcType=INTEGER}, #{jauxattid2,jdbcType=INTEGER}, 
+      #{jstockqty,jdbcType=DECIMAL}, #{jnowqty,jdbcType=DECIMAL}, #{jensendqty,jdbcType=DECIMAL}, 
+      #{jcostamt,jdbcType=DECIMAL}, #{jcostprice,jdbcType=DECIMAL}, #{jnouse,jdbcType=BIT}, 
+      #{jmainproductsmark,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.VAuxGoodsStock">
+    insert into dbo.VAuxGoodsStock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jdeptid != null">
+        JDeptID,
+      </if>
+      <if test="jstockid != null">
+        JStockID,
+      </if>
+      <if test="jclassid != null">
+        JClassID,
+      </if>
+      <if test="jgoodsid != null">
+        JGoodsID,
+      </if>
+      <if test="jauxattid1 != null">
+        JAuxAttID1,
+      </if>
+      <if test="jauxattid2 != null">
+        JAuxAttID2,
+      </if>
+      <if test="jstockqty != null">
+        JStockQty,
+      </if>
+      <if test="jnowqty != null">
+        JNowQty,
+      </if>
+      <if test="jensendqty != null">
+        JEnsendQty,
+      </if>
+      <if test="jcostamt != null">
+        JCostAmt,
+      </if>
+      <if test="jcostprice != null">
+        JCostPrice,
+      </if>
+      <if test="jnouse != null">
+        JNoUse,
+      </if>
+      <if test="jmainproductsmark != null">
+        JMainProductsMark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jdeptid != null">
+        #{jdeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jstockid != null">
+        #{jstockid,jdbcType=INTEGER},
+      </if>
+      <if test="jclassid != null">
+        #{jclassid,jdbcType=INTEGER},
+      </if>
+      <if test="jgoodsid != null">
+        #{jgoodsid,jdbcType=INTEGER},
+      </if>
+      <if test="jauxattid1 != null">
+        #{jauxattid1,jdbcType=INTEGER},
+      </if>
+      <if test="jauxattid2 != null">
+        #{jauxattid2,jdbcType=INTEGER},
+      </if>
+      <if test="jstockqty != null">
+        #{jstockqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jnowqty != null">
+        #{jnowqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jensendqty != null">
+        #{jensendqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jcostamt != null">
+        #{jcostamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jcostprice != null">
+        #{jcostprice,jdbcType=DECIMAL},
+      </if>
+      <if test="jnouse != null">
+        #{jnouse,jdbcType=BIT},
+      </if>
+      <if test="jmainproductsmark != null">
+        #{jmainproductsmark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

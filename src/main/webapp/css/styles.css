@@ -1,0 +1,16 @@
+
+.elevator {
+    text-align: center;
+    cursor: pointer;
+}
+
+.elevator:hover {
+    opacity: 0.7;
+}
+.elevator svg {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+}

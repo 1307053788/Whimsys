@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TActivityMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TActivity">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_title" jdbcType="VARCHAR" property="jTitle" />
+    <result column="j_photo" jdbcType="VARCHAR" property="jPhoto" />
+    <result column="j_discription" jdbcType="VARCHAR" property="jDiscription" />
+    <result column="j_type" jdbcType="VARCHAR" property="jType" />
+    <result column="j_dept_id" jdbcType="INTEGER" property="jDeptId" />
+    
+    <result column="JGoodsId" jdbcType="INTEGER" property="jgoodsid" />
+    <result column="JStockQty" jdbcType="DECIMAL" property="jstockqty" />
+    
+    <result column="JGoodsCode" jdbcType="VARCHAR" property="jgoodscode" />
+	    <result column="JGoodsName" jdbcType="VARCHAR" property="jgoodsname" />
+	    <result column="JModel" jdbcType="VARCHAR" property="jmodel" />
+	    <result column="JUnit" jdbcType="VARCHAR" property="junit" />
+	    <result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+	    <result column="JClassID" jdbcType="INTEGER" property="jclassid" />
+	    <result column="JSupClientID" jdbcType="INTEGER" property="jsupclientid" />
+	    <result column="JBarCode" jdbcType="VARCHAR" property="jbarcode" />
+	    <result column="JPointSalePrice" jdbcType="DECIMAL" property="jpointsaleprice" />
+	    <result column="JSale3Price" jdbcType="DECIMAL" property="jsale3price" />
+	    <result column="JRefCostPrice" jdbcType="DECIMAL" property="jrefcostprice" />
+	    <result column="JMinInPrice" jdbcType="DECIMAL" property="jmininprice" />
+	    <result column="JPlace" jdbcType="VARCHAR" property="jplace" />
+	    <result column="JBigPhoto" jdbcType="VARCHAR" property="jbigphoto" />
+	    <result column="JSubtitle" jdbcType="VARCHAR" property="jsubtitle" />
+	    <result column="JLitPhoto" jdbcType="VARCHAR" property="jlitphoto" />
+	    
+	    <result column="j_discount" jdbcType="DECIMAL" property="jdiscount" />
+	    <result column="j_actprice" jdbcType="DECIMAL" property="jactprice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_title, j_photo, j_discription, j_type, j_dept_id
+  </sql>
+  <!-- 查询活动详情 -->
+  <select id="getAct" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    j_id as jId,
+    j_title as jTitle,
+    j_photo as jPhoto,
+    j_discription as jDiscription,
+    j_type as jType
+    from dbo.TActivity
+    where j_id = #{0}
+  </select>
+  <!-- 查询折扣商品列表 -->
+  <select id="getzGoodsList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    bb.JGoodsId as jgoodsid,
+    bb.JStockQty as jstockqty,
+	aa.JGoodsCode as jgoodscode,
+	aa.JGoodsName as jgoodsname,
+	aa.JModel as jmodel,
+	aa.JUnit as junit,
+	aa.JMemo as jmemo,
+	aa.JClassID as jclassid,
+	aa.JSupClientID as jsupclientid,
+	aa.JBarCode as jbarcode,
+	aa.JPointSalePrice as jpointsaleprice,
+	aa.JSale3Price as jsale3price,
+	aa.JRefCostPrice as jrefcostprice,
+	aa.JMinInPrice as jmininprice,
+	aa.JPlace as jplace,
+	
+	isnull(aa.JSubtitle,'') as jsubtitle,
+	isnull(aa.JBigPhoto,'') AS jbigphoto,
+	isnull(aa.JLitPhoto,'') as jlitphoto,
+	
+	cc.j_discount as jdiscount,
+	<!-- cc.j_actprice as jactprice -->
+	(aa.JPointSalePrice * cc.j_discount) as jactprice
+    FROM dbo.TGoods aa,dbo.VAuxGoodsStock bb,dbo.TActivityDatiled cc
+    where bb.JGoodsID = aa.JID 
+    and cc.j_goods_id = aa.JID
+    and aa.JID in
+	(select j_goods_id from dbo.TActivityDatiled where j_activity_id = #{0})
+  </select>
+  <!-- 查询特价商品列表 -->
+  <select id="gettGoodsList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    bb.JGoodsId as jgoodsid,
+    bb.JStockQty as jstockqty,
+	aa.JGoodsCode as jgoodscode,
+	aa.JGoodsName as jgoodsname,
+	aa.JModel as jmodel,
+	aa.JUnit as junit,
+	aa.JMemo as jmemo,
+	aa.JClassID as jclassid,
+	aa.JSupClientID as jsupclientid,
+	aa.JBarCode as jbarcode,
+	aa.JPointSalePrice as jpointsaleprice,
+	aa.JSale3Price as jsale3price,
+	aa.JRefCostPrice as jrefcostprice,
+	aa.JMinInPrice as jmininprice,
+	aa.JPlace as jplace,
+	
+	isnull(aa.JSubtitle,'') as jsubtitle,
+	isnull(aa.JBigPhoto,'') AS jbigphoto,
+	isnull(aa.JLitPhoto,'') as jlitphoto,
+	
+	cc.j_discount as jdiscount,
+	cc.j_actprice as jactprice
+	<!-- (aa.JPointSalePrice * cc.j_discount) as jactprice -->
+    FROM dbo.TGoods aa,dbo.VAuxGoodsStock bb,dbo.TActivityDatiled cc
+    where bb.JGoodsID = aa.JID 
+    and cc.j_goods_id = aa.JID
+    and aa.JID in
+	(select j_goods_id from dbo.TActivityDatiled where j_activity_id = #{0})
+  </select>
+  
+  <!-- 查询商品是否在活动中 -->
+  <select id="getifGoods" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select
+  	isnull(j_discount,0) as jdiscount,
+	isnull(j_actprice,0) as jactprice
+  	from dbo.TActivityDatiled 
+  	where j_goods_id = #{0}
+  	and j_activity_id in 
+  	(select j_id from dbo.TActivity where j_dept_id = #{1})
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TActivity
+    where j_id = #{jId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TActivity">
+    insert into dbo.TActivity (j_id, j_title, j_photo, 
+      j_discription, j_type, j_dept_id
+      )
+    values (#{jId,jdbcType=INTEGER}, #{jTitle,jdbcType=VARCHAR}, #{jPhoto,jdbcType=VARCHAR}, 
+      #{jDiscription,jdbcType=VARCHAR}, #{jType,jdbcType=VARCHAR}, #{jDeptId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TActivity">
+    insert into dbo.TActivity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        j_id,
+      </if>
+      <if test="jTitle != null">
+        j_title,
+      </if>
+      <if test="jPhoto != null">
+        j_photo,
+      </if>
+      <if test="jDiscription != null">
+        j_discription,
+      </if>
+      <if test="jType != null">
+        j_type,
+      </if>
+      <if test="jDeptId != null">
+        j_dept_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        #{jId,jdbcType=INTEGER},
+      </if>
+      <if test="jTitle != null">
+        #{jTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="jPhoto != null">
+        #{jPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="jDiscription != null">
+        #{jDiscription,jdbcType=VARCHAR},
+      </if>
+      <if test="jType != null">
+        #{jType,jdbcType=VARCHAR},
+      </if>
+      <if test="jDeptId != null">
+        #{jDeptId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TActivity">
+    update dbo.TActivity
+    <set>
+      <if test="jTitle != null">
+        j_title = #{jTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="jPhoto != null">
+        j_photo = #{jPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="jDiscription != null">
+        j_discription = #{jDiscription,jdbcType=VARCHAR},
+      </if>
+      <if test="jType != null">
+        j_type = #{jType,jdbcType=VARCHAR},
+      </if>
+      <if test="jDeptId != null">
+        j_dept_id = #{jDeptId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TActivity">
+    update dbo.TActivity
+    set j_title = #{jTitle,jdbcType=VARCHAR},
+      j_photo = #{jPhoto,jdbcType=VARCHAR},
+      j_discription = #{jDiscription,jdbcType=VARCHAR},
+      j_type = #{jType,jdbcType=VARCHAR},
+      j_dept_id = #{jDeptId,jdbcType=INTEGER}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

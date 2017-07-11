@@ -1,0 +1,418 @@
+/*更换皮肤*/
+.WB_miniblog{
+
+}
+
+/*头部*/
+
+body{
+    width: 100%;
+    min-width: 1200px;
+    margin: 0 auto;
+    background: url("../images/register/repeat_bg.png") repeat-x #bee1f5;
+}
+.head {
+    width: 64%;
+    height: 80px;
+}
+
+/*内容*/
+.container {
+    width: 100%;
+}
+
+.contain {
+    width: 58%;
+}
+
+
+/*左边*/
+.navigation {
+    float:left;
+    width: 200px;
+    margin-right: 20px;
+    z-index: 99;
+}
+.nav_1{
+    position: fixed;
+    top: 80px;
+}
+.nav_2{
+    position: absolute;
+    bottom: 0px;
+}
+.l1{
+    width: 100%;
+    height: 540px;
+    background-color: #bee1f5;
+}
+.l1 ul{
+    height: 100%;
+    text-align: center;
+}
+.l1 ul li{
+    font-size: 15px;
+    line-height: 43px;
+}
+.l1 ul li:hover{
+    background-color: #CCCCCE;
+}
+.l1 ul li a:hover{
+    color: #3798A5;
+}
+
+/*center*/
+.content {
+    float: left;
+    width: 720px;
+    margin-left: 218px;
+    margin-top: 10px;
+}
+
+/*第一栏*/
+.sdinfo{
+    margin: 0 0 10px 0;
+    box-shadow: 0 0 2px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    padding: 15px 10px 10px;
+    _position: relative;
+    overflow: hidden;
+    background-color: white;
+}
+
+.kind{
+    float: left;
+    width: 100%;
+    height: 40px;
+    padding: 5px 0 0;
+}
+.kind ul{
+    width: 100%;
+    height: 100%;
+}
+.kind ul li{
+    float: left;
+    padding-left: 40px;
+}
+.kind ul li a{
+    color: #4F4F4F;
+}
+
+/*内容*/
+/*内容第一栏*/  /*内容第二栏*/  /*内容第三栏*/  /*内容第四栏*/  /*内容第五栏*/  /*内容第六栏*/  /*内容第七栏*/  /*内容第八栏*/
+.l2{
+    width: 100%;
+    height: 40px;
+    background-color: #F9F9F9;
+}
+.l2 ul{
+    width: 100%;
+    height: 100%;
+}
+.l2 ul li{
+    padding-left: 15px;
+    padding-top: 10px;
+}
+.WB_tab_a{
+    width: 100%;
+    height: 250px;
+    box-shadow: -1px 0 0 rgba(0,0,0,0.04),0 -1px 0 rgba(0,0,0,0.04),1px 0 0 rgba(0,0,0,0.04);
+    background-color: #F9F9F9;
+}
+.WB_tab_a .wb{
+    float: left;
+    width: 45%;
+    height: 47%;
+    padding-left: 30px;
+    margin: 3px;
+    background-color: white;
+}
+.WB_tab_a .wb_a{
+    width: 20%;
+    float: left;
+}
+.wb_b{
+    width: 80%;
+    float: right;
+}
+
+.WB_tab_a .wb ul li{
+    padding-top: 5px;
+}
+
+.WB_tab_a ul li a{
+    color: black;
+}
+.l3{
+    width: 100%;
+    height: 30px;
+    background-color: #F9F9F9;
+    border-top: solid 1px #5d5d5d;
+    text-align: center;
+    padding-top: 18px;
+    font-size: 15px;
+    margin-bottom: 11px;
+}
+.l3 li a{
+    color: #0d0d0d;
+}
+
+/*内容第二栏*/  /*内容第三栏*/  /*内容第四栏*/  /*内容第五栏*/  /*内容第六栏*/  /*内容第七栏*/  /*内容第八栏*/
+.l31{
+    width: 100%;
+    height: 70px;
+    padding-top: 20px;
+    background-color: #F9F9F9;
+}
+.l31 ul{
+    float: left;
+}
+.l32{
+    width: 10%;
+    height: 100%;
+}
+.l33{
+    width: 90%;
+    height: 50%;
+}
+.l33 li{
+    float: left;
+    padding-left: 50px;
+}
+.l33 li a{
+    color: #5d5d5d;
+}
+.l34{
+    width: 90%;
+    height: 50%;
+}
+.l34 li{
+    float: left;
+    padding-left: 50px;
+}
+.l34 li a{
+    color: #5d5d5d;
+}
+
+/*右边*/
+.contain-r {
+    float: right;
+    margin-right: 10px;
+    position: relative;
+    width: 240px;
+    height: 100%;
+    margin-top: 90px;
+}
+/*右第一栏*/
+.contain-r .cc{
+    height: 40px;
+    background-color: white;
+}
+.contain-r .cc .cc1{
+    font-size: 18px;
+    padding-left: 10px;
+    height: 100%;
+    text-align: center;
+}
+
+.contain-r .cc .cc1 ul li{
+    padding-top: 5px;
+    float: left;
+}
+.contain-r .cc .cc1 ul li a{
+    color: #0d0d0d;
+}
+.contain-r .cc .cc1 ul li a:hover{
+    color: red;
+}
+.contain-r .cc .cc1 .cc11{
+    padding-right: 30px;
+    padding-top: 11px;
+    float: right;
+}
+/*右第二栏*/
+.cc2{
+    height: 30px;
+    background-color: white;
+    margin-top: 11px;
+    border-bottom: solid 1px #5d5d5d;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+.cc3{
+    height: 160px;
+    background-color: white;
+    padding-top: 12px;
+
+}
+.cc3 ul{
+    padding-top: 5px;
+    padding-left: 4px;
+    float: left;
+    height: 50%;
+}
+.cc32{
+    padding-top: 20px;
+
+}
+.cc4{
+    height: 35px;
+    background-color: white;
+    border-top: solid 1px #999999;
+    text-align: center;
+}
+.cc4 li{
+    padding-top: 10px;
+}
+.cc4 li a{
+    color: #0d0d0d;
+}
+/*右第三栏*/
+.WB_cardwrap{
+    height: 300px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    border-radius: 2px;
+    margin-top: 11px;
+    background-color: white;
+}
+.WB_cardwrap ul li span{
+    float: right;
+    margin-right: 10px;
+    color: #5d5d5d;
+}
+.WB_cardwrap ul{
+    height: 100%;
+}
+.WB_cardwrap ul li{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.WB_cardwrap ul li a{
+    color: #5d5d5d;
+}
+.WB_cardwrap a:hover{
+    color: red;
+}
+.wc{
+    height: 40px;
+    background-color: white;
+}
+.wc ul li a{
+    color: #5d5d5d;
+}
+.wc1{
+    text-align: center;
+    height: 100%;
+    padding-top: 8px;
+    border-top: solid 1px #333333;
+}
+/*右第四栏*/
+.wc2{
+    height: 300px;
+    margin-top: 11px;
+    background-color: white;
+}
+.wc2 .wc21{
+    text-align: center;
+    padding-top: 21px;
+}
+.wc2 .wc22{
+    float: right;
+    margin-right: 25px;
+}
+/*右第五栏*/ /*右第六栏（.wc3）*/  /*右第七栏（.wc3）*/
+.wc3{
+    height: 40px;
+    margin-top: 11px;
+    border-bottom: solid 1px #333333;
+    background-color: white;
+}
+.wc3 li{
+    padding-left: 10px;
+    padding-top: 9px;
+}
+.wc4{
+    height: 270px;
+   background-color: white;
+    padding-top: 12px;
+
+}
+.wc4 ul{
+    float: left;
+    padding-left: 2px;
+    height: 34%;
+}
+
+/*右第六栏*/
+.wc6{
+    height: 300px;
+    background-color: white;
+}
+.wc6 ul li{
+    float: left;
+}
+.wc6 ul li a{
+    color: #0d0d0d;
+}
+.wc6 .wc61 ul{
+    width: 100%;
+    height: 30px;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    line-height: 36px;
+    border-bottom: solid 1px #DFDFDF;
+}
+.wc61 ul:hover{
+    background-color: beige;
+}
+.wc61{
+    width: 100%;
+    height: 100%;
+
+}
+.wc62{
+    float: right;
+    width: 20px;
+}
+.wc63{
+    width: 80%;
+    padding-left: 12px;
+}
+/*右第七栏*/
+.wc5{
+    height: 110px;
+    background-color: white;
+}
+.wc5 li{
+    padding-top: 15px;
+}
+.wc5 li a{
+    color: darksalmon;
+}
+/*右边end*/
+
+/*底部*/
+.footer {
+    width: 100%;
+    height: 80px;
+}
+
+.ftr {
+    min-width: 1210px;
+    margin: 0 auto;
+}
+.ftr li a:hover{
+    color: red;
+}
+
+.ftr_d {
+    height: 80px;
+}
+/*锚点返回顶部*/
+.W_gotop{
+
+}
+.W_icon{
+
+}

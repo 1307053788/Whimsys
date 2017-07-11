@@ -1,0 +1,1560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TMemberCardMapper">
+  <resultMap id="TMemberCardResultMap" type="com.whimsy.entity.TMemberCard">
+    <id column="JID" jdbcType="INTEGER" property="jid" />
+    <result column="JDeptID" jdbcType="INTEGER" property="jdeptid" />
+    <result column="JEmpCode" jdbcType="NVARCHAR" property="jempcode" />
+    <result column="JEmpName" jdbcType="VARCHAR" property="jempname" />
+    <result column="JCustomSex" jdbcType="BIT" property="jcustomsex" />
+    <result column="JTele" jdbcType="VARCHAR" property="jtele" />
+    <result column="JCustomAddress" jdbcType="VARCHAR" property="jcustomaddress" />
+    <result column="JIdentityCode" jdbcType="VARCHAR" property="jidentitycode" />
+    <result column="JNoUse" jdbcType="BIT" property="jnouse" />
+    <result column="JDiscID" jdbcType="INTEGER" property="jdiscid" />
+    <result column="JDiscRate" jdbcType="DECIMAL" property="jdiscrate" />
+    <result column="JCardClassID" jdbcType="INTEGER" property="jcardclassid" />
+    <result column="JCustomAmt" jdbcType="DECIMAL" property="jcustomamt" />
+    <result column="JCurrentInQty" jdbcType="DECIMAL" property="jcurrentinqty" />
+    <result column="JCurrentOutQty" jdbcType="DECIMAL" property="jcurrentoutqty" />
+    <result column="JEndQty" jdbcType="DECIMAL" property="jendqty" />
+    <result column="JEmail" jdbcType="VARCHAR" property="jemail" />
+    <result column="JSizeID" jdbcType="INTEGER" property="jsizeid" />
+    <result column="JBirthday" jdbcType="TIMESTAMP" property="jbirthday" />
+    <result column="JMemParentID" jdbcType="INTEGER" property="jmemparentid" />
+    <result column="JMobileNumber" jdbcType="VARCHAR" property="jmobilenumber" />
+    <result column="JSendOutDaten" jdbcType="TIMESTAMP" property="jsendoutdaten" />
+    <result column="JOpenQty" jdbcType="DECIMAL" property="jopenqty" />
+    <result column="JOpenFillAmt" jdbcType="DECIMAL" property="jopenfillamt" />
+    <result column="JInFillQty" jdbcType="DECIMAL" property="jinfillqty" />
+    <result column="JInFillAmt" jdbcType="DECIMAL" property="jinfillamt" />
+    <result column="JOutFillQty" jdbcType="DECIMAL" property="joutfillqty" />
+    <result column="JOutFillAmt" jdbcType="DECIMAL" property="joutfillamt" />
+    <result column="JEndFillAmt" jdbcType="DECIMAL" property="jendfillamt" />
+    <result column="JFillID" jdbcType="BIT" property="jfillid" />
+    <result column="JPassword" jdbcType="NVARCHAR" property="jpassword" />
+    <result column="JBuildDate" jdbcType="TIMESTAMP" property="jbuilddate" />
+    <result column="JBuildBatchCode" jdbcType="VARCHAR" property="jbuildbatchcode" />
+    <result column="JInputrID" jdbcType="INTEGER" property="jinputrid" />
+    <result column="JChkrID" jdbcType="INTEGER" property="jchkrid" />
+    <result column="JChkDate" jdbcType="TIMESTAMP" property="jchkdate" />
+    <result column="JStateID" jdbcType="INTEGER" property="jstateid" />
+    <result column="JCardType" jdbcType="INTEGER" property="jcardtype" />
+    <result column="JBeginDate" jdbcType="TIMESTAMP" property="jbegindate" />
+    <result column="JEndDate" jdbcType="TIMESTAMP" property="jenddate" />
+    <result column="JBuildDeptID" jdbcType="INTEGER" property="jbuilddeptid" />
+    <result column="JBuildUserID" jdbcType="INTEGER" property="jbuilduserid" />
+    <result column="JSendOutDate" jdbcType="TIMESTAMP" property="jsendoutdate" />
+    <result column="JHandleID" jdbcType="INTEGER" property="jhandleid" />
+    <result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+    <result column="JSupClientID" jdbcType="INTEGER" property="jsupclientid" />
+    <result column="JOldCardID" jdbcType="INTEGER" property="joldcardid" />
+    <result column="JCountryCode" jdbcType="VARCHAR" property="jcountrycode" />
+    <result column="JProvinceCode" jdbcType="VARCHAR" property="jprovincecode" />
+    <result column="JCityCode" jdbcType="VARCHAR" property="jcitycode" />
+    <result column="JCountyCode" jdbcType="VARCHAR" property="jcountycode" />
+    <result column="JMetierCode" jdbcType="VARCHAR" property="jmetiercode" />
+    <result column="JWorkCompany" jdbcType="VARCHAR" property="jworkcompany" />
+    <result column="JContractAddress" jdbcType="VARCHAR" property="jcontractaddress" />
+    <result column="JPostalCode" jdbcType="VARCHAR" property="jpostalcode" />
+    <result column="JBirthDayID" jdbcType="INTEGER" property="jbirthdayid" />
+    <result column="JQQNumber" jdbcType="VARCHAR" property="jqqnumber" />
+    <result column="JMSNNumber" jdbcType="VARCHAR" property="jmsnnumber" />
+    <result column="JStature" jdbcType="DECIMAL" property="jstature" />
+    <result column="JAvoirdupois" jdbcType="DECIMAL" property="javoirdupois" />
+    <result column="JBloodType" jdbcType="INTEGER" property="jbloodtype" />
+    <result column="JConstellation" jdbcType="INTEGER" property="jconstellation" />
+    <result column="JMarriageState" jdbcType="INTEGER" property="jmarriagestate" />
+    <result column="JLove" jdbcType="VARCHAR" property="jlove" />
+    <result column="JTabu" jdbcType="VARCHAR" property="jtabu" />
+    <result column="JYearInComeID" jdbcType="INTEGER" property="jyearincomeid" />
+    <result column="JSkinCharID" jdbcType="INTEGER" property="jskincharid" />
+    <result column="JSkinMatterID" jdbcType="INTEGER" property="jskinmatterid" />
+    <result column="JExplain" jdbcType="VARCHAR" property="jexplain" />
+    <result column="JYearConsumeAmt" jdbcType="DECIMAL" property="jyearconsumeamt" />
+    <result column="JConsumeCount" jdbcType="INTEGER" property="jconsumecount" />
+    <result column="JCustomField1" jdbcType="VARCHAR" property="jcustomfield1" />
+    <result column="JCustomField2" jdbcType="VARCHAR" property="jcustomfield2" />
+    <result column="JCustomField3" jdbcType="VARCHAR" property="jcustomfield3" />
+    <result column="JCustomField4" jdbcType="VARCHAR" property="jcustomfield4" />
+    <result column="JCustomField5" jdbcType="VARCHAR" property="jcustomfield5" />
+    <result column="JCustomField6" jdbcType="VARCHAR" property="jcustomfield6" />
+    <result column="JCustomField7" jdbcType="VARCHAR" property="jcustomfield7" />
+    <result column="JCustomField8" jdbcType="VARCHAR" property="jcustomfield8" />
+    <result column="JCustomField9" jdbcType="VARCHAR" property="jcustomfield9" />
+    <result column="JConsigneeName" jdbcType="VARCHAR" property="jconsigneename" />
+    <result column="JConsigneeAddress" jdbcType="VARCHAR" property="jconsigneeaddress" />
+    <result column="JConsigneeTele" jdbcType="VARCHAR" property="jconsigneetele" />
+    <result column="JModifyTime" jdbcType="TIMESTAMP" property="jmodifytime" />
+    <result column="JBankName" jdbcType="VARCHAR" property="jbankname" />
+    <result column="JAccount" jdbcType="VARCHAR" property="jaccount" />
+    <result column="JAlipayAccount" jdbcType="NVARCHAR" property="jalipayaccount" />
+    <result column="JDeliveryPwd" jdbcType="NVARCHAR" property="jdeliverypwd" />
+    <result column="JCountryCityID" jdbcType="INTEGER" property="jcountrycityid" />
+    <result column="JBank" jdbcType="NVARCHAR" property="jbank" />
+    <result column="JLoginName" jdbcType="NVARCHAR" property="jloginname" />
+    <result column="JBindAccountState" jdbcType="INTEGER" property="jbindaccountstate" />
+    <result column="JWeChat" jdbcType="NVARCHAR" property="jwechat" />
+    <result column="JOpenID" jdbcType="NVARCHAR" property="jopenid" />
+    <result column="JMenberLocalID" jdbcType="INTEGER" property="jmenberlocalid" />
+    <result column="JBindDelivery" jdbcType="NVARCHAR" property="jbinddelivery" />
+    <result column="JPortrait" jdbcType="NVARCHAR" property="jportrait" />
+    <result column="JToken" jdbcType="NVARCHAR" property="jtoken" />
+    <result column="JIfSign" jdbcType="VARCHAR" property="jifsign" />
+    <result column="JSignData" jdbcType="VARCHAR" property="jsigndata" />
+  </resultMap>
+  <resultMap extends="TMemberCardResultMap" id="ResultMapWithBLOBs" type="com.whimsy.entity.TMemberCard">
+    <result column="JExcelInfo" jdbcType="LONGVARBINARY" property="jexcelinfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    JID, JDeptID, JEmpCode, JEmpName, JCustomSex, JTele, JCustomAddress, JIdentityCode, 
+    JNoUse, JDiscID, JDiscRate, JCardClassID, JCustomAmt, JCurrentInQty, JCurrentOutQty, 
+    JEndQty, JEmail, JSizeID, JBirthday, JMemParentID, JMobileNumber, JSendOutDaten, 
+    JOpenQty, JOpenFillAmt, JInFillQty, JInFillAmt, JOutFillQty, JOutFillAmt, JEndFillAmt, 
+    JFillID, JPassword, JBuildDate, JBuildBatchCode, JInputrID, JChkrID, JChkDate, JStateID, 
+    JCardType, JBeginDate, JEndDate, JBuildDeptID, JBuildUserID, JSendOutDate, JHandleID, 
+    JMemo, JSupClientID, JOldCardID, JCountryCode, JProvinceCode, JCityCode, JCountyCode, 
+    JMetierCode, JWorkCompany, JContractAddress, JPostalCode, JBirthDayID, JQQNumber, 
+    JMSNNumber, JStature, JAvoirdupois, JBloodType, JConstellation, JMarriageState, JLove, 
+    JTabu, JYearInComeID, JSkinCharID, JSkinMatterID, JExplain, JYearConsumeAmt, JConsumeCount, 
+    JCustomField1, JCustomField2, JCustomField3, JCustomField4, JCustomField5, JCustomField6, 
+    JCustomField7, JCustomField8, JCustomField9, JConsigneeName, JConsigneeAddress, JConsigneeTele, 
+    JModifyTime, JBankName, JAccount, JAlipayAccount, JDeliveryPwd, JCountryCityID, JBank, 
+    JLoginName, JBindAccountState, JWeChat, JOpenID, JMenberLocalID, JBindDelivery, JPortrait, 
+    JToken
+  </sql>
+  <sql id="Blob_Column_List">
+    JExcelInfo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dbo.TMemberCard
+    where JID = #{jid,jdbcType=INTEGER}
+  </select>
+  <!-- 验证注册 -->
+	<select id="verRigester" parameterType="com.whimsy.entity.TMemberCard"
+		resultType="com.whimsy.entity.TMemberCard">
+		select 
+		JMobileNumber as jmobilenumber
+		from dbo.TMemberCard
+		where JMobileNumber =
+		#{jmobilenumber,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 查询剩余积分 -->
+	<select id="getInte" parameterType="java.lang.Integer"
+		resultType="com.whimsy.entity.TMemberCard">
+		select 
+		JEndQty as jendqty,
+		JEndFillAmt as jendfillamt,
+		JStateID as jstateid,
+		JNoUse as jnouse
+		from dbo.TMemberCard
+		where JID = #{0}
+	</select>
+	<!-- 验证token -->
+	<select id="getToken" parameterType="com.whimsy.entity.TMemberCard"
+		resultType="com.whimsy.entity.TMemberCard">
+		select 
+		JID as jid, 
+		JDeptID as jdeptid, 
+		JEmpCode as jempcode, 
+		JEmpName as jempname, 
+		<!-- JCustomSex as jcustomsex, 
+		JTele as jtele, 
+		JCustomAddress as jcustomaddress, 
+		JIdentityCode as jidentitycode, --> 
+		isnull(JSignData,'') as jsigndata,
+    	JNoUse as jnouse, 
+    	JDiscID as jdiscid, 
+    	JDiscRate as jdiscrate, 
+    	JCardClassID as jcardclassid, 
+    	JCustomAmt as jcustomamt, 
+    	JCurrentInQty as jcurrentinqty, 
+    	JCurrentOutQty as jcurrentoutqty, 
+    	JEndQty as jendqty, 
+    	JEmail as jemail, 
+    	JSizeID as jsizeid, 
+    	JBirthday as jbirthday, 
+    	JMemParentID as jmemparentid, 
+    	JMobileNumber as jmobilenumber, 
+    	JEndFillAmt as jendfillamt, 
+    	JOpenQty as jopenqty, 
+    	<!-- JSendOutDaten as jsendoutdaten, 
+    	JOpenFillAmt as jopenfillamt, 
+    	JInFillQty as jinfillqty, 
+    	JInFillAmt as jinfillamt, 
+    	JOutFillQty as joutfillqty, 
+    	JOutFillAmt as joutfillamt, 
+   		JFillID as jfillid, 
+   		JPassword as jpassword, 
+   		JBuildDate as jbuilddate, 
+   		JBuildBatchCode as jbuildbatchcode, 
+   		JInputrID as jinputrid, 
+   		JChkrID as jchkrid, 
+   		JChkDate as jchkdate,  -->
+   		JStateID as jstateid, 
+    	JCardType as jcardtype, 
+    	JBeginDate as jbegindate, 
+    	JEndDate as jenddate, 
+    	<!-- JBuildDeptID as jbuilddeptid, 
+    	JBuildUserID as jbuilduserid, 
+    	JSendOutDate as jsendoutdate, 
+    	JHandleID as jhandleid, 
+    	JMemo as jmemo, 
+    	JSupClientID as jsupclientid, 
+    	JOldCardID as joldcardid, --> 
+    	<!-- JCountryCode as jcountrycode, 
+    	JProvinceCode as jprovincecode, 
+    	JCityCode as jcitycode, 
+    	JCountyCode as jcountycode, 
+    	JMetierCode as jmetiercode, 
+    	JWorkCompany as jworkcompany, 
+    	JContractAddress as jcontractaddress, 
+    	JPostalCode as jpostalcode, 
+    	JBirthDayID as jbirthdayid, 
+    	JQQNumber as jqqnumber, 
+    	JMSNNumber as jmsnnumber, 
+    	JStature as jstature, 
+    	JAvoirdupois as javoirdupois, 
+    	JBloodType as jbloodtype, 
+    	JConstellation as jconstellation, 
+    	JMarriageState as jmarriagestate, 
+    	JLove as jlove, 
+    	JTabu as jtabu, 
+    	JYearInComeID as jyearincomeid, 
+    	JSkinCharID as jskincharid, 
+    	JSkinMatterID as jskinmatterid, 
+    	JExplain as jexplain, 
+    	JYearConsumeAmt as jyearconsumeamt, 
+    	JConsumeCount as jconsumecount,  
+    	JConsigneeName as jconsigneename, 
+    	JConsigneeAddress as jconsigneeaddress, 
+    	JConsigneeTele as jconsigneetele, 
+    	JModifyTime as jmodifytime, 
+    	JBankName as jbankname, 
+    	JAccount as jaccount, 
+    	JAlipayAccount as jalipayaccount, 
+    	JDeliveryPwd as jdeliverypwd, 
+    	JCountryCityID as jcountrycityid, 
+    	JBank as jbank,  -->
+    	JLoginName as jloginname, 
+    	JBindAccountState as jbindaccountstate, 
+    	JWeChat as jwechat, 
+    	JOpenID as jopenid, 
+    	JMenberLocalID as jmenberlocalid, 
+    	JBindDelivery as jbinddelivery, 
+    	isnull(JPortrait,'') as jportrait,
+    	JToken as jtoken,
+    	isnull(JIfSign,'false') as jifsign
+		from dbo.TMemberCard
+		where JToken =
+		#{jtoken,jdbcType=NVARCHAR}
+	</select>
+	<!-- 手机号码查询用户信息 -->
+	<select id="phoneSer" parameterType="com.whimsy.entity.TMemberCard"
+		resultType="com.whimsy.entity.TMemberCard">
+		select 
+		JID as jid, 
+		JDeptID as jdeptid, 
+		JEmpCode as jempcode, 
+		JEmpName as jempname, 
+		isnull(JSignData,'') as jsigndata,
+		<!-- JCustomSex as jcustomsex, 
+		JTele as jtele, 
+		JCustomAddress as jcustomaddress, 
+		JIdentityCode as jidentitycode, --> 
+    	JNoUse as jnouse, 
+    	JDiscID as jdiscid, 
+    	JDiscRate as jdiscrate, 
+    	JCardClassID as jcardclassid, 
+    	JCustomAmt as jcustomamt, 
+    	JCurrentInQty as jcurrentinqty, 
+    	JCurrentOutQty as jcurrentoutqty, 
+    	JEndQty as jendqty, 
+    	JEmail as jemail, 
+    	JSizeID as jsizeid, 
+    	JBirthday as jbirthday, 
+    	JMemParentID as jmemparentid, 
+    	JMobileNumber as jmobilenumber, 
+    	JEndFillAmt as jendfillamt, 
+    	JOpenQty as jopenqty, 
+    	<!-- JSendOutDaten as jsendoutdaten, 
+    	JOpenFillAmt as jopenfillamt, 
+    	JInFillQty as jinfillqty, 
+    	JInFillAmt as jinfillamt, 
+    	JOutFillQty as joutfillqty, 
+    	JOutFillAmt as joutfillamt, 
+   		JFillID as jfillid, 
+   		JPassword as jpassword, 
+   		JBuildDate as jbuilddate, 
+   		JBuildBatchCode as jbuildbatchcode, 
+   		JInputrID as jinputrid, 
+   		JChkrID as jchkrid, 
+   		JChkDate as jchkdate,  -->
+   		JStateID as jstateid, 
+    	JCardType as jcardtype, 
+    	JBeginDate as jbegindate, 
+    	JEndDate as jenddate, 
+    	<!-- JBuildDeptID as jbuilddeptid, 
+    	JBuildUserID as jbuilduserid, 
+    	JSendOutDate as jsendoutdate, 
+    	JHandleID as jhandleid, 
+    	JMemo as jmemo, 
+    	JSupClientID as jsupclientid, 
+    	JOldCardID as joldcardid, --> 
+    	<!-- JCountryCode as jcountrycode, 
+    	JProvinceCode as jprovincecode, 
+    	JCityCode as jcitycode, 
+    	JCountyCode as jcountycode, 
+    	JMetierCode as jmetiercode, 
+    	JWorkCompany as jworkcompany, 
+    	JContractAddress as jcontractaddress, 
+    	JPostalCode as jpostalcode, 
+    	JBirthDayID as jbirthdayid, 
+    	JQQNumber as jqqnumber, 
+    	JMSNNumber as jmsnnumber, 
+    	JStature as jstature, 
+    	JAvoirdupois as javoirdupois, 
+    	JBloodType as jbloodtype, 
+    	JConstellation as jconstellation, 
+    	JMarriageState as jmarriagestate, 
+    	JLove as jlove, 
+    	JTabu as jtabu, 
+    	JYearInComeID as jyearincomeid, 
+    	JSkinCharID as jskincharid, 
+    	JSkinMatterID as jskinmatterid, 
+    	JExplain as jexplain, 
+    	JYearConsumeAmt as jyearconsumeamt, 
+    	JConsumeCount as jconsumecount,  
+    	JConsigneeName as jconsigneename, 
+    	JConsigneeAddress as jconsigneeaddress, 
+    	JConsigneeTele as jconsigneetele, 
+    	JModifyTime as jmodifytime, 
+    	JBankName as jbankname, 
+    	JAccount as jaccount, 
+    	JAlipayAccount as jalipayaccount, 
+    	JDeliveryPwd as jdeliverypwd, 
+    	JCountryCityID as jcountrycityid, 
+    	JBank as jbank,  -->
+    	JLoginName as jloginname, 
+    	JBindAccountState as jbindaccountstate, 
+    	JWeChat as jwechat, 
+    	JOpenID as jopenid, 
+    	JMenberLocalID as jmenberlocalid, 
+    	JBindDelivery as jbinddelivery, 
+    	isnull(JPortrait,'') as jportrait,
+    	JToken as jtoken,
+    	isnull(JIfSign,'false') as jifsign
+		from dbo.TMemberCard
+		where JMobileNumber =
+		#{jmobilenumber,jdbcType=VARCHAR}
+	</select>
+	<!-- 微信查询用户信息 -->
+	<select id="selectWechat" parameterType="com.whimsy.entity.TMemberCard"
+		resultType="com.whimsy.entity.TMemberCard">
+		select 
+		JID as jid, 
+		JDeptID as jdeptid, 
+		JEmpCode as jempcode, 
+		JEmpName as jempname, 
+		<!-- JCustomSex as jcustomsex, 
+		JTele as jtele, 
+		JCustomAddress as jcustomaddress, 
+		JIdentityCode as jidentitycode, --> 
+    	JNoUse as jnouse, 
+    	JDiscID as jdiscid, 
+    	JDiscRate as jdiscrate, 
+    	JCardClassID as jcardclassid, 
+    	JCustomAmt as jcustomamt, 
+    	JCurrentInQty as jcurrentinqty, 
+    	JCurrentOutQty as jcurrentoutqty, 
+    	JEndQty as jendqty, 
+    	JEmail as jemail, 
+    	JSizeID as jsizeid, 
+    	JBirthday as jbirthday, 
+    	JMemParentID as jmemparentid, 
+    	JMobileNumber as jmobilenumber, 
+    	JOpenQty as jopenqty, 
+    	JEndFillAmt as jendfillamt, 
+    	isnull(JSignData,'') as jsigndata,
+    	<!-- JSendOutDaten as jsendoutdaten, 
+    	JOpenFillAmt as jopenfillamt, 
+    	JInFillQty as jinfillqty, 
+    	JInFillAmt as jinfillamt, 
+    	JOutFillQty as joutfillqty, 
+    	JOutFillAmt as joutfillamt, 
+   		JFillID as jfillid, 
+   		JPassword as jpassword, 
+   		JBuildDate as jbuilddate, 
+   		JBuildBatchCode as jbuildbatchcode, 
+   		JInputrID as jinputrid, 
+   		JChkrID as jchkrid, 
+   		JChkDate as jchkdate,  -->
+   		JStateID as jstateid, 
+    	JCardType as jcardtype, 
+    	JBeginDate as jbegindate, 
+    	JEndDate as jenddate, 
+    	<!-- JBuildDeptID as jbuilddeptid, 
+    	JBuildUserID as jbuilduserid, 
+    	JSendOutDate as jsendoutdate, 
+    	JHandleID as jhandleid, 
+    	JMemo as jmemo, 
+    	JSupClientID as jsupclientid, 
+    	JOldCardID as joldcardid, --> 
+    	<!-- JCountryCode as jcountrycode, 
+    	JProvinceCode as jprovincecode, 
+    	JCityCode as jcitycode, 
+    	JCountyCode as jcountycode, 
+    	JMetierCode as jmetiercode, 
+    	JWorkCompany as jworkcompany, 
+    	JContractAddress as jcontractaddress, 
+    	JPostalCode as jpostalcode, 
+    	JBirthDayID as jbirthdayid, 
+    	JQQNumber as jqqnumber, 
+    	JMSNNumber as jmsnnumber, 
+    	JStature as jstature, 
+    	JAvoirdupois as javoirdupois, 
+    	JBloodType as jbloodtype, 
+    	JConstellation as jconstellation, 
+    	JMarriageState as jmarriagestate, 
+    	JLove as jlove, 
+    	JTabu as jtabu, 
+    	JYearInComeID as jyearincomeid, 
+    	JSkinCharID as jskincharid, 
+    	JSkinMatterID as jskinmatterid, 
+    	JExplain as jexplain, 
+    	JYearConsumeAmt as jyearconsumeamt, 
+    	JConsumeCount as jconsumecount,  
+    	JConsigneeName as jconsigneename, 
+    	JConsigneeAddress as jconsigneeaddress, 
+    	JConsigneeTele as jconsigneetele, 
+    	JModifyTime as jmodifytime, 
+    	JBankName as jbankname, 
+    	JAccount as jaccount, 
+    	JAlipayAccount as jalipayaccount, 
+    	JDeliveryPwd as jdeliverypwd, 
+    	JCountryCityID as jcountrycityid, 
+    	JBank as jbank,  -->
+    	JLoginName as jloginname, 
+    	JBindAccountState as jbindaccountstate, 
+    	JWeChat as jwechat, 
+    	JOpenID as jopenid, 
+    	JMenberLocalID as jmenberlocalid, 
+    	JBindDelivery as jbinddelivery, 
+    	isnull(JPortrait,'') as jportrait,
+    	JToken as jtoken,
+    	isnull(JIfSign,'false') as jifsign
+		from dbo.TMemberCard
+		where JWeChat =
+		#{jwechat,jdbcType=NVARCHAR}
+	</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TMemberCard
+    where JID = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TMemberCard">
+    insert into dbo.TMemberCard (JID, JDeptID, JEmpCode, 
+      JEmpName, JCustomSex, JTele, 
+      JCustomAddress, JIdentityCode, JNoUse, 
+      JDiscID, JDiscRate, JCardClassID, 
+      JCustomAmt, JCurrentInQty, JCurrentOutQty, 
+      JEndQty, JEmail, JSizeID, 
+      JBirthday, JMemParentID, JMobileNumber, 
+      JSendOutDaten, JOpenQty, JOpenFillAmt, 
+      JInFillQty, JInFillAmt, JOutFillQty, 
+      JOutFillAmt, JEndFillAmt, JFillID, 
+      JPassword, JBuildDate, JBuildBatchCode, 
+      JInputrID, JChkrID, JChkDate, 
+      JStateID, JCardType, JBeginDate, 
+      JEndDate, JBuildDeptID, JBuildUserID, 
+      JSendOutDate, JHandleID, JMemo, 
+      JSupClientID, JOldCardID, JCountryCode, 
+      JProvinceCode, JCityCode, JCountyCode, 
+      JMetierCode, JWorkCompany, JContractAddress, 
+      JPostalCode, JBirthDayID, JQQNumber, 
+      JMSNNumber, JStature, JAvoirdupois, 
+      JBloodType, JConstellation, JMarriageState, 
+      JLove, JTabu, JYearInComeID, 
+      JSkinCharID, JSkinMatterID, JExplain, 
+      JYearConsumeAmt, JConsumeCount, JCustomField1, 
+      JCustomField2, JCustomField3, JCustomField4, 
+      JCustomField5, JCustomField6, JCustomField7, 
+      JCustomField8, JCustomField9, JConsigneeName, 
+      JConsigneeAddress, JConsigneeTele, JModifyTime, 
+      JBankName, JAccount, JAlipayAccount, 
+      JDeliveryPwd, JCountryCityID, JBank, 
+      JLoginName, JBindAccountState, JWeChat, 
+      JOpenID, JMenberLocalID, JBindDelivery, 
+      JPortrait, JToken, JExcelInfo
+      )
+    values (#{jid,jdbcType=INTEGER}, #{jdeptid,jdbcType=INTEGER}, #{jempcode,jdbcType=NVARCHAR}, 
+      #{jempname,jdbcType=VARCHAR}, #{jcustomsex,jdbcType=BIT}, #{jtele,jdbcType=VARCHAR}, 
+      #{jcustomaddress,jdbcType=VARCHAR}, #{jidentitycode,jdbcType=VARCHAR}, #{jnouse,jdbcType=BIT}, 
+      #{jdiscid,jdbcType=INTEGER}, #{jdiscrate,jdbcType=DECIMAL}, #{jcardclassid,jdbcType=INTEGER}, 
+      #{jcustomamt,jdbcType=DECIMAL}, #{jcurrentinqty,jdbcType=DECIMAL}, #{jcurrentoutqty,jdbcType=DECIMAL}, 
+      #{jendqty,jdbcType=DECIMAL}, #{jemail,jdbcType=VARCHAR}, #{jsizeid,jdbcType=INTEGER}, 
+      #{jbirthday,jdbcType=TIMESTAMP}, #{jmemparentid,jdbcType=INTEGER}, #{jmobilenumber,jdbcType=VARCHAR}, 
+      #{jsendoutdaten,jdbcType=TIMESTAMP}, #{jopenqty,jdbcType=DECIMAL}, #{jopenfillamt,jdbcType=DECIMAL}, 
+      #{jinfillqty,jdbcType=DECIMAL}, #{jinfillamt,jdbcType=DECIMAL}, #{joutfillqty,jdbcType=DECIMAL}, 
+      #{joutfillamt,jdbcType=DECIMAL}, #{jendfillamt,jdbcType=DECIMAL}, #{jfillid,jdbcType=BIT}, 
+      #{jpassword,jdbcType=NVARCHAR}, #{jbuilddate,jdbcType=TIMESTAMP}, #{jbuildbatchcode,jdbcType=VARCHAR}, 
+      #{jinputrid,jdbcType=INTEGER}, #{jchkrid,jdbcType=INTEGER}, #{jchkdate,jdbcType=TIMESTAMP}, 
+      #{jstateid,jdbcType=INTEGER}, #{jcardtype,jdbcType=INTEGER}, #{jbegindate,jdbcType=TIMESTAMP}, 
+      #{jenddate,jdbcType=TIMESTAMP}, #{jbuilddeptid,jdbcType=INTEGER}, #{jbuilduserid,jdbcType=INTEGER}, 
+      #{jsendoutdate,jdbcType=TIMESTAMP}, #{jhandleid,jdbcType=INTEGER}, #{jmemo,jdbcType=VARCHAR}, 
+      #{jsupclientid,jdbcType=INTEGER}, #{joldcardid,jdbcType=INTEGER}, #{jcountrycode,jdbcType=VARCHAR}, 
+      #{jprovincecode,jdbcType=VARCHAR}, #{jcitycode,jdbcType=VARCHAR}, #{jcountycode,jdbcType=VARCHAR}, 
+      #{jmetiercode,jdbcType=VARCHAR}, #{jworkcompany,jdbcType=VARCHAR}, #{jcontractaddress,jdbcType=VARCHAR}, 
+      #{jpostalcode,jdbcType=VARCHAR}, #{jbirthdayid,jdbcType=INTEGER}, #{jqqnumber,jdbcType=VARCHAR}, 
+      #{jmsnnumber,jdbcType=VARCHAR}, #{jstature,jdbcType=DECIMAL}, #{javoirdupois,jdbcType=DECIMAL}, 
+      #{jbloodtype,jdbcType=INTEGER}, #{jconstellation,jdbcType=INTEGER}, #{jmarriagestate,jdbcType=INTEGER}, 
+      #{jlove,jdbcType=VARCHAR}, #{jtabu,jdbcType=VARCHAR}, #{jyearincomeid,jdbcType=INTEGER}, 
+      #{jskincharid,jdbcType=INTEGER}, #{jskinmatterid,jdbcType=INTEGER}, #{jexplain,jdbcType=VARCHAR}, 
+      #{jyearconsumeamt,jdbcType=DECIMAL}, #{jconsumecount,jdbcType=INTEGER}, #{jcustomfield1,jdbcType=VARCHAR}, 
+      #{jcustomfield2,jdbcType=VARCHAR}, #{jcustomfield3,jdbcType=VARCHAR}, #{jcustomfield4,jdbcType=VARCHAR}, 
+      #{jcustomfield5,jdbcType=VARCHAR}, #{jcustomfield6,jdbcType=VARCHAR}, #{jcustomfield7,jdbcType=VARCHAR}, 
+      #{jcustomfield8,jdbcType=VARCHAR}, #{jcustomfield9,jdbcType=VARCHAR}, #{jconsigneename,jdbcType=VARCHAR}, 
+      #{jconsigneeaddress,jdbcType=VARCHAR}, #{jconsigneetele,jdbcType=VARCHAR}, #{jmodifytime,jdbcType=TIMESTAMP}, 
+      #{jbankname,jdbcType=VARCHAR}, #{jaccount,jdbcType=VARCHAR}, #{jalipayaccount,jdbcType=NVARCHAR}, 
+      #{jdeliverypwd,jdbcType=NVARCHAR}, #{jcountrycityid,jdbcType=INTEGER}, #{jbank,jdbcType=NVARCHAR}, 
+      #{jloginname,jdbcType=NVARCHAR}, #{jbindaccountstate,jdbcType=INTEGER}, #{jwechat,jdbcType=NVARCHAR}, 
+      #{jopenid,jdbcType=NVARCHAR}, #{jmenberlocalid,jdbcType=INTEGER}, #{jbinddelivery,jdbcType=NVARCHAR}, 
+      #{jportrait,jdbcType=NVARCHAR}, #{jtoken,jdbcType=NVARCHAR}, #{jexcelinfo,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <!-- 注册 -->
+  <insert id="rigester" parameterType="com.whimsy.entity.TMemberCard">
+    insert into dbo.TMemberCard
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        JID,
+      </if>
+      <if test="jdeptid != null">
+        JDeptID,
+      </if>
+      <if test="jempcode != null">
+        JEmpCode,
+      </if>
+      <if test="jempname != null">
+        JEmpName,
+      </if>
+      <if test="jcustomsex != null">
+        JCustomSex,
+      </if>
+      <if test="jtele != null">
+        JTele,
+      </if>
+      <if test="jcustomaddress != null">
+        JCustomAddress,
+      </if>
+      <if test="jidentitycode != null">
+        JIdentityCode,
+      </if>
+      <if test="jnouse != null">
+        JNoUse,
+      </if>
+      <if test="jdiscid != null">
+        JDiscID,
+      </if>
+      <if test="jdiscrate != null">
+        JDiscRate,
+      </if>
+      <if test="jcardclassid != null">
+        JCardClassID,
+      </if>
+      <if test="jcustomamt != null">
+        JCustomAmt,
+      </if>
+      <if test="jcurrentinqty != null">
+        JCurrentInQty,
+      </if>
+      <if test="jcurrentoutqty != null">
+        JCurrentOutQty,
+      </if>
+      <if test="jendqty != null">
+        JEndQty,
+      </if>
+      <if test="jemail != null">
+        JEmail,
+      </if>
+      <if test="jsizeid != null">
+        JSizeID,
+      </if>
+      <if test="jbirthday != null">
+        JBirthday,
+      </if>
+      <if test="jmemparentid != null">
+        JMemParentID,
+      </if>
+      <if test="jmobilenumber != null">
+        JMobileNumber,
+      </if>
+      <if test="jsendoutdaten != null">
+        JSendOutDaten,
+      </if>
+      <if test="jopenqty != null">
+        JOpenQty,
+      </if>
+      <if test="jopenfillamt != null">
+        JOpenFillAmt,
+      </if>
+      <if test="jinfillqty != null">
+        JInFillQty,
+      </if>
+      <if test="jinfillamt != null">
+        JInFillAmt,
+      </if>
+      <if test="joutfillqty != null">
+        JOutFillQty,
+      </if>
+      <if test="joutfillamt != null">
+        JOutFillAmt,
+      </if>
+      <if test="jendfillamt != null">
+        JEndFillAmt,
+      </if>
+      <if test="jfillid != null">
+        JFillID,
+      </if>
+      <if test="jpassword != null">
+        JPassword,
+      </if>
+      <if test="jbuilddate != null">
+        JBuildDate,
+      </if>
+      <if test="jbuildbatchcode != null">
+        JBuildBatchCode,
+      </if>
+      <if test="jinputrid != null">
+        JInputrID,
+      </if>
+      <if test="jchkrid != null">
+        JChkrID,
+      </if>
+      <if test="jchkdate != null">
+        JChkDate,
+      </if>
+      <if test="jstateid != null">
+        JStateID,
+      </if>
+      <if test="jcardtype != null">
+        JCardType,
+      </if>
+      <if test="jbegindate != null">
+        JBeginDate,
+      </if>
+      <if test="jenddate != null">
+        JEndDate,
+      </if>
+      <if test="jbuilddeptid != null">
+        JBuildDeptID,
+      </if>
+      <if test="jbuilduserid != null">
+        JBuildUserID,
+      </if>
+      <if test="jsendoutdate != null">
+        JSendOutDate,
+      </if>
+      <if test="jhandleid != null">
+        JHandleID,
+      </if>
+      <if test="jmemo != null">
+        JMemo,
+      </if>
+      <if test="jsupclientid != null">
+        JSupClientID,
+      </if>
+      <if test="joldcardid != null">
+        JOldCardID,
+      </if>
+      <if test="jcountrycode != null">
+        JCountryCode,
+      </if>
+      <if test="jprovincecode != null">
+        JProvinceCode,
+      </if>
+      <if test="jcitycode != null">
+        JCityCode,
+      </if>
+      <if test="jcountycode != null">
+        JCountyCode,
+      </if>
+      <if test="jmetiercode != null">
+        JMetierCode,
+      </if>
+      <if test="jworkcompany != null">
+        JWorkCompany,
+      </if>
+      <if test="jcontractaddress != null">
+        JContractAddress,
+      </if>
+      <if test="jpostalcode != null">
+        JPostalCode,
+      </if>
+      <if test="jbirthdayid != null">
+        JBirthDayID,
+      </if>
+      <if test="jqqnumber != null">
+        JQQNumber,
+      </if>
+      <if test="jmsnnumber != null">
+        JMSNNumber,
+      </if>
+      <if test="jstature != null">
+        JStature,
+      </if>
+      <if test="javoirdupois != null">
+        JAvoirdupois,
+      </if>
+      <if test="jbloodtype != null">
+        JBloodType,
+      </if>
+      <if test="jconstellation != null">
+        JConstellation,
+      </if>
+      <if test="jmarriagestate != null">
+        JMarriageState,
+      </if>
+      <if test="jlove != null">
+        JLove,
+      </if>
+      <if test="jtabu != null">
+        JTabu,
+      </if>
+      <if test="jyearincomeid != null">
+        JYearInComeID,
+      </if>
+      <if test="jskincharid != null">
+        JSkinCharID,
+      </if>
+      <if test="jskinmatterid != null">
+        JSkinMatterID,
+      </if>
+      <if test="jexplain != null">
+        JExplain,
+      </if>
+      <if test="jyearconsumeamt != null">
+        JYearConsumeAmt,
+      </if>
+      <if test="jconsumecount != null">
+        JConsumeCount,
+      </if>
+      <if test="jcustomfield1 != null">
+        JCustomField1,
+      </if>
+      <if test="jcustomfield2 != null">
+        JCustomField2,
+      </if>
+      <if test="jcustomfield3 != null">
+        JCustomField3,
+      </if>
+      <if test="jcustomfield4 != null">
+        JCustomField4,
+      </if>
+      <if test="jcustomfield5 != null">
+        JCustomField5,
+      </if>
+      <if test="jcustomfield6 != null">
+        JCustomField6,
+      </if>
+      <if test="jcustomfield7 != null">
+        JCustomField7,
+      </if>
+      <if test="jcustomfield8 != null">
+        JCustomField8,
+      </if>
+      <if test="jcustomfield9 != null">
+        JCustomField9,
+      </if>
+      <if test="jconsigneename != null">
+        JConsigneeName,
+      </if>
+      <if test="jconsigneeaddress != null">
+        JConsigneeAddress,
+      </if>
+      <if test="jconsigneetele != null">
+        JConsigneeTele,
+      </if>
+      <if test="jmodifytime != null">
+        JModifyTime,
+      </if>
+      <if test="jbankname != null">
+        JBankName,
+      </if>
+      <if test="jaccount != null">
+        JAccount,
+      </if>
+      <if test="jalipayaccount != null">
+        JAlipayAccount,
+      </if>
+      <if test="jdeliverypwd != null">
+        JDeliveryPwd,
+      </if>
+      <if test="jcountrycityid != null">
+        JCountryCityID,
+      </if>
+      <if test="jbank != null">
+        JBank,
+      </if>
+      <if test="jloginname != null">
+        JLoginName,
+      </if>
+      <if test="jbindaccountstate != null">
+        JBindAccountState,
+      </if>
+      <if test="jwechat != null">
+        JWeChat,
+      </if>
+      <if test="jopenid != null">
+        JOpenID,
+      </if>
+      <if test="jmenberlocalid != null">
+        JMenberLocalID,
+      </if>
+      <if test="jbinddelivery != null">
+        JBindDelivery,
+      </if>
+      <if test="jportrait != null">
+        JPortrait,
+      </if>
+      <if test="jtoken != null">
+        JToken,
+      </if>
+      <if test="jexcelinfo != null">
+        JExcelInfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jid != null">
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jdeptid != null">
+        #{jdeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jempcode != null">
+        #{jempcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="jempname != null">
+        #{jempname,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomsex != null">
+        #{jcustomsex,jdbcType=BIT},
+      </if>
+      <if test="jtele != null">
+        #{jtele,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomaddress != null">
+        #{jcustomaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jidentitycode != null">
+        #{jidentitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jnouse != null">
+        #{jnouse,jdbcType=BIT},
+      </if>
+      <if test="jdiscid != null">
+        #{jdiscid,jdbcType=INTEGER},
+      </if>
+      <if test="jdiscrate != null">
+        #{jdiscrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jcardclassid != null">
+        #{jcardclassid,jdbcType=INTEGER},
+      </if>
+      <if test="jcustomamt != null">
+        #{jcustomamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jcurrentinqty != null">
+        #{jcurrentinqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jcurrentoutqty != null">
+        #{jcurrentoutqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jendqty != null">
+        #{jendqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jemail != null">
+        #{jemail,jdbcType=VARCHAR},
+      </if>
+      <if test="jsizeid != null">
+        #{jsizeid,jdbcType=INTEGER},
+      </if>
+      <if test="jbirthday != null">
+        #{jbirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jmemparentid != null">
+        #{jmemparentid,jdbcType=INTEGER},
+      </if>
+      <if test="jmobilenumber != null">
+        #{jmobilenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jsendoutdaten != null">
+        #{jsendoutdaten,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jopenqty != null">
+        #{jopenqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jopenfillamt != null">
+        #{jopenfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jinfillqty != null">
+        #{jinfillqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jinfillamt != null">
+        #{jinfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="joutfillqty != null">
+        #{joutfillqty,jdbcType=DECIMAL},
+      </if>
+      <if test="joutfillamt != null">
+        #{joutfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jendfillamt != null">
+        #{jendfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jfillid != null">
+        #{jfillid,jdbcType=BIT},
+      </if>
+      <if test="jpassword != null">
+        #{jpassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="jbuilddate != null">
+        #{jbuilddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jbuildbatchcode != null">
+        #{jbuildbatchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jinputrid != null">
+        #{jinputrid,jdbcType=INTEGER},
+      </if>
+      <if test="jchkrid != null">
+        #{jchkrid,jdbcType=INTEGER},
+      </if>
+      <if test="jchkdate != null">
+        #{jchkdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jstateid != null">
+        #{jstateid,jdbcType=INTEGER},
+      </if>
+      <if test="jcardtype != null">
+        #{jcardtype,jdbcType=INTEGER},
+      </if>
+      <if test="jbegindate != null">
+        #{jbegindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jenddate != null">
+        #{jenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jbuilddeptid != null">
+        #{jbuilddeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jbuilduserid != null">
+        #{jbuilduserid,jdbcType=INTEGER},
+      </if>
+      <if test="jsendoutdate != null">
+        #{jsendoutdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jhandleid != null">
+        #{jhandleid,jdbcType=INTEGER},
+      </if>
+      <if test="jmemo != null">
+        #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jsupclientid != null">
+        #{jsupclientid,jdbcType=INTEGER},
+      </if>
+      <if test="joldcardid != null">
+        #{joldcardid,jdbcType=INTEGER},
+      </if>
+      <if test="jcountrycode != null">
+        #{jcountrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jprovincecode != null">
+        #{jprovincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcitycode != null">
+        #{jcitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcountycode != null">
+        #{jcountycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jmetiercode != null">
+        #{jmetiercode,jdbcType=VARCHAR},
+      </if>
+      <if test="jworkcompany != null">
+        #{jworkcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="jcontractaddress != null">
+        #{jcontractaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jpostalcode != null">
+        #{jpostalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jbirthdayid != null">
+        #{jbirthdayid,jdbcType=INTEGER},
+      </if>
+      <if test="jqqnumber != null">
+        #{jqqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jmsnnumber != null">
+        #{jmsnnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jstature != null">
+        #{jstature,jdbcType=DECIMAL},
+      </if>
+      <if test="javoirdupois != null">
+        #{javoirdupois,jdbcType=DECIMAL},
+      </if>
+      <if test="jbloodtype != null">
+        #{jbloodtype,jdbcType=INTEGER},
+      </if>
+      <if test="jconstellation != null">
+        #{jconstellation,jdbcType=INTEGER},
+      </if>
+      <if test="jmarriagestate != null">
+        #{jmarriagestate,jdbcType=INTEGER},
+      </if>
+      <if test="jlove != null">
+        #{jlove,jdbcType=VARCHAR},
+      </if>
+      <if test="jtabu != null">
+        #{jtabu,jdbcType=VARCHAR},
+      </if>
+      <if test="jyearincomeid != null">
+        #{jyearincomeid,jdbcType=INTEGER},
+      </if>
+      <if test="jskincharid != null">
+        #{jskincharid,jdbcType=INTEGER},
+      </if>
+      <if test="jskinmatterid != null">
+        #{jskinmatterid,jdbcType=INTEGER},
+      </if>
+      <if test="jexplain != null">
+        #{jexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="jyearconsumeamt != null">
+        #{jyearconsumeamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jconsumecount != null">
+        #{jconsumecount,jdbcType=INTEGER},
+      </if>
+      <if test="jcustomfield1 != null">
+        #{jcustomfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield2 != null">
+        #{jcustomfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield3 != null">
+        #{jcustomfield3,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield4 != null">
+        #{jcustomfield4,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield5 != null">
+        #{jcustomfield5,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield6 != null">
+        #{jcustomfield6,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield7 != null">
+        #{jcustomfield7,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield8 != null">
+        #{jcustomfield8,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield9 != null">
+        #{jcustomfield9,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneename != null">
+        #{jconsigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneeaddress != null">
+        #{jconsigneeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneetele != null">
+        #{jconsigneetele,jdbcType=VARCHAR},
+      </if>
+      <if test="jmodifytime != null">
+        #{jmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jbankname != null">
+        #{jbankname,jdbcType=VARCHAR},
+      </if>
+      <if test="jaccount != null">
+        #{jaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="jalipayaccount != null">
+        #{jalipayaccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="jdeliverypwd != null">
+        #{jdeliverypwd,jdbcType=NVARCHAR},
+      </if>
+      <if test="jcountrycityid != null">
+        #{jcountrycityid,jdbcType=INTEGER},
+      </if>
+      <if test="jbank != null">
+        #{jbank,jdbcType=NVARCHAR},
+      </if>
+      <if test="jloginname != null">
+        #{jloginname,jdbcType=NVARCHAR},
+      </if>
+      <if test="jbindaccountstate != null">
+        #{jbindaccountstate,jdbcType=INTEGER},
+      </if>
+      <if test="jwechat != null">
+        #{jwechat,jdbcType=NVARCHAR},
+      </if>
+      <if test="jopenid != null">
+        #{jopenid,jdbcType=NVARCHAR},
+      </if>
+      <if test="jmenberlocalid != null">
+        #{jmenberlocalid,jdbcType=INTEGER},
+      </if>
+      <if test="jbinddelivery != null">
+        #{jbinddelivery,jdbcType=NVARCHAR},
+      </if>
+      <if test="jportrait != null">
+        #{jportrait,jdbcType=NVARCHAR},
+      </if>
+      <if test="jtoken != null">
+        #{jtoken,jdbcType=NVARCHAR},
+      </if>
+      <if test="jexcelinfo != null">
+        #{jexcelinfo,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+ <!--  修改token -->
+  <update id="updataToken" parameterType="com.whimsy.entity.TMemberCard">
+    update dbo.TMemberCard
+    <set>
+      <if test="jdeptid != null">
+        JDeptID = #{jdeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jempcode != null">
+        JEmpCode = #{jempcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="jempname != null">
+        JEmpName = #{jempname,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomsex != null">
+        JCustomSex = #{jcustomsex,jdbcType=BIT},
+      </if>
+      <if test="jtele != null">
+        JTele = #{jtele,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomaddress != null">
+        JCustomAddress = #{jcustomaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jidentitycode != null">
+        JIdentityCode = #{jidentitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jnouse != null">
+        JNoUse = #{jnouse,jdbcType=BIT},
+      </if>
+      <if test="jdiscid != null">
+        JDiscID = #{jdiscid,jdbcType=INTEGER},
+      </if>
+      <if test="jdiscrate != null">
+        JDiscRate = #{jdiscrate,jdbcType=DECIMAL},
+      </if>
+      <if test="jcardclassid != null">
+        JCardClassID = #{jcardclassid,jdbcType=INTEGER},
+      </if>
+      <if test="jcustomamt != null">
+        JCustomAmt = #{jcustomamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jcurrentinqty != null">
+        JCurrentInQty = #{jcurrentinqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jcurrentoutqty != null">
+        JCurrentOutQty = #{jcurrentoutqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jendqty != null">
+        JEndQty = #{jendqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jemail != null">
+        JEmail = #{jemail,jdbcType=VARCHAR},
+      </if>
+      <if test="jsizeid != null">
+        JSizeID = #{jsizeid,jdbcType=INTEGER},
+      </if>
+      <if test="jbirthday != null">
+        JBirthday = #{jbirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jmemparentid != null">
+        JMemParentID = #{jmemparentid,jdbcType=INTEGER},
+      </if>
+      <if test="jmobilenumber != null">
+        JMobileNumber = #{jmobilenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jsendoutdaten != null">
+        JSendOutDaten = #{jsendoutdaten,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jopenqty != null">
+        JOpenQty = #{jopenqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jopenfillamt != null">
+        JOpenFillAmt = #{jopenfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jinfillqty != null">
+        JInFillQty = #{jinfillqty,jdbcType=DECIMAL},
+      </if>
+      <if test="jinfillamt != null">
+        JInFillAmt = #{jinfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="joutfillqty != null">
+        JOutFillQty = #{joutfillqty,jdbcType=DECIMAL},
+      </if>
+      <if test="joutfillamt != null">
+        JOutFillAmt = #{joutfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jendfillamt != null">
+        JEndFillAmt = #{jendfillamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jfillid != null">
+        JFillID = #{jfillid,jdbcType=BIT},
+      </if>
+      <if test="jpassword != null">
+        JPassword = #{jpassword,jdbcType=NVARCHAR},
+      </if>
+      <if test="jbuilddate != null">
+        JBuildDate = #{jbuilddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jbuildbatchcode != null">
+        JBuildBatchCode = #{jbuildbatchcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jinputrid != null">
+        JInputrID = #{jinputrid,jdbcType=INTEGER},
+      </if>
+      <if test="jchkrid != null">
+        JChkrID = #{jchkrid,jdbcType=INTEGER},
+      </if>
+      <if test="jchkdate != null">
+        JChkDate = #{jchkdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jstateid != null">
+        JStateID = #{jstateid,jdbcType=INTEGER},
+      </if>
+      <if test="jcardtype != null">
+        JCardType = #{jcardtype,jdbcType=INTEGER},
+      </if>
+      <if test="jbegindate != null">
+        JBeginDate = #{jbegindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jenddate != null">
+        JEndDate = #{jenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jbuilddeptid != null">
+        JBuildDeptID = #{jbuilddeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jbuilduserid != null">
+        JBuildUserID = #{jbuilduserid,jdbcType=INTEGER},
+      </if>
+      <if test="jsendoutdate != null">
+        JSendOutDate = #{jsendoutdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jhandleid != null">
+        JHandleID = #{jhandleid,jdbcType=INTEGER},
+      </if>
+      <if test="jmemo != null">
+        JMemo = #{jmemo,jdbcType=VARCHAR},
+      </if>
+      <if test="jsupclientid != null">
+        JSupClientID = #{jsupclientid,jdbcType=INTEGER},
+      </if>
+      <if test="joldcardid != null">
+        JOldCardID = #{joldcardid,jdbcType=INTEGER},
+      </if>
+      <if test="jcountrycode != null">
+        JCountryCode = #{jcountrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jprovincecode != null">
+        JProvinceCode = #{jprovincecode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcitycode != null">
+        JCityCode = #{jcitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jcountycode != null">
+        JCountyCode = #{jcountycode,jdbcType=VARCHAR},
+      </if>
+      <if test="jmetiercode != null">
+        JMetierCode = #{jmetiercode,jdbcType=VARCHAR},
+      </if>
+      <if test="jworkcompany != null">
+        JWorkCompany = #{jworkcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="jcontractaddress != null">
+        JContractAddress = #{jcontractaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jpostalcode != null">
+        JPostalCode = #{jpostalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="jbirthdayid != null">
+        JBirthDayID = #{jbirthdayid,jdbcType=INTEGER},
+      </if>
+      <if test="jqqnumber != null">
+        JQQNumber = #{jqqnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jmsnnumber != null">
+        JMSNNumber = #{jmsnnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jstature != null">
+        JStature = #{jstature,jdbcType=DECIMAL},
+      </if>
+      <if test="javoirdupois != null">
+        JAvoirdupois = #{javoirdupois,jdbcType=DECIMAL},
+      </if>
+      <if test="jbloodtype != null">
+        JBloodType = #{jbloodtype,jdbcType=INTEGER},
+      </if>
+      <if test="jconstellation != null">
+        JConstellation = #{jconstellation,jdbcType=INTEGER},
+      </if>
+      <if test="jmarriagestate != null">
+        JMarriageState = #{jmarriagestate,jdbcType=INTEGER},
+      </if>
+      <if test="jlove != null">
+        JLove = #{jlove,jdbcType=VARCHAR},
+      </if>
+      <if test="jtabu != null">
+        JTabu = #{jtabu,jdbcType=VARCHAR},
+      </if>
+      <if test="jyearincomeid != null">
+        JYearInComeID = #{jyearincomeid,jdbcType=INTEGER},
+      </if>
+      <if test="jskincharid != null">
+        JSkinCharID = #{jskincharid,jdbcType=INTEGER},
+      </if>
+      <if test="jskinmatterid != null">
+        JSkinMatterID = #{jskinmatterid,jdbcType=INTEGER},
+      </if>
+      <if test="jexplain != null">
+        JExplain = #{jexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="jyearconsumeamt != null">
+        JYearConsumeAmt = #{jyearconsumeamt,jdbcType=DECIMAL},
+      </if>
+      <if test="jconsumecount != null">
+        JConsumeCount = #{jconsumecount,jdbcType=INTEGER},
+      </if>
+      <if test="jcustomfield1 != null">
+        JCustomField1 = #{jcustomfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield2 != null">
+        JCustomField2 = #{jcustomfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield3 != null">
+        JCustomField3 = #{jcustomfield3,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield4 != null">
+        JCustomField4 = #{jcustomfield4,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield5 != null">
+        JCustomField5 = #{jcustomfield5,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield6 != null">
+        JCustomField6 = #{jcustomfield6,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield7 != null">
+        JCustomField7 = #{jcustomfield7,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield8 != null">
+        JCustomField8 = #{jcustomfield8,jdbcType=VARCHAR},
+      </if>
+      <if test="jcustomfield9 != null">
+        JCustomField9 = #{jcustomfield9,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneename != null">
+        JConsigneeName = #{jconsigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneeaddress != null">
+        JConsigneeAddress = #{jconsigneeaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jconsigneetele != null">
+        JConsigneeTele = #{jconsigneetele,jdbcType=VARCHAR},
+      </if>
+      <if test="jmodifytime != null">
+        JModifyTime = #{jmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jbankname != null">
+        JBankName = #{jbankname,jdbcType=VARCHAR},
+      </if>
+      <if test="jaccount != null">
+        JAccount = #{jaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="jalipayaccount != null">
+        JAlipayAccount = #{jalipayaccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="jdeliverypwd != null">
+        JDeliveryPwd = #{jdeliverypwd,jdbcType=NVARCHAR},
+      </if>
+      <if test="jcountrycityid != null">
+        JCountryCityID = #{jcountrycityid,jdbcType=INTEGER},
+      </if>
+      <if test="jbank != null">
+        JBank = #{jbank,jdbcType=NVARCHAR},
+      </if>
+      <if test="jloginname != null">
+        JLoginName = #{jloginname,jdbcType=NVARCHAR},
+      </if>
+      <if test="jbindaccountstate != null">
+        JBindAccountState = #{jbindaccountstate,jdbcType=INTEGER},
+      </if>
+      <if test="jwechat != null">
+        JWeChat = #{jwechat,jdbcType=NVARCHAR},
+      </if>
+      <if test="jopenid != null">
+        JOpenID = #{jopenid,jdbcType=NVARCHAR},
+      </if>
+      <if test="jmenberlocalid != null">
+        JMenberLocalID = #{jmenberlocalid,jdbcType=INTEGER},
+      </if>
+      <if test="jbinddelivery != null">
+        JBindDelivery = #{jbinddelivery,jdbcType=NVARCHAR},
+      </if>
+      <if test="jportrait != null">
+        JPortrait = #{jportrait,jdbcType=NVARCHAR},
+      </if>
+      <if test="jtoken != null">
+        JToken = #{jtoken,jdbcType=NVARCHAR},
+      </if>
+      <if test="jexcelinfo != null">
+        JExcelInfo = #{jexcelinfo,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where JMobileNumber = #{jmobilenumber,jdbcType=VARCHAR}
+  </update>
+ <!--  零点修改签到状态 -->
+ <!--  <update id="Sign" parameterType="com.whimsy.entity.TMemberCard">
+    update dbo.TMemberCard
+    set JIfSign = 'ture'
+    where 1 = 1
+  </update> -->
+  <!--  签到 -->
+  <update id="Sign" parameterType="com.whimsy.entity.TMemberCard">
+    update dbo.TMemberCard
+    set JIfSign = 'true',
+    JSignData = #{jsigndata,jdbcType=VARCHAR}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.whimsy.entity.TMemberCard">
+    update dbo.TMemberCard
+    set JDeptID = #{jdeptid,jdbcType=INTEGER},
+      JEmpCode = #{jempcode,jdbcType=NVARCHAR},
+      JEmpName = #{jempname,jdbcType=VARCHAR},
+      JCustomSex = #{jcustomsex,jdbcType=BIT},
+      JTele = #{jtele,jdbcType=VARCHAR},
+      JCustomAddress = #{jcustomaddress,jdbcType=VARCHAR},
+      JIdentityCode = #{jidentitycode,jdbcType=VARCHAR},
+      JNoUse = #{jnouse,jdbcType=BIT},
+      JDiscID = #{jdiscid,jdbcType=INTEGER},
+      JDiscRate = #{jdiscrate,jdbcType=DECIMAL},
+      JCardClassID = #{jcardclassid,jdbcType=INTEGER},
+      JCustomAmt = #{jcustomamt,jdbcType=DECIMAL},
+      JCurrentInQty = #{jcurrentinqty,jdbcType=DECIMAL},
+      JCurrentOutQty = #{jcurrentoutqty,jdbcType=DECIMAL},
+      JEndQty = #{jendqty,jdbcType=DECIMAL},
+      JEmail = #{jemail,jdbcType=VARCHAR},
+      JSizeID = #{jsizeid,jdbcType=INTEGER},
+      JBirthday = #{jbirthday,jdbcType=TIMESTAMP},
+      JMemParentID = #{jmemparentid,jdbcType=INTEGER},
+      JMobileNumber = #{jmobilenumber,jdbcType=VARCHAR},
+      JSendOutDaten = #{jsendoutdaten,jdbcType=TIMESTAMP},
+      JOpenQty = #{jopenqty,jdbcType=DECIMAL},
+      JOpenFillAmt = #{jopenfillamt,jdbcType=DECIMAL},
+      JInFillQty = #{jinfillqty,jdbcType=DECIMAL},
+      JInFillAmt = #{jinfillamt,jdbcType=DECIMAL},
+      JOutFillQty = #{joutfillqty,jdbcType=DECIMAL},
+      JOutFillAmt = #{joutfillamt,jdbcType=DECIMAL},
+      JEndFillAmt = #{jendfillamt,jdbcType=DECIMAL},
+      JFillID = #{jfillid,jdbcType=BIT},
+      JPassword = #{jpassword,jdbcType=NVARCHAR},
+      JBuildDate = #{jbuilddate,jdbcType=TIMESTAMP},
+      JBuildBatchCode = #{jbuildbatchcode,jdbcType=VARCHAR},
+      JInputrID = #{jinputrid,jdbcType=INTEGER},
+      JChkrID = #{jchkrid,jdbcType=INTEGER},
+      JChkDate = #{jchkdate,jdbcType=TIMESTAMP},
+      JStateID = #{jstateid,jdbcType=INTEGER},
+      JCardType = #{jcardtype,jdbcType=INTEGER},
+      JBeginDate = #{jbegindate,jdbcType=TIMESTAMP},
+      JEndDate = #{jenddate,jdbcType=TIMESTAMP},
+      JBuildDeptID = #{jbuilddeptid,jdbcType=INTEGER},
+      JBuildUserID = #{jbuilduserid,jdbcType=INTEGER},
+      JSendOutDate = #{jsendoutdate,jdbcType=TIMESTAMP},
+      JHandleID = #{jhandleid,jdbcType=INTEGER},
+      JMemo = #{jmemo,jdbcType=VARCHAR},
+      JSupClientID = #{jsupclientid,jdbcType=INTEGER},
+      JOldCardID = #{joldcardid,jdbcType=INTEGER},
+      JCountryCode = #{jcountrycode,jdbcType=VARCHAR},
+      JProvinceCode = #{jprovincecode,jdbcType=VARCHAR},
+      JCityCode = #{jcitycode,jdbcType=VARCHAR},
+      JCountyCode = #{jcountycode,jdbcType=VARCHAR},
+      JMetierCode = #{jmetiercode,jdbcType=VARCHAR},
+      JWorkCompany = #{jworkcompany,jdbcType=VARCHAR},
+      JContractAddress = #{jcontractaddress,jdbcType=VARCHAR},
+      JPostalCode = #{jpostalcode,jdbcType=VARCHAR},
+      JBirthDayID = #{jbirthdayid,jdbcType=INTEGER},
+      JQQNumber = #{jqqnumber,jdbcType=VARCHAR},
+      JMSNNumber = #{jmsnnumber,jdbcType=VARCHAR},
+      JStature = #{jstature,jdbcType=DECIMAL},
+      JAvoirdupois = #{javoirdupois,jdbcType=DECIMAL},
+      JBloodType = #{jbloodtype,jdbcType=INTEGER},
+      JConstellation = #{jconstellation,jdbcType=INTEGER},
+      JMarriageState = #{jmarriagestate,jdbcType=INTEGER},
+      JLove = #{jlove,jdbcType=VARCHAR},
+      JTabu = #{jtabu,jdbcType=VARCHAR},
+      JYearInComeID = #{jyearincomeid,jdbcType=INTEGER},
+      JSkinCharID = #{jskincharid,jdbcType=INTEGER},
+      JSkinMatterID = #{jskinmatterid,jdbcType=INTEGER},
+      JExplain = #{jexplain,jdbcType=VARCHAR},
+      JYearConsumeAmt = #{jyearconsumeamt,jdbcType=DECIMAL},
+      JConsumeCount = #{jconsumecount,jdbcType=INTEGER},
+      JCustomField1 = #{jcustomfield1,jdbcType=VARCHAR},
+      JCustomField2 = #{jcustomfield2,jdbcType=VARCHAR},
+      JCustomField3 = #{jcustomfield3,jdbcType=VARCHAR},
+      JCustomField4 = #{jcustomfield4,jdbcType=VARCHAR},
+      JCustomField5 = #{jcustomfield5,jdbcType=VARCHAR},
+      JCustomField6 = #{jcustomfield6,jdbcType=VARCHAR},
+      JCustomField7 = #{jcustomfield7,jdbcType=VARCHAR},
+      JCustomField8 = #{jcustomfield8,jdbcType=VARCHAR},
+      JCustomField9 = #{jcustomfield9,jdbcType=VARCHAR},
+      JConsigneeName = #{jconsigneename,jdbcType=VARCHAR},
+      JConsigneeAddress = #{jconsigneeaddress,jdbcType=VARCHAR},
+      JConsigneeTele = #{jconsigneetele,jdbcType=VARCHAR},
+      JModifyTime = #{jmodifytime,jdbcType=TIMESTAMP},
+      JBankName = #{jbankname,jdbcType=VARCHAR},
+      JAccount = #{jaccount,jdbcType=VARCHAR},
+      JAlipayAccount = #{jalipayaccount,jdbcType=NVARCHAR},
+      JDeliveryPwd = #{jdeliverypwd,jdbcType=NVARCHAR},
+      JCountryCityID = #{jcountrycityid,jdbcType=INTEGER},
+      JBank = #{jbank,jdbcType=NVARCHAR},
+      JLoginName = #{jloginname,jdbcType=NVARCHAR},
+      JBindAccountState = #{jbindaccountstate,jdbcType=INTEGER},
+      JWeChat = #{jwechat,jdbcType=NVARCHAR},
+      JOpenID = #{jopenid,jdbcType=NVARCHAR},
+      JMenberLocalID = #{jmenberlocalid,jdbcType=INTEGER},
+      JBindDelivery = #{jbinddelivery,jdbcType=NVARCHAR},
+      JPortrait = #{jportrait,jdbcType=NVARCHAR},
+      JToken = #{jtoken,jdbcType=NVARCHAR},
+      JExcelInfo = #{jexcelinfo,jdbcType=LONGVARBINARY}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <!-- 修改剩余积分 -->
+  <update id="updateIn" parameterType="com.whimsy.entity.TMemberCard">
+    update dbo.TMemberCard
+    set JEndQty = #{jendqty,jdbcType=DECIMAL}
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+  <!-- 修改剩余积分、余额 -->
+  <update id="updateall" parameterType="com.whimsy.entity.TMemberCard">
+    update dbo.TMemberCard
+    set JEndQty = #{jendqty,jdbcType=DECIMAL},
+      JEndFillAmt = #{jendfillamt,jdbcType=DECIMAL},
+    where JID = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

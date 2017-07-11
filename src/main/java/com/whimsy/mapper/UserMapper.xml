@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.UserDao">
+	 <resultMap id="UserResult" type="com.whimsy.entity.User">
+		<id column="USER_ID" jdbcType="DECIMAL" property="userId" />
+		<result column="USER_NICKNAME" jdbcType="VARCHAR" property="userNickname" />
+		<result column="USER_FACE" jdbcType="VARCHAR" property="userFace" />
+		<result column="USER_EMAIL" jdbcType="VARCHAR" property="userEmail" />
+		<result column="USER_COUNT" jdbcType="VARCHAR" property="userCount" />
+		<result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
+		<result column="USER_REALNAME" jdbcType="VARCHAR" property="userRealname" />
+		<result column="USER_SEX" jdbcType="VARCHAR" property="userSex" />
+		<result column="USER_AGE" jdbcType="DECIMAL" property="userAge" />
+		<result column="USER_QQ" jdbcType="DECIMAL" property="userQq" />
+		<result column="USER_UNIVERSITY" jdbcType="VARCHAR" property="userUniversity" />
+		<result column="USER_JOB" jdbcType="VARCHAR" property="userJob" />
+		<result column="USER_PHONE" jdbcType="DECIMAL" property="userPhone" />
+		<result column="USER_INTRODUCE" jdbcType="VARCHAR" property="userIntroduce" />
+		<result column="USER_LABEL" jdbcType="VARCHAR" property="userLabel" />
+		<result column="USER_TIME" jdbcType="DATE" property="userTime" />
+	</resultMap>
+	<!-- 验证登陆 -->
+	<select id="checkLogin" parameterType="com.whimsy.entity.User"
+		resultType="Integer">
+		select * from WHIMSY_USER
+		where USER_COUNT =
+		#{userCount,jdbcType=VARCHAR} and USER_PASSWORD =
+		#{userPassword,jdbcType=VARCHAR}
+	</select>
+	<!-- 检查用户账号是否存在 -->
+	<select id="checkUserExist" parameterType="java.lang.String"
+		resultType="Integer">
+		select * from WHIMSY_USER
+		where USER_COUNT =
+		#{userCount,jdbcType=VARCHAR}
+	</select>
+	<!-- 删除用户 -->
+	<delete id="delUser" parameterType="java.lang.Integer">
+		delete from WHIMSY_USER
+		where
+		USER_ID = #{userId,jdbcType=DECIMAL}
+	</delete>
+	<!-- 注册 -->
+	<insert id="registerUser" parameterType="com.whimsy.entity.User">
+		insert into WHIMSY_USER
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="userNickname != null">
+				USER_NICKNAME,
+			</if>
+			<if test="userFace != null">
+				USER_FACE,
+			</if>
+			<if test="userEmail != null">
+				USER_EMAIL,
+			</if>
+			<if test="userCount != null">
+				USER_COUNT,
+			</if>
+			<if test="userPassword != null">
+				USER_PASSWORD,
+			</if>
+			<if test="userRealname != null">
+				USER_REALNAME,
+			</if>
+			<if test="userSex != null">
+				USER_SEX,
+			</if>
+			<if test="userAge != null">
+				USER_AGE,
+			</if>
+			<if test="userQq != null">
+				USER_QQ,
+			</if>
+			<if test="userUniversity != null">
+				USER_UNIVERSITY,
+			</if>
+			<if test="userJob != null">
+				USER_JOB,
+			</if>
+			<if test="userPhone != null">
+				USER_PHONE,
+			</if>
+			<if test="userIntroduce != null">
+				USER_INTRODUCE,
+			</if>
+			<if test="userLabel != null">
+				USER_LABEL,
+			</if>
+			<if test="userTime != null">
+				USER_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{user_id_seq.currval,jdbcType=DECIMAL},
+			</if>
+			<if test="userNickname != null">
+				#{userNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="userFace != null">
+				#{userFace,jdbcType=VARCHAR},
+			</if>
+			<if test="userEmail != null">
+				#{userEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="userCount != null">
+				#{userCount,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				#{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userRealname != null">
+				#{userRealname,jdbcType=VARCHAR},
+			</if>
+			<if test="userSex != null">
+				#{userSex,jdbcType=VARCHAR},
+			</if>
+			<if test="userAge != null">
+				#{userAge,jdbcType=DECIMAL},
+			</if>
+			<if test="userQq != null">
+				#{userQq,jdbcType=DECIMAL},
+			</if>
+			<if test="userUniversity != null">
+				#{userUniversity,jdbcType=VARCHAR},
+			</if>
+			<if test="userJob != null">
+				#{userJob,jdbcType=VARCHAR},
+			</if>
+			<if test="userPhone != null">
+				#{userPhone,jdbcType=DECIMAL},
+			</if>
+			<if test="userIntroduce != null">
+				#{userIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="userLabel != null">
+				#{userLabel,jdbcType=VARCHAR},
+			</if>
+			<if test="userTime != null">
+				#{userTime,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<!-- 用户信息更新 -->
+	<update id="updateUser" parameterType="com.whimsy.entity.User">
+		update WHIMSY_USER
+		<set>
+			<if test="userNickname != null">
+				USER_NICKNAME = #{userNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="userFace != null">
+				USER_FACE = #{userFace,jdbcType=VARCHAR},
+			</if>
+			<if test="userEmail != null">
+				USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="userCount != null">
+				USER_COUNT = #{userCount,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userRealname != null">
+				USER_REALNAME = #{userRealname,jdbcType=VARCHAR},
+			</if>
+			<if test="userSex != null">
+				USER_SEX = #{userSex,jdbcType=VARCHAR},
+			</if>
+			<if test="userAge != null">
+				USER_AGE = #{userAge,jdbcType=DECIMAL},
+			</if>
+			<if test="userQq != null">
+				USER_QQ = #{userQq,jdbcType=DECIMAL},
+			</if>
+			<if test="userUniversity != null">
+				USER_UNIVERSITY = #{userUniversity,jdbcType=VARCHAR},
+			</if>
+			<if test="userJob != null">
+				USER_JOB = #{userJob,jdbcType=VARCHAR},
+			</if>
+			<if test="userPhone != null">
+				USER_PHONE = #{userPhone,jdbcType=DECIMAL},
+			</if>
+			<if test="userIntroduce != null">
+				USER_INTRODUCE = #{userIntroduce,jdbcType=VARCHAR},
+			</if>
+			<if test="userLabel != null">
+				USER_LABEL = #{userLabel,jdbcType=VARCHAR},
+			</if>
+			<if test="userTime != null">
+				USER_TIME = #{userTime,jdbcType=DATE},
+			</if>
+		</set>
+		where USER_ID = #{userId,jdbcType=DECIMAL}
+	</update>
+</mapper>

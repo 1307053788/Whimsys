@@ -1,0 +1,32 @@
+/*登陆内容*/
+.login_content {
+	width: 600px;
+	height: 490px;
+	background: url("../images/public/bg.png");
+	border-radius: 6px;
+	margin: 0 auto;
+}
+
+.lgn_chunk {
+	width: 350px;
+	height: 50px;
+	position: relative;
+}
+
+.lgn_color {
+	line-height: 50px;
+	text-align: center;
+	background-color: #FFA00A;
+}
+
+#forget {
+	float: right;
+}
+
+.font {
+	color: #ADADAD;
+}
+
+.rempwd:hover {
+	color: red;
+}

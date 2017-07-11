@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.ContentDao">
+	<resultMap id="ContentResult" type="com.whimsy.entity.Content">
+		<id column="CONTENT_ID" jdbcType="DECIMAL" property="contentId" />
+		<result column="CONTENT_CHARACTER" jdbcType="VARCHAR" property="contentCharacter" />
+		<result column="CONTENT_IMAGES" jdbcType="VARCHAR" property="contentImages" />
+	</resultMap>
+	<!-- 遍历消息 <select id="Selected" resultMap="ContentResult"> </select> -->
+	<delete id="delContent" parameterType="java.lang.Integer">
+		delete from
+		WHIMSY_MSG_CONTENT
+		where CONTENT_ID = #{contentId,jdbcType=DECIMAL}
+	</delete>
+	<insert id="addContent" parameterType="com.whimsy.entity.Content">
+		<selectKey resultType="Integer" keyProperty="contentId">
+			select
+			msg_content_id_seq.currval as contentId from dual
+		</selectKey>
+		insert into WHIMSY_MSG_CONTENT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="contentId != null">
+				CONTENT_ID,
+			</if>
+			<if test="contentCharacter != null">
+				CONTENT_CHARACTER,
+			</if>
+			<if test="contentImages != null">
+				CONTENT_IMAGES,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="contentId != null">
+				#{msg_content_id_seq.currval,jdbcType=DECIMAL},
+			</if>
+			<if test="contentCharacter != null">
+				#{contentCharacter,jdbcType=VARCHAR},
+			</if>
+			<if test="contentImages != null">
+				#{contentImages,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateContent" parameterType="com.whimsy.entity.Content">
+		update WHIMSY_MSG_CONTENT
+		<set>
+			<if test="contentCharacter != null">
+				CONTENT_CHARACTER = #{contentCharacter,jdbcType=VARCHAR},
+			</if>
+			<if test="contentImages != null">
+				CONTENT_IMAGES = #{contentImages,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where CONTENT_ID = #{contentId,jdbcType=DECIMAL}
+	</update>
+</mapper>

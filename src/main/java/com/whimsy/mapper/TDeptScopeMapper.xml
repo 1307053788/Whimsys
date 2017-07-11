@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TDeptScopeMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TDeptScope">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_deptid" jdbcType="INTEGER" property="jDeptid" />
+    <result column="j_piont" jdbcType="VARCHAR" property="jPiont" />
+    <result column="j_gettime" jdbcType="VARCHAR" property="jGettime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_deptid, j_piont, j_gettime
+  </sql>
+  <!-- 查询店铺的所有配送范围 -->
+  <select id="selectScope" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dbo.TDeptScope
+    where j_deptid = #{jDeptid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TDeptScope
+    where j_id = #{jId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whimsy.entity.TDeptScope">
+    insert into dbo.TDeptScope (j_id, j_deptid, j_piont, 
+      j_gettime)
+    values (#{jId,jdbcType=INTEGER}, #{jDeptid,jdbcType=INTEGER}, #{jPiont,jdbcType=VARCHAR}, 
+      #{jGettime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TDeptScope">
+    insert into dbo.TDeptScope
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        j_id,
+      </if>
+      <if test="jDeptid != null">
+        j_deptid,
+      </if>
+      <if test="jPiont != null">
+        j_piont,
+      </if>
+      <if test="jGettime != null">
+        j_gettime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        #{jId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeptid != null">
+        #{jDeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jPiont != null">
+        #{jPiont,jdbcType=VARCHAR},
+      </if>
+      <if test="jGettime != null">
+        #{jGettime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TDeptScope">
+    update dbo.TDeptScope
+    <set>
+      <if test="jDeptid != null">
+        j_deptid = #{jDeptid,jdbcType=INTEGER},
+      </if>
+      <if test="jPiont != null">
+        j_piont = #{jPiont,jdbcType=VARCHAR},
+      </if>
+      <if test="jGettime != null">
+        j_gettime = #{jGettime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whimsy.entity.TDeptScope">
+    update dbo.TDeptScope
+    set j_deptid = #{jDeptid,jdbcType=INTEGER},
+      j_piont = #{jPiont,jdbcType=VARCHAR},
+      j_gettime = #{jGettime,jdbcType=VARCHAR}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

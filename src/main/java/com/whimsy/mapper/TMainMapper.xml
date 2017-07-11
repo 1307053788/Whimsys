@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TMainMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TMain">
+    <result column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_type" jdbcType="INTEGER" property="jType" />
+    <result column="j_arra" jdbcType="INTEGER" property="jArra" />
+    <result column="j_pid" jdbcType="INTEGER" property="jPid" />
+    <result column="j_dept_id" jdbcType="INTEGER" property="jDeptId" />
+    <result column="j_photo" jdbcType="VARCHAR" property="jPhoto" />
+    <result column="j_keyword" jdbcType="VARCHAR" property="jKeyword" />
+  </resultMap>
+  
+  <!-- 推荐关键字 -->
+  <select id="selectKeyword" parameterType="com.whimsy.entity.TMain" resultMap="BaseResultMap">
+	select 
+	j_id as jId,
+	j_type as jType,
+	j_arra as jArra,
+	j_pid as jPid,
+	j_photo as jPhoto,
+	j_dept_id as jDeptId,
+	j_keyword as jKeyword
+	from TMain
+	where j_arra = 1
+	and j_dept_id = #{jDeptId,jdbcType=INTEGER}
+  </select>
+  <!-- 大banner 商品+活动 -->
+  <select id="selectBanner" parameterType="com.whimsy.entity.TMain" resultMap="BaseResultMap">
+    select 
+	j_id as jId,
+	j_type as jType,
+	j_arra as jArra,
+	j_pid as jPid,
+	j_photo as jPhoto,
+	j_dept_id as jDeptId,
+	j_keyword as jKeyword
+	from TMain
+	where j_arra = 2
+	and j_dept_id = #{jDeptId,jdbcType=INTEGER}
+  </select>
+  <!-- 小banner 商品 -->
+  <select id="selectxBanner" parameterType="com.whimsy.entity.TMain" resultMap="BaseResultMap">
+   select 
+	j_id as jId,
+	j_type as jType,
+	j_arra as jArra,
+	j_pid as jPid,
+	j_photo as jPhoto,
+	j_dept_id as jDeptId,
+	j_keyword as jKeyword
+	from TMain
+	where j_arra = 3
+	and j_dept_id = #{jDeptId,jdbcType=INTEGER}
+  </select>
+  <!-- 分类 -->
+  <select id="selectMainKind" parameterType="com.whimsy.entity.TMain" resultMap="BaseResultMap">
+    select 
+	j_id as jId,
+	j_type as jType,
+	j_arra as jArra,
+	j_pid as jPid,
+	j_photo as jPhoto,
+	j_dept_id as jDeptId,
+	j_keyword as jKeyword
+	from TMain
+	where j_arra = 4
+	and j_dept_id = #{jDeptId,jdbcType=INTEGER}
+  </select>
+  <!-- 活动 -->
+  <select id="selectActivity" parameterType="com.whimsy.entity.TMain" resultMap="BaseResultMap">
+    select 
+	j_id as jId,
+	j_type as jType,
+	j_arra as jArra,
+	j_pid as jPid,
+	j_photo as jPhoto,
+	j_dept_id as jDeptId,
+	j_keyword as jKeyword
+	from TMain
+	where j_arra = 5
+	and j_dept_id = #{jDeptId,jdbcType=INTEGER}
+  </select>
+  <!-- 推荐商品-->
+  <select id="selectTGoods" parameterType="com.whimsy.entity.TMain" resultMap="BaseResultMap">
+    select 
+	j_id as jId,
+	j_type as jType,
+	j_arra as jArra,
+	j_pid as jPid,
+	j_photo as jPhoto,
+	j_dept_id as jDeptId,
+	j_keyword as jKeyword
+	from TMain
+	where j_arra = 6
+	and j_dept_id = #{jDeptId,jdbcType=INTEGER}
+  </select>
+	<!-- 插入主页展示 -->
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TMain">
+  	begin
+  	delete from dbo.TMain
+  	<foreach collection="" item="">
+    insert into dbo.TMain 
+    (j_type,j_arra,j_pid,j_photo,j_dept_id,j_keyword)
+    values ()
+    </foreach>
+    end
+  </insert>
+</mapper>

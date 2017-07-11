@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.TFootprintMapper">
+  <resultMap id="BaseResultMap" type="com.whimsy.entity.TFootprint">
+    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <result column="j_goods_id" jdbcType="INTEGER" property="jGoodsId" />
+    <result column="j_membercard_id" jdbcType="INTEGER" property="jMembercardId" />
+    <result column="j_dept_id" jdbcType="INTEGER" property="jDeptId" />
+    <result column="j_number" jdbcType="DECIMAL" property="jNumber" />
+    
+    <result column="JGoodsCode" jdbcType="VARCHAR" property="jgoodscode" />
+	<result column="JGoodsName" jdbcType="VARCHAR" property="jgoodsname" />
+	<result column="JModel" jdbcType="VARCHAR" property="jmodel" />
+	<result column="JUnit" jdbcType="VARCHAR" property="junit" />
+	<result column="JMemo" jdbcType="VARCHAR" property="jmemo" />
+	<result column="JClassID" jdbcType="INTEGER" property="jclassid" />
+	<result column="JSupClientID" jdbcType="INTEGER" property="jsupclientid" />
+	<result column="JBarCode" jdbcType="VARCHAR" property="jbarcode" />
+	<result column="JPointSalePrice" jdbcType="DECIMAL" property="jpointsaleprice" />
+	<result column="JSale3Price" jdbcType="DECIMAL" property="jsale3price" />
+	<result column="JRefCostPrice" jdbcType="DECIMAL" property="jrefcostprice" />
+	<result column="JMinInPrice" jdbcType="DECIMAL" property="jmininprice" />
+	<result column="JPlace" jdbcType="VARCHAR" property="jplace" />
+	
+	<result column="JBigPhoto" jdbcType="VARCHAR" property="jbigphoto" />
+	<result column="JSubtitle" jdbcType="VARCHAR" property="jsubtitle" />
+	<result column="JLitPhoto" jdbcType="VARCHAR" property="jlitphoto" />
+	
+	<result column="j_discount" jdbcType="DECIMAL" property="jdiscount" />
+	<result column="j_actprice" jdbcType="DECIMAL" property="jactprice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    j_id, j_goods_id, j_membercard_id, j_dept_id, j_number
+  </sql>
+  <!-- 查询足迹 -->
+  <select id="selectFootprint" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    bb.j_id as jId,
+    bb.j_goods_id as jGoodsId,
+    bb.j_dept_id as jDeptId,
+    bb.j_membercard_id as jMembercardId,
+    bb.j_number as jNumber,
+	aa.JGoodsCode as jgoodscode,
+	aa.JGoodsName as jgoodsname,
+	aa.JModel as jmodel,
+	aa.JUnit as junit,
+	aa.JMemo as jmemo,
+	aa.JClassID as jclassid,
+	aa.JSupClientID as jsupclientid,
+	aa.JBarCode as jbarcode,
+	aa.JPointSalePrice as jpointsaleprice,
+	aa.JSale3Price as jsale3price,
+	aa.JRefCostPrice as jrefcostprice,
+	aa.JMinInPrice as jmininprice,
+	aa.JPlace as jplace,
+	
+	isnull(aa.JSubtitle,'') as jsubtitle,
+	isnull(aa.JBigPhoto,'') AS jbigphoto,
+	isnull(aa.JLitPhoto,'') as jlitphoto,
+	
+	isnull(cc.j_discount,0) as jdiscount,
+	isnull(cc.j_actprice,-1) as jactprice
+    from dbo.TGoods aa,dbo.TFootprint bb
+	left join dbo.TActivityDatiled cc on bb.j_goods_id = cc.j_goods_id
+
+    where bb.j_goods_id = aa.JID
+    and bb.j_membercard_id = #{0}
+    and bb.j_dept_id = #{1}
+  </select>
+  
+  <!-- 查询足迹 -->
+  <select id="selectf" parameterType="com.whimsy.entity.TFootprint" resultMap="BaseResultMap">
+  	select 
+  	j_id as jId,
+    j_number as jNumber
+    from dbo.TFootprint
+    where j_goods_id = #{jGoodsId,jdbcType=INTEGER}
+    and j_membercard_id = #{jMembercardId,jdbcType=INTEGER}
+    and j_dept_id = #{jDeptId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dbo.TFootprint
+    where j_id = #{jId,jdbcType=INTEGER}
+  </delete>
+ <!--  插入足迹 -->
+  <insert id="insertf" parameterType="com.whimsy.entity.TFootprint">
+    insert into dbo.TFootprint (j_goods_id, j_membercard_id, 
+      j_dept_id, j_number)
+    values (#{jGoodsId,jdbcType=INTEGER}, #{jMembercardId,jdbcType=INTEGER}, 
+      #{jDeptId,jdbcType=INTEGER}, #{jNumber,jdbcType=DECIMAL})
+  </insert>
+  
+  <!-- 修改足迹 -->
+  <update id="updatef" parameterType="com.whimsy.entity.TFootprint">
+    update dbo.TFootprint
+    set j_number = #{jNumber,jdbcType=DECIMAL}
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+  <insert id="insertSelective" parameterType="com.whimsy.entity.TFootprint">
+    insert into dbo.TFootprint
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        j_id,
+      </if>
+      <if test="jGoodsId != null">
+        j_goods_id,
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id,
+      </if>
+      <if test="jDeptId != null">
+        j_dept_id,
+      </if>
+      <if test="jNumber != null">
+        j_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jId != null">
+        #{jId,jdbcType=INTEGER},
+      </if>
+      <if test="jGoodsId != null">
+        #{jGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeptId != null">
+        #{jDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="jNumber != null">
+        #{jNumber,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.TFootprint">
+    update dbo.TFootprint
+    <set>
+      <if test="jGoodsId != null">
+        j_goods_id = #{jGoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="jMembercardId != null">
+        j_membercard_id = #{jMembercardId,jdbcType=INTEGER},
+      </if>
+      <if test="jDeptId != null">
+        j_dept_id = #{jDeptId,jdbcType=INTEGER},
+      </if>
+      <if test="jNumber != null">
+        j_number = #{jNumber,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where j_id = #{jId,jdbcType=INTEGER}
+  </update>
+</mapper>

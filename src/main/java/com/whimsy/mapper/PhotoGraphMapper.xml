@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whimsy.dao.PhotoGraphDao">
+	<resultMap id="BaseResultMap" type="com.whimsy.entity.PhotoGraph">
+		<id column="PHOTOGRAPH_ID" jdbcType="DECIMAL" property="photographId" />
+		<result column="PHOTO_ID" jdbcType="DECIMAL" property="photoId" />
+		<result column="PHOTOGRAPH_ADDRESS" jdbcType="VARCHAR"
+			property="photographAddress" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PHOTOGRAPH_ID, PHOTO_ID, PHOTOGRAPH_ADDRESS
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from WHIMSY_PHOTOGRAPH
+		where PHOTOGRAPH_ID = #{photographId,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from WHIMSY_PHOTOGRAPH
+		where PHOTOGRAPH_ID = #{photographId,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="com.whimsy.entity.PhotoGraph">
+		insert into WHIMSY_PHOTOGRAPH (PHOTOGRAPH_ID, PHOTO_ID, PHOTOGRAPH_ADDRESS
+		)
+		values (#{photographId,jdbcType=DECIMAL}, #{photoId,jdbcType=DECIMAL},
+		#{photographAddress,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.whimsy.entity.PhotoGraph">
+		insert into WHIMSY_PHOTOGRAPH
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="photographId != null">
+				PHOTOGRAPH_ID,
+			</if>
+			<if test="photoId != null">
+				PHOTO_ID,
+			</if>
+			<if test="photographAddress != null">
+				PHOTOGRAPH_ADDRESS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="photographId != null">
+				#{photographId,jdbcType=DECIMAL},
+			</if>
+			<if test="photoId != null">
+				#{photoId,jdbcType=DECIMAL},
+			</if>
+			<if test="photographAddress != null">
+				#{photographAddress,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.whimsy.entity.PhotoGraph">
+		update WHIMSY_PHOTOGRAPH
+		<set>
+			<if test="photoId != null">
+				PHOTO_ID = #{photoId,jdbcType=DECIMAL},
+			</if>
+			<if test="photographAddress != null">
+				PHOTOGRAPH_ADDRESS = #{photographAddress,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where PHOTOGRAPH_ID = #{photographId,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.whimsy.entity.PhotoGraph">
+		update WHIMSY_PHOTOGRAPH
+		set PHOTO_ID = #{photoId,jdbcType=DECIMAL},
+		PHOTOGRAPH_ADDRESS = #{photographAddress,jdbcType=VARCHAR}
+		where PHOTOGRAPH_ID = #{photographId,jdbcType=DECIMAL}
+	</update>
+</mapper>

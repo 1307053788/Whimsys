@@ -1,0 +1,56 @@
+
+/*注册内容*/
+.reg_content {
+	width: 530px;
+	height: 700px;
+	background: url("../images/public/bg.png");
+	border-radius: 6px;
+	margin: 0 auto;
+}
+
+.chunk_a {
+	line-height: 40px;
+	width: 350px;
+	height: 50px;
+	position: relative;
+}
+
+
+/*错误提示*/
+.i-error {
+	color: #e22;
+	font-weight: bold;
+	font-family: "Microsoft YaHei", "Hiragino Sans GB";
+}
+.form-item-error {
+	border: 1px solid #e22;
+}
+.i-info{
+	color: #e22;
+	font-weight: bold;
+	font-family: "Microsoft YaHei", "Hiragino Sans GB";
+}
+.i-warn{
+	border: 1px solid #e22;
+}
+/*邮箱自动补全*/
+.on_changes {
+	z-index: 100;
+	width: 330px;
+	position: absolute;
+	top: 40px;
+	list-style: none;
+	background: #FFF;
+	border: 1px solid #DFDFDF;
+	display: none;
+	padding: 10px;
+}
+
+.on_changes li {
+	margin: 8px;
+	padding: 4px;
+}
+
+.on_changes li.active {
+	background: #CEE7FF;
+}
