@@ -790,7 +790,7 @@ public class OrderController {
 					}else if(getorder.getjPayment().equals("2")){
 						attr.addAttribute("jmoney", getorder.getjMoney());
 						attr.addAttribute("jordercode", jordercode);
-						return "redirect:/zhifubao/alipay";
+						return "redirect:/zhifubao/refund";
 					}else if(getorder.getjPayment().equals("3")){
 						
 						return null;

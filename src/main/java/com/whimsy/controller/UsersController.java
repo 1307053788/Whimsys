@@ -410,6 +410,7 @@ public class UsersController {
 			if(sewechat == null){
 				reMap.put("iszhuce", 1);
 				reMap.put("openid","" );
+				reMap.put("info",sewechat);
 				resultMap.put("data", reMap);
 				resultMap.put("code", "100000");
 				resultMap.put("message", "×¢²á£¡");
@@ -417,6 +418,7 @@ public class UsersController {
 			}else{
 				reMap.put("iszhuce", 0);
 				reMap.put("jtoken",sewechat.getJtoken());
+				reMap.put("info",sewechat);
 				resultMap.put("data", reMap);
 				resultMap.put("code", "100000");
 				resultMap.put("message", "µÇÂ¼£¡");

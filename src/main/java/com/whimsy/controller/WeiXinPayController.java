@@ -29,9 +29,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
+import com.whimsy.entity.TCouponDetailed;
 import com.whimsy.entity.TDepartment;
 import com.whimsy.entity.TMemberCard;
 import com.whimsy.entity.TOrderDetailed;
+import com.whimsy.service.TCouponDetailedService;
 import com.whimsy.service.TDepartmentService;
 import com.whimsy.service.TMemberCardService;
 import com.whimsy.service.TOrderDetailedService;
@@ -50,6 +52,9 @@ public class WeiXinPayController {
 	
 	@Autowired
 	private TDepartmentService tdService;
+	
+	@Autowired
+	private TCouponDetailedService tcdService;
 	
     protected static Logger logger = Logger.getLogger(WeiXinPayController.class);
     
@@ -74,7 +79,7 @@ public class WeiXinPayController {
     	try {
 			pw = response.getWriter();
 			String sym = request.getRequestURL().toString().split("/api/")[0];
-	        BigDecimal totalAmount = new BigDecimal(0.01 /*request.getParameter("jmoney")*/ );
+	        BigDecimal totalAmount = new BigDecimal(request.getParameter("jmoney"));
 	        String description = "鲸哥鲜生-商品购买" /*request.getParameter("description")*/;
 	        String trade_no = request.getParameter("jordercode");
 	        Map<String, String> map = weixinPrePay(trade_no,totalAmount,description,sym,request);  
@@ -86,7 +91,6 @@ public class WeiXinPayController {
 	        finalpackage.put("package", "Sign=WXPay");
 	        finalpackage.put("noncestr", PayCommonUtil.getRandomString(32));  
 	        finalpackage.put("timestamp", timeMillis);  
-	        /*finalpackage.put("signtype", "MD5");*/
 	        String sign = PayCommonUtil.createSign("UTF-8", finalpackage);  
 	        finalpackage.put("sign",sign);
 	        result.put("info", finalpackage);
@@ -145,7 +149,7 @@ public class WeiXinPayController {
     @RequestMapping(value = "weixin/wxRefund",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public void wxRefund(HttpServletRequest request, HttpServletResponse response) throws JDOMException { 
+    public void wxRefund(HttpServletRequest request, HttpServletResponse response,TCouponDetailed tCouponDetailed,TMemberCard tMemberCard) throws JDOMException { 
     	PrintWriter pw = null;
     	String jordercode = request.getParameter("jordercode");
     	Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -173,13 +177,47 @@ public class WeiXinPayController {
 	        resultMap.put("data", resul);
 			resultMap.put("code", "100000");
 			resultMap.put("message", "seccess");
-	        /*try {  
+	        try {  
 	            map = PayCommonUtil.doXMLParse(resul);
 	            System.out.println("map="+map);
+	            if(map.get("result_code").equals("SUCCESS")){
+	            	if(ord.getjCopId()>0){
+	                	//修改优惠券状态
+						tCouponDetailed.setjId(ord.getjCopId());
+						tCouponDetailed.setjState("1");
+						this.tcdService.upcoup(tCouponDetailed);
+	                }
+	                if(ord.getjIfscore().compareTo(new BigDecimal(0))==1){
+	                	//修改剩余积分、余额
+						tMemberCard.setJid(ord.getjMembercardId());
+						//查询剩余积分数
+						TMemberCard num = this.memberService.getInte(ord.getjMembercardId());
+						//查询积分数兑换RMB数
+						TDepartment getScore = this.tdService.selectScore(ord.getjDeptId());
+						BigDecimal aaa = new BigDecimal(BigdecimalUtil.mul(ord.getjIfscore().doubleValue(),getScore.getJscoreforrmb().doubleValue()));
+						tMemberCard.setJendqty(new BigDecimal(BigdecimalUtil.add(num.getJendqty().doubleValue(),aaa.doubleValue())));
+						tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.add(num.getJoutfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
+						int out = this.memberService.updateall(tMemberCard);
+						if(out==1){
+							resultMap.put("data", out);
+							resultMap.put("code", "100000");
+							resultMap.put("message", "success");
+						}else{
+							resultMap.put("data", out);
+							resultMap.put("code", "100002");
+							resultMap.put("message", "退款失败！");
+						}
+	                }
+	            }else{
+	            	resultMap.put("data", resul);
+	    			resultMap.put("code", "100002");
+	    			resultMap.put("message", "退款失败，稍后重试！");
+	            }
+	            map.get("result_code");
 	        } catch (IOException e) {
 	            // TODO Auto-generated catch block  
 	            e.printStackTrace();
-	        }*/
+	        }
     	} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

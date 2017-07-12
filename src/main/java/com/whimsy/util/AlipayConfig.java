@@ -20,7 +20,7 @@ public class AlipayConfig {
     public static String input_charset = "utf-8";
 
     // 接收通知的接口名
-    public static String service = "http://192.168.2.116:8080/Whimsy/freshshop/callbacks?jtoken=24654454564";
+    public static String service = "/zhifubao/callbacks";
     //public static String service = "mobile.securitypay.pay";
 
     //APPID
