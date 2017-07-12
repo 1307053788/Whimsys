@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 	<!-- 配置文件路径 -->
-	<properties resource="sql-mybatis.properties" />
+	<properties resource="sqlsql-mybatis.properties" />
 
 	<!--数据库驱动包路径 -->
 	<classPathEntry location="${drive.class.path}" />

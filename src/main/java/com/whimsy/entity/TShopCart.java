@@ -51,7 +51,17 @@ public class TShopCart {
     private BigDecimal jdiscount;
     private BigDecimal jactprice;
     
-    public BigDecimal getJdiscount() {
+    private BigDecimal jstockqty;
+    
+    public BigDecimal getJstockqty() {
+		return jstockqty;
+	}
+
+	public void setJstockqty(BigDecimal jstockqty) {
+		this.jstockqty = jstockqty;
+	}
+
+	public BigDecimal getJdiscount() {
 		return jdiscount;
 	}
 

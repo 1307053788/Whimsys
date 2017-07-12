@@ -127,7 +127,7 @@
   <!-- 查询展示商品列表 -->
   <select id="getGoods" parameterType="java.lang.Integer"  resultMap="VAuxGoodsStockResultMap">
     select 
-    bb.JStockQty as jstockqty,
+    convert(decimal(10, 2),bb.JStockQty) as jstockqty,
     aa.JID as jid,
 	aa.JGoodsCode as jgoodscode,
 	aa.JGoodsName as jgoodsname,
@@ -137,10 +137,10 @@
 	aa.JClassID as jclassid,
 	aa.JSupClientID as jsupclientid,
 	aa.JBarCode as jbarcode,
-	aa.JPointSalePrice as jpointsaleprice,
-	aa.JSale3Price as jsale3price,
-	aa.JRefCostPrice as jrefcostprice,
-	aa.JMinInPrice as jmininprice,
+	convert(decimal(10, 2),aa.JPointSalePrice) as jpointsaleprice,
+	convert(decimal(10, 2),aa.JSale3Price) as jsale3price,
+	convert(decimal(10, 2),aa.JRefCostPrice) as jrefcostprice,
+	convert(decimal(10, 2),aa.JMinInPrice) as jmininprice,
 	aa.JPlace as jplace,
 	
 	isnull(aa.JSubtitle,'') as jsubtitle,
@@ -157,7 +157,7 @@
   <!-- 查询商品关键字 -->
   <select id="searchGoods" parameterType="com.whimsy.entity.VAuxGoodsStock"  resultMap="VAuxGoodsStockResultMap">
     select 
-    bb.JStockQty as jstockqty,
+    convert(decimal(10, 2),bb.JStockQty) as jstockqty,
     aa.JID as jid,
 	aa.JGoodsCode as jgoodscode,
 	aa.JGoodsName as jgoodsname,
@@ -167,10 +167,10 @@
 	aa.JClassID as jclassid,
 	aa.JSupClientID as jsupclientid,
 	aa.JBarCode as jbarcode,
-	aa.JPointSalePrice as jpointsaleprice,
-	aa.JSale3Price as jsale3price,
-	aa.JRefCostPrice as jrefcostprice,
-	aa.JMinInPrice as jmininprice,
+	convert(decimal(10, 2),aa.JPointSalePrice) as jpointsaleprice,
+	convert(decimal(10, 2),aa.JSale3Price) as jsale3price,
+	convert(decimal(10, 2),aa.JRefCostPrice) as jrefcostprice,
+	convert(decimal(10, 2),aa.JMinInPrice) as jmininprice,
 	aa.JPhoto as jphoto,
 	aa.JPlace as jplace,
 	

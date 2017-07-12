@@ -79,7 +79,7 @@ public class WeiXinPayController {
     	try {
 			pw = response.getWriter();
 			String sym = request.getRequestURL().toString().split("/api/")[0];
-	        BigDecimal totalAmount = new BigDecimal(request.getParameter("jmoney"));
+	        BigDecimal totalAmount = new BigDecimal(0.01/*request.getParameter("jmoney")*/);
 	        String description = "¾¨¸çÏÊÉú-ÉÌÆ·¹ºÂò" /*request.getParameter("description")*/;
 	        String trade_no = request.getParameter("jordercode");
 	        Map<String, String> map = weixinPrePay(trade_no,totalAmount,description,sym,request);  
@@ -149,7 +149,7 @@ public class WeiXinPayController {
     @RequestMapping(value = "weixin/wxRefund",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public void wxRefund(HttpServletRequest request, HttpServletResponse response,TCouponDetailed tCouponDetailed,TMemberCard tMemberCard) throws JDOMException { 
+    public void wxRefund(HttpServletRequest request, HttpServletResponse response,TCouponDetailed tCouponDetailed,TOrderDetailed tOrderDetailed,TMemberCard tMemberCard) throws JDOMException { 
     	PrintWriter pw = null;
     	String jordercode = request.getParameter("jordercode");
     	Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -181,6 +181,16 @@ public class WeiXinPayController {
 	            map = PayCommonUtil.doXMLParse(resul);
 	            System.out.println("map="+map);
 	            if(map.get("result_code").equals("SUCCESS")){
+	            	tOrderDetailed.setjOrdercode(jordercode.toString());
+		            SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+					String data = dfs.format(new Date()).toString();
+					Date paytime = dfs.parse(data);
+					tOrderDetailed.setjEndtime(paytime);
+					tOrderDetailed.setjUptime(paytime);
+					tOrderDetailed.setjState("6");
+					//ÐÞ¸Ä¶©µ¥×´Ì¬
+					int order = this.orderService.uporderstate(tOrderDetailed);
+					System.out.println(order);
 	            	if(ord.getjCopId()>0){
 	                	//ÐÞ¸ÄÓÅ»ÝÈ¯×´Ì¬
 						tCouponDetailed.setjId(ord.getjCopId());
@@ -196,7 +206,7 @@ public class WeiXinPayController {
 						TDepartment getScore = this.tdService.selectScore(ord.getjDeptId());
 						BigDecimal aaa = new BigDecimal(BigdecimalUtil.mul(ord.getjIfscore().doubleValue(),getScore.getJscoreforrmb().doubleValue()));
 						tMemberCard.setJendqty(new BigDecimal(BigdecimalUtil.add(num.getJendqty().doubleValue(),aaa.doubleValue())));
-						tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.add(num.getJoutfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
+						tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.add(num.getJendfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
 						int out = this.memberService.updateall(tMemberCard);
 						if(out==1){
 							resultMap.put("data", out);
@@ -282,7 +292,7 @@ public class WeiXinPayController {
 						TDepartment getScore = this.tdService.selectScore(ord.getjDeptId());
 						BigDecimal aaa = new BigDecimal(BigdecimalUtil.mul(ord.getjIfscore().doubleValue(),getScore.getJscoreforrmb().doubleValue()));
 						tMemberCard.setJendqty(new BigDecimal(BigdecimalUtil.sub(num.getJendqty().doubleValue(),aaa.doubleValue())));
-						tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.sub(num.getJoutfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
+						tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.sub(num.getJendfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
 						int out = this.memberService.updateall(tMemberCard);
 						System.out.println(out);
 					}

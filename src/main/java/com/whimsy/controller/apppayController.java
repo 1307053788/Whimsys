@@ -70,7 +70,7 @@ public class apppayController {
 		String sym = reques.getRequestURL().toString().split("/zhifubao/")[0];
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		Map<String, Object> result = new HashMap<String, Object>();
-		String amount = reques.getParameter("jmoney");
+		String amount = "0.01";
         //实例化客户端
         AlipayClient alipayClient = new DefaultAlipayClient("https://openapi.alipay.com/gateway.do", AlipayConfig.app_id, AlipayConfig.private_key , "json", AlipayConfig.input_charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
         //实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名称：alipay.trade.app.pay
@@ -158,7 +158,7 @@ public class apppayController {
     						TDepartment getScore = this.tdService.selectScore(ord.getjDeptId());
     						BigDecimal aaa = new BigDecimal(BigdecimalUtil.mul(ord.getjIfscore().doubleValue(),getScore.getJscoreforrmb().doubleValue()));
     						tMemberCard.setJendqty(new BigDecimal(BigdecimalUtil.sub(num.getJendqty().doubleValue(),aaa.doubleValue())));
-    						tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.sub(num.getJoutfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
+    						tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.sub(num.getJendfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
     						int out = this.memberService.updateall(tMemberCard);
     						System.out.println(out);
     					}
@@ -176,12 +176,12 @@ public class apppayController {
     }
 	@ResponseBody
 	@RequestMapping(value = "zhifubao/refund",  produces = "text/html;charset=UTF-8",method={RequestMethod.GET})
-	public void alipayRefundRequest(HttpServletRequest request, HttpServletResponse response,TCouponDetailed tCouponDetailed,TMemberCard tMemberCard){
+	public void alipayRefundRequest(HttpServletRequest request, HttpServletResponse response,TCouponDetailed tCouponDetailed,TOrderDetailed tOrderDetailed,TMemberCard tMemberCard){
 		PrintWriter pw = null;
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		Map<String, Object> result = new HashMap<String, Object>();
 		String trade_no = request.getParameter("jordercode");
-		System.out.println();
+		System.out.println(trade_no);
 		TOrderDetailed ord = this.orderService.getOrder(trade_no);
         // 发送请求
         String strResponse = null;
@@ -191,13 +191,23 @@ public class apppayController {
             AlipayTradeRefundRequest reques = new AlipayTradeRefundRequest();
             reques.setBizContent("{" +
             		"\"out_trade_no\":\""+ trade_no+"\"," +
-            		"\"refund_amount\":\""+ord.getjMoney()+"\""+
+            		"\"refund_amount\":\""+0.01+"\""+
             		"  }");
             AlipayTradeRefundResponse respons = alipayClient.execute(reques);
             strResponse=respons.getCode();
             if ("10000".equals(respons.getCode())) {
                 strResponse="退款成功";
                 System.out.println(strResponse);
+                tOrderDetailed.setjOrdercode(trade_no);
+	            SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+				String data = dfs.format(new Date()).toString();
+				Date paytime = dfs.parse(data);
+				tOrderDetailed.setjEndtime(paytime);
+				tOrderDetailed.setjUptime(paytime);
+				tOrderDetailed.setjState("6");
+				//修改订单状态
+				int order = this.orderService.uporderstate(tOrderDetailed);
+				System.out.println(order);
                 if(ord.getjCopId()>0){
                 	//修改优惠券状态
 					tCouponDetailed.setjId(ord.getjCopId());
@@ -213,7 +223,7 @@ public class apppayController {
 					TDepartment getScore = this.tdService.selectScore(ord.getjDeptId());
 					BigDecimal aaa = new BigDecimal(BigdecimalUtil.mul(ord.getjIfscore().doubleValue(),getScore.getJscoreforrmb().doubleValue()));
 					tMemberCard.setJendqty(new BigDecimal(BigdecimalUtil.add(num.getJendqty().doubleValue(),aaa.doubleValue())));
-					tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.add(num.getJoutfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
+					tMemberCard.setJoutfillamt(new BigDecimal(BigdecimalUtil.add(num.getJendfillamt().doubleValue(),ord.getjIfmembercard().doubleValue())));
 					int out = this.memberService.updateall(tMemberCard);
 					if(out==1){
 						resultMap.put("data", out);
